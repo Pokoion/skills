@@ -1,0 +1,342 @@
+[
+  {
+    "id": "1",
+    "text": "Light up an\n\n\nLED for the first\n\n\ntime",
+    "icon": "icon1.svg"
+  },
+  {
+    "id": "2",
+    "text": "Learn to\n\n\nuse wire strippers",
+    "icon": "icon2.svg"
+  },
+  {
+    "id": "3",
+    "text": "Complete\n\n\nan electronics kit",
+    "icon": "icon3.svg"
+  },
+  {
+    "id": "4",
+    "text": "Learn to Solder",
+    "icon": "icon4.svg"
+  },
+  {
+    "id": "5",
+    "text": "Learn to use\n\n\na breadboard",
+    "icon": "icon5.svg"
+  },
+  {
+    "id": "6",
+    "text": "Get a circuit\n\n\nwrong and try\n\n\nagain",
+    "icon": "icon6.svg"
+  },
+  {
+    "id": "7",
+    "text": "Learn Ohm’s\n\n\nLaw",
+    "icon": "icon7.svg"
+  },
+  {
+    "id": "8",
+    "text": "Fix something\n\n\nsomething\n\n\nthat’s broken",
+    "icon": "icon8.svg"
+  },
+  {
+    "id": "9",
+    "text": "Measure\n\n\nvoltage with\n\n\na multimeter",
+    "icon": "icon9.svg"
+  },
+  {
+    "id": "10",
+    "text": "Learn to\n\n\nread a schematic",
+    "icon": "icon10.svg"
+  },
+  {
+    "id": "11",
+    "text": "Learn to read\n\n\na datasheet",
+    "icon": "icon11.svg"
+  },
+  {
+    "id": "12",
+    "text": "Learn to\n\n\ncontrol the\n\n\nbrightness of\n\n\nan LED",
+    "icon": "icon12.svg"
+  },
+  {
+    "id": "13",
+    "text": "Learn to\n\n\ndesolder a\n\n\nthrough hole\n\n\ncomponent",
+    "icon": "icon4.svg"
+  },
+  {
+    "id": "14",
+    "text": "Make\n\n\nsomething that\n\n\nmakes noise",
+    "icon": "icon14.svg"
+  },
+  {
+    "id": "15",
+    "text": "Turn a\n\n\nbreadboard\n\n\ncircuit into a\n\n\nschematic",
+    "icon": "icon10.svg"
+  },
+  {
+    "id": "16",
+    "text": "Measure\n\n\ncurrent with a\n\n\nmultimeter",
+    "icon": "icon9.svg"
+  },
+  {
+    "id": "17",
+    "text": "Make a voltage\n\n\ndivider to lower\n\n\nthe voltage\n\n\nfor a project",
+    "icon": "icon17.svg"
+  },
+  {
+    "id": "18",
+    "text": "Turn\n\n\nsomething\n\n\non using\n\n\na sensor",
+    "icon": "icon18.svg"
+  },
+  {
+    "id": "19",
+    "text": "Use a diode\n\n\nprotect your\n\n\ncircuit from\n\n\nreverse voltages",
+    "icon": "icon19.svg"
+  },
+  {
+    "id": "20",
+    "text": "Make an\n\n\noscillator that\n\n\nmakes noise",
+    "icon": "icon14.svg"
+  },
+  {
+    "id": "21",
+    "text": "Use a relay\n\n\nto switch\n\n\nsomething on at\n\n\na higher voltage",
+    "icon": "icon21.svg"
+  },
+  {
+    "id": "22",
+    "text": "Make a\n\n\ncapacitor rocket\n\n\n(too much voltage)",
+    "icon": "icon22.svg"
+  },
+  {
+    "id": "23",
+    "text": "Learn to\n\n\nsolder surfcace\n\n\nmount parts",
+    "icon": "icon23.svg"
+  },
+  {
+    "id": "24",
+    "text": "Use a\n\n\n555 timer\n\n\nin a circuit",
+    "icon": "icon24.svg"
+  },
+  {
+    "id": "25",
+    "text": "Make a sound\n\n\nlouder with an\n\n\namplifier",
+    "icon": "icon14.svg"
+  },
+  {
+    "id": "26",
+    "text": "Use\n\n\naddressable\n\n\nRGB LEDs in a\n\n\nproject",
+    "icon": "icon12.svg"
+  },
+  {
+    "id": "27",
+    "text": "Make a\n\n\nproject\n\n\nwith a\n\n\nRaspberry Pi",
+    "icon": "icon27.svg"
+  },
+  {
+    "id": "28",
+    "text": "Let the\n\n\nsmoke out\n\n\naccidentally",
+    "icon": "icon28.svg"
+  },
+  {
+    "id": "29",
+    "text": "Use fritzing\n\n\nor TinkerCAD\n\n\nto create a\n\n\ncircuit diagram",
+    "icon": "icon29.svg"
+  },
+  {
+    "id": "30",
+    "text": "Make\n\n\nsomething\n\n\nwith Arduino",
+    "icon": "icon30.svg"
+  },
+  {
+    "id": "31",
+    "text": "Let the smoke\n\n\nout of an Arduino\n\n\naccidentally",
+    "icon": "icon31.svg"
+  },
+  {
+    "id": "32",
+    "text": "Measure\n\n\nfrequency with a\n\n\nmultimeter",
+    "icon": "icon9.svg"
+  },
+  {
+    "id": "33",
+    "text": "Use an\n\n\nOp-Amp  in\n\n\na circuit",
+    "icon": "icon33.svg"
+  },
+  {
+    "id": "34",
+    "text": "Use a crowbar\n\n\ncircuit to protect\n\n\nagainst over voltage",
+    "icon": "icon17.svg"
+  },
+  {
+    "id": "35",
+    "text": "Use a surge\n\n\ndiode to protect\n\n\na circuit",
+    "icon": "icon19.svg"
+  },
+  {
+    "id": "36",
+    "text": "Make\n\n\nsomething\n\n\nfor a friend",
+    "icon": "icon36.svg"
+  },
+  {
+    "id": "37",
+    "text": "Make a motor\n\n\ncontroller with\n\n\na H Bridge",
+    "icon": "icon37.svg"
+  },
+  {
+    "id": "38",
+    "text": "Make a\n\n\ncounter with\n\n\nlogic gates",
+    "icon": "icon38.svg"
+  },
+  {
+    "id": "39",
+    "text": "Apply solder\n\n\npaste to a PCB\n\n\nwith a stencil",
+    "icon": "icon39.svg"
+  },
+  {
+    "id": "40",
+    "text": "Teach a\n\n\nfriend an\n\n\nelectronics skill",
+    "icon": "icon40.svg"
+  },
+  {
+    "id": "41",
+    "text": "Make something\n\n\nwith a 7\n\n\nsegment display",
+    "icon": "icon41.svg"
+  },
+  {
+    "id": "42",
+    "text": "Measure\n\n\nvoltage with an\n\n\noscilloscope",
+    "icon": "icon42.svg"
+  },
+  {
+    "id": "43",
+    "text": "Measure\n\n\ncapacitor equivalent\n\n\nseries resistance",
+    "icon": "icon43.svg"
+  },
+  {
+    "id": "44",
+    "text": "Make an\n\n\nInternet of Things\n\n\n(IoT) project",
+    "icon": "icon44.svg"
+  },
+  {
+    "id": "45",
+    "text": "Make\n\n\nsomething with\n\n\nsolar panels",
+    "icon": "icon45.svg"
+  },
+  {
+    "id": "46",
+    "text": "Look at an\n\n\naudio input\n\n\non an oscilloscope",
+    "icon": "icon46.svg"
+  },
+  {
+    "id": "47",
+    "text": "Make a\n\n\nregulated\n\n\npower supply",
+    "icon": "icon47.svg"
+  },
+  {
+    "id": "48",
+    "text": "Use a MOSFET\n\n\ninstead of a relay\n\n\nin a project",
+    "icon": "icon48.svg"
+  },
+  {
+    "id": "49",
+    "text": "Make your\n\n\nown\n\n\nUSB cable",
+    "icon": "icon49.svg"
+  },
+  {
+    "id": "50",
+    "text": "Use an LED\n\n\nmatrix in\n\n\na project",
+    "icon": "icon50.svg"
+  },
+  {
+    "id": "51",
+    "text": "Filter\n\n\nunwanted noise\n\n\nfrom a signal",
+    "icon": "icon46.svg"
+  },
+  {
+    "id": "52",
+    "text": "Use a freqency\n\n\nanalyser\n\n\nfor a project",
+    "icon": "icon9.svg"
+  },
+  {
+    "id": "53",
+    "text": "Order a\n\n\nPCB with\n\n\nyour design",
+    "icon": "icon47.svg"
+  },
+  {
+    "id": "54",
+    "text": "Repair a\n\n\nbroken trace\n\n\non a PCB",
+    "icon": "icon54.svg"
+  },
+  {
+    "id": "55",
+    "text": "Use\n\n\nautomatic\n\n\ngain control",
+    "icon": "icon10.svg"
+  },
+  {
+    "id": "56",
+    "text": "Make a\n\n\nPID circuit\n\n\nwith Op-Amps",
+    "icon": "icon33.svg"
+  },
+  {
+    "id": "57",
+    "text": "Teach a\n\n\nclass on\n\n\nElectronics",
+    "icon": "icon40.svg"
+  },
+  {
+    "id": "58",
+    "text": "Learn\n\n\nPCB Design\n\n\nSoftware",
+    "icon": "icon47.svg"
+  },
+  {
+    "id": "59",
+    "text": "Use an\n\n\ne-paper display\n\n\nin a project",
+    "icon": "icon59.svg"
+  },
+  {
+    "id": "60",
+    "text": "Build a\n\n\nRadio Frequency\n\n\n(RF)Project",
+    "icon": "icon60.svg"
+  },
+  {
+    "id": "61",
+    "text": "Make an\n\n\nopen source\n\n\nproject",
+    "icon": "icon61.svg"
+  },
+  {
+    "id": "62",
+    "text": "Use capacitive\n\n\ntouch in a PCB\n\n\ndesign",
+    "icon": "icon62.svg"
+  },
+  {
+    "id": "63",
+    "text": "Make\n\n\nsomething\n\n\nwith PCB Art",
+    "icon": "icon63.svg"
+  },
+  {
+    "id": "64",
+    "text": "Make an\n\n\nelectronic\n\n\nsculpture",
+    "icon": "icon64.svg"
+  },
+  {
+    "id": "65",
+    "text": "Make a switch\n\n\nmode power\n\n\nsupply",
+    "icon": "icon21.svg"
+  },
+  {
+    "id": "66",
+    "text": "Release a\n\n\ntutorial on a\n\n\nproject you've made",
+    "icon": "icon66.svg"
+  },
+  {
+    "id": "67",
+    "text": "Create an\n\n\nFPGA Project",
+    "icon": "icon67.svg"
+  },
+  {
+    "id": "68",
+    "text": "Write your\n\n\nown C/C++ library\n\n\nfor a sensor\n\n\nfrom scratch",
+    "icon": "icon68.svg"
+  }
+]
