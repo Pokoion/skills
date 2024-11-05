@@ -30,13 +30,13 @@ let lortu = async () => {
         });
         console.log(data);
 
-        const publicDir = path.join(__dirname, '../public');
+        const publicDir = path.join(__dirname, '..', 'public');
         if (!fs.existsSync(publicDir)) {
             fs.mkdirSync(publicDir);
         }
 
         // Write data to skills.json in the public directory
-        const filePath = publicDir + '/skills.json';
+        const filePath = path.join(publicDir, 'skills.json');
         fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 
         console.log('Data saved to skills.json');

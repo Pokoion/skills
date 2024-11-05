@@ -5,7 +5,6 @@ const axios = require('axios');
 const baseUrl = 'https://tinkererway.dev/web_skill_trees_resources/svg/electronics_icons/';
 const publicDir = path.join(__dirname, '..', 'public');
 const skillsDir = path.join(publicDir, 'skills.json');
-const iconsDir = path.join(publicDir, 'icons');
 
 // Folder to store images
 const imageFolder = path.join(publicDir, 'icons');
