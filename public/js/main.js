@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
     async function loadSkills() {
         const skillsArray = await fetch('/skills.json').then(response => response.json()) // lehen sortutako JSON fitxategia lortu
 
+        const footer = document.querySelector('.description'); // footer elementua lortu
+
         skillsArray.forEach(skill => {
             // svg-wrapper elementua sortu
             const svgWrapper = document.createElement('div');
@@ -52,7 +54,54 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             image.setAttribute('height', '30');
             image.setAttribute('href', `icons/${skill.icon}`);
             svg.appendChild(image);
+
+                // Arkatz emoji-a sortu
+                const pencilEmoji = document.createElement('div');
+                pencilEmoji.className = 'emoji pencil';
+                pencilEmoji.textContent = '✏️';
+                pencilEmoji.style.position = 'absolute';
+                pencilEmoji.style.bottom = '10px';
+                pencilEmoji.style.left = '10px';
+                pencilEmoji.style.display = 'none';
+
+                pencilEmoji.addEventListener('click', () => {
+                    console.log('Pencil emoji clicked');
+                });
+
+                // Liburu emoji-a sortu
+                const bookEmoji = document.createElement('div');
+                bookEmoji.className = 'emoji book';
+                bookEmoji.textContent = '📖';
+                bookEmoji.style.position = 'absolute';
+                bookEmoji.style.bottom = '10px';
+                bookEmoji.style.right = '10px';
+                bookEmoji.style.display = 'none';
+
+                bookEmoji.addEventListener('click', () => {
+                    window.location.href = `/tasks?id=${skill.id}`;
+                    console.log('Book emoji clicked');
+                });
+
+                svgWrapper.appendChild(pencilEmoji);
+                svgWrapper.appendChild(bookEmoji);
+
+                svgWrapper.addEventListener('mouseover', () => {
+                    svgWrapper.style.transform = 'scale(1.2)';
+                    pencilEmoji.style.display = 'block';
+                    bookEmoji.style.display = 'block';
+                    footer.innerText = skill.description;
+                    footer.style.visibility = 'visible';
+                });
+
+                svgWrapper.addEventListener('mouseout', () => {
+                    svgWrapper.style.transform = 'scale(1)';
+                    pencilEmoji.style.display = 'none';
+                    bookEmoji.style.display = 'none';
+                    footer.style.visibility = 'hidden';
+                });
+
         });
+
     }
     loadSkills();
 });

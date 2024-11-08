@@ -44,6 +44,7 @@ async function downloadImages() {
             .catch(() => console.log(`Errorea ${filename} deskargatzean`));
     });
     await Promise.all(downloadPromises) // Promesa guztiak bukatu arte itxaron
+    console.log('Ikono guztiak deskargatu dira');
 }
 
 downloadImages();
