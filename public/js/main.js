@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                 bookEmoji.style.right = '10px';
                 bookEmoji.style.display = 'none';
 
+                // Liburu emoji-a klikatzean tasks iriki
                 bookEmoji.addEventListener('click', () => {
                     window.location.href = `/tasks?id=${skill.id}`;
                     console.log('Book emoji clicked');

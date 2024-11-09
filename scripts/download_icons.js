@@ -6,7 +6,7 @@ const baseUrl = 'https://tinkererway.dev/web_skill_trees_resources/svg/electroni
 const publicDir = path.join(__dirname, '..', 'public');
 const skillsDir = path.join(publicDir, 'skills.json');
 
-// Folder to store images
+// Argazkien karpeta
 const imageFolder = path.join(publicDir, 'icons');
 
 if (!fs.existsSync(imageFolder)) {
@@ -14,7 +14,7 @@ if (!fs.existsSync(imageFolder)) {
 }
 
 // skills.json irakurri, eta JSON bihurtu parse erabiliz
-const skills = JSON.parse(fs.readFileSync(skillsDir, 'utf8'));
+const skills = require(skillsDir);
 
 // Argazki bat deskargatzeko funtzioa
 async function downloadImage(url, filename) {

@@ -14,6 +14,10 @@
             padding: 0;
         }
 
+        body {
+            padding-bottom: 50px;
+        }
+
         h2 {
             color: rgb(77, 73, 73);
         }
@@ -24,25 +28,45 @@
     
         .skillsPage {
             width: 50%;
-            height: 90%;
+            min-height: 100%;
+            margin-bottom: 20px;
             background-color: rgb(255, 255, 255);
-            margin: 20px auto;
+            margin: 20px auto; /* Esto asegura un margen en la parte superior e inferior */
             padding: 20px;
             box-shadow: 0 0 5px rgb(158, 143, 143);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
         }
 
-        .tasks-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Alinea los elementos a la izquierda */
-            gap: 10px;
+        .skillResources ul {
+            padding-left: 20px;
         }
     
         .skillsInfo {
             flex-grow: 1;
+        }
+
+        .skillEvidence {
+            display: none;
+        }
+
+        .sendButton{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        button{
+            background-color: rgb(61, 187, 39);
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            height: 30px;
+            width: 130px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
         }
 
     </style>
@@ -78,11 +102,19 @@
                 <div class="skillTasks">
                     <h2>Tasks to complete</h2>
                         <% tasks.forEach(function(task, index) { %>
-                            <div>
+                            <div class="task-item">
                                 <input type="checkbox" id="task-<%= index %>">
                                 <label for="task-<%= index %>"><%= task %></label>
                             </div>
                         <% }); %>
+                </div>
+                <div class="skillEvidence">
+                    <h2>Provide Evidence</h2>
+                    <form action="/evidence" method="POST">
+                        <input type="hidden" name="skillId" value="<%= id %>">
+                        <textarea name="evidence" id="evidence" cols="83" rows="4"
+                         placeholder="Enter a URL or explanation as evidence for completing this skill"></textarea>
+                        <div class="sendButton"><button type="submit">Submit Evidence</button></div>
                 </div>
                 <div class="skillResources">
                     <h2>Resources</h2>
@@ -97,6 +129,7 @@
             </div>
         </div>
     </div>
+    <script src="/js/tasks.js"></script>
 </body>
 
 </html>

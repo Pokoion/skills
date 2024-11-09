@@ -21,10 +21,13 @@ let lortu = async () => {
                 let full_text = skill_texts.map(tspan => tspan.textContent).join('\n\n\n'); // text barruko textuak array batean elkartu, gero '\n\n\n'-rekin elkartu string batean
                 let img = skill.querySelector('image').getAttribute('href').split('/').pop(); // argazkiaren izena lortu
 
+                // tasks eta resources chatGPT bidez sartu ditugu eskuz skills.json fitxategian, beraz berriz exekutatzen bada tasks eta resources galdu egingo dira
                 return{
                     'id': id,
                     'text': full_text,
-                    'icon': img
+                    'icon': img,
+                    'tasks': [],
+                    'resources' : []
                 }
             });
         });

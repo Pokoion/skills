@@ -5,14 +5,12 @@ const axios = require('axios');
 const baseUrl = 'https://raw.githubusercontent.com/Obijuan/digital-electronics-with-open-FPGAs-tutorial/master/rangos/png/';
 const publicDir = path.join(__dirname, '..', 'public');
 const badgesDir = path.join(publicDir, 'badges.json');
-
 const imageFolder = path.join(publicDir, 'badges');
 
 if (!fs.existsSync(imageFolder)) {
     fs.mkdirSync(imageFolder);
   }
-
-const badgeJSON = JSON.parse(fs.readFileSync(badgesDir, 'utf8'));
+const badgeJSON = require(badgesDir);
 
 // Argazki bat deskargatzeko funtzioa
 async function downloadImage(url, filename) {
@@ -41,5 +39,6 @@ async function downloadImages() {
             .catch(() => console.log(`Errorea ${filename} deskargatzean`));
     });
     await Promise.all(downloadPromises) // Promesa guztiak bukatu arte itxaron
+    console.log('Badge guztiak deskargatu dira');
 }
 downloadImages();
