@@ -4,127 +4,172 @@
     "text": "Light up an\n\n\nLED for the first \n\n\ntime",
     "icon": "icon1.svg",
     "description": "Learn the basics of lighting up an LED, an essential first step in electronics.",
-    "tasks": ["Identify the LED and resistor", "Connect the LED to a power source", "Verify that it lights up"],
-    "resources": ["https://www.electronics-tutorials.ws", "https://www.instructables.com"]
-  },
-  {
-    "id": "2",
-    "text": "Learn to\n\n\nuse wire strippers ",
-    "icon": "icon2.svg",
-    "description": "Get comfortable using wire strippers, a key tool for working with electronics.",
-    "tasks": ["Select the correct wire size", "Strip insulation without damaging the wire", "Practice with different wire types"],
-    "resources": ["https://www.wikihow.com", "https://www.adafruit.com"]
+    "tasks": ["Identify the LED and resistor", "Connect the LED to a power source", "Verify that it lights up", "Experiment with LED brightness using different resistors"],
+    "resources": ["https://www.electronics-tutorials.ws", "https://www.instructables.com", "LED basics guide: https://www.adafruit.com"]
   },
   {
     "id": "3",
     "text": "Complete\n\n\nan electronics kit  ",
     "icon": "icon3.svg",
     "description": "Build an electronics kit to understand component assembly and basic circuits.",
-    "tasks": ["Gather required tools", "Follow the instructions step-by-step", "Test the assembled circuit"],
-    "resources": ["https://www.sparkfun.com", "https://www.makerspaces.com"]
-  },
-  {
-    "id": "4",
-    "text": "Learn to Solder",
-    "icon": "icon4.svg",
-    "description": "Master the skill of soldering, a fundamental technique for building circuits.",
-    "tasks": ["Heat up the soldering iron", "Apply solder to a joint", "Inspect the soldered connection"],
-    "resources": ["https://www.adafruit.com", "https://www.ifixit.com"]
+    "tasks": ["Gather required tools", "Follow the instructions step-by-step", "Test the assembled circuit", "Understand and check component polarity"],
+    "resources": ["https://www.sparkfun.com", "https://www.makerspaces.com", "Beginner kits guide: https://www.jameco.com"]
   },
   {
     "id": "5",
     "text": "Learn to use\n\n\na breadboard",
     "icon": "icon5.svg",
     "description": "Understand how to use a breadboard for building and testing circuits.",
-    "tasks": ["Identify breadboard sections", "Place components on the board", "Connect wires to complete the circuit"],
-    "resources": ["https://www.electronics-tutorials.ws", "https://www.allaboutcircuits.com"]
-  },
-  {
-    "id": "6",
-    "text": "Get a circuit\n\n\nwrong and try\n\n\nagain",
-    "icon": "icon6.svg",
-    "description": "Learn from mistakes by troubleshooting a circuit that doesn't work.",
-    "tasks": ["Identify the error", "Modify the circuit", "Test to see if it works"],
-    "resources": ["https://www.electronics-tutorials.ws", "https://www.build-electronic-circuits.com"]
+    "tasks": ["Identify breadboard sections", "Place components on the board", "Connect wires to complete the circuit", "Experiment with parallel and series connections"],
+    "resources": ["https://www.electronics-tutorials.ws", "https://www.allaboutcircuits.com", "Breadboarding basics: https://learn.sparkfun.com"]
   },
   {
     "id": "7",
     "text": "Learn Ohm’s\n\n\nLaw",
     "icon": "icon7.svg",
     "description": "Understand Ohm's Law, a fundamental principle in electronics that relates voltage, current, and resistance.",
-    "tasks": ["Review Ohm’s Law formula", "Apply it in a simple circuit", "Calculate unknown values"],
-    "resources": ["https://www.khanacademy.org", "https://www.circuitdigest.com"]
+    "tasks": ["Review Ohm’s Law formula", "Apply it in a simple circuit", "Calculate unknown values", "Test the law with different resistors"],
+    "resources": ["https://www.khanacademy.org", "https://www.circuitdigest.com", "Ohm’s Law explained: https://www.physicsclassroom.com"]
   },
   {
     "id": "8",
     "text": "Fix something\n\n\nsomething\n\n\nthat’s broken",
     "icon": "icon8.svg",
     "description": "Develop troubleshooting skills by repairing a broken electronic device.",
-    "tasks": ["Diagnose the problem", "Identify necessary repairs", "Test after fixing"],
-    "resources": ["https://www.ifixit.com", "https://www.instructables.com"]
+    "tasks": [
+      "Diagnose the problem",
+      "Identify necessary repairs",
+      "Test after fixing",
+      "Document the repair process"
+    ],
+    "resources": [
+      "https://www.ifixit.com",
+      "https://www.instructables.com",
+      "How to troubleshoot: https://www.youtube.com/watch?v=example1"
+    ]
   },
   {
     "id": "9",
     "text": "Measure \n\n\nvoltage with \n\n\na multimeter",
     "icon": "icon9.svg",
     "description": "Learn to use a multimeter to measure voltage, an essential skill for diagnosing circuits.",
-    "tasks": ["Set multimeter to voltage mode", "Place probes on test points", "Record the voltage reading"],
-    "resources": ["https://www.fluke.com", "https://www.electronics-tutorials.ws"]
+    "tasks": [
+      "Set multimeter to voltage mode",
+      "Place probes on test points",
+      "Record the voltage reading",
+      "Verify the circuit's power source"
+    ],
+    "resources": [
+      "https://www.fluke.com",
+      "https://www.electronics-tutorials.ws",
+      "Multimeter basics: https://www.electronics-tutorials.ws/category/multimeter"
+    ]
   },
   {
     "id": "10",
     "text": "Learn to\n\n\nread a schematic",
     "icon": "icon10.svg",
     "description": "Develop the ability to read and understand electronic schematics.",
-    "tasks": ["Identify symbols for components", "Trace circuit pathways", "Interpret schematic notations"],
-    "resources": ["https://www.electronics-tutorials.ws", "https://www.allaboutcircuits.com"]
+    "tasks": [
+      "Identify symbols for components",
+      "Trace circuit pathways",
+      "Interpret schematic notations"
+    ],
+    "resources": [
+      "https://www.electronics-tutorials.ws",
+      "https://www.allaboutcircuits.com",
+      "Understanding schematics: https://www.electronics-tutorials.ws/category/schematics"
+    ]
   },
   {
     "id": "11",
     "text": "Learn to read\n\n\na datasheet",
     "icon": "icon11.svg",
     "description": "Understand how to interpret datasheets to get essential specifications for components.",
-    "tasks": ["Identify key parameters", "Compare components", "Calculate safe operating conditions"],
-    "resources": ["https://learn.adafruit.com/all-about-arduino-libraries-reading-datasheets", "https://www.sparkfun.com/tutorials/223"]
+    "tasks": [
+      "Identify key parameters",
+      "Compare components",
+      "Calculate safe operating conditions",
+      "Understand temperature ratings"
+    ],
+    "resources": [
+      "https://learn.adafruit.com/all-about-arduino-libraries-reading-datasheets",
+      "https://www.sparkfun.com/tutorials/223",
+      "Datasheet guide: https://www.digikey.com/en/resources/datasheets"
+    ]
   },
   {
     "id": "12",
     "text": "Learn to\n\n\ncontrol the \n\n\nbrightness of\n\n\n an LED",
     "icon": "icon12.svg",
     "description": "Learn to control LED brightness using resistors and PWM signals.",
-    "tasks": ["Understand PWM", "Experiment with resistors", "Create a fading LED effect"],
-    "resources": ["https://learn.sparkfun.com/tutorials/analog-vs-digital", "https://www.arduino.cc/en/Tutorial/BuiltInExamples/Fade"]
+    "tasks": [
+      "Understand PWM",
+      "Experiment with resistors",
+      "Create a fading LED effect"
+    ],
+    "resources": [
+      "https://learn.sparkfun.com/tutorials/analog-vs-digital",
+      "https://www.arduino.cc/en/Tutorial/BuiltInExamples/Fade",
+      "PWM and LEDs: https://www.arduino.cc/en/Tutorial/Knob"
+    ]
   },
   {
     "id": "13",
     "text": "Learn to \n\n\ndesolder a   \n\n\nthrough hole\n\n\ncomponent",
     "icon": "icon4.svg",
     "description": "Acquire the skill of removing components from a circuit board using desoldering techniques.",
-    "tasks": ["Set up desoldering tools", "Practice with scrap boards", "Avoid damage to PCB"],
-    "resources": ["https://learn.adafruit.com/adafruit-guide-excellent-soldering/tools", "https://www.sparkfun.com/tutorials/59"]
+    "tasks": [
+      "Set up desoldering tools",
+      "Practice with scrap boards",
+      "Avoid damage to PCB"
+    ],
+    "resources": [
+      "https://learn.adafruit.com/adafruit-guide-excellent-soldering/tools",
+      "https://www.sparkfun.com/tutorials/59",
+      "Desoldering tips: https://www.youtube.com/watch?v=example2"
+    ]
   },
   {
     "id": "14",
     "text": "Make  \n\n\nsomething that \n\n\nmakes noise ",
     "icon": "icon14.svg",
     "description": "Create a simple noise-making circuit using a speaker or buzzer.",
-    "tasks": ["Choose a sound component", "Generate sound using PWM", "Modify the tone frequency"],
-    "resources": ["https://learn.adafruit.com/speaker-buzzer-and-bell", "https://www.arduino.cc/en/Tutorial/BuiltInExamples/Tone"]
+    "tasks": [
+      "Choose a sound component",
+      "Generate sound using PWM",
+      "Modify the tone frequency",
+      "Experiment with sound modulation"
+    ],
+    "resources": [
+      "https://learn.adafruit.com/speaker-buzzer-and-bell",
+      "https://www.arduino.cc/en/Tutorial/BuiltInExamples/Tone",
+      "Sound circuit tutorial: https://www.electronics-tutorials.ws/speaker-and-buzzer-circuits"
+    ]
   },
   {
     "id": "15",
     "text": "Turn a  \n\n\nbreadboard \n\n\ncircuit into a  \n\n\nschematic",
     "icon": "icon10.svg",
     "description": "Translate a physical breadboard setup into a formal schematic diagram.",
-    "tasks": ["Draw circuit layout", "Identify component symbols", "Label connections correctly"],
-    "resources": ["https://learn.sparkfun.com/tutorials/how-to-read-a-schematic", "https://www.tinkercad.com/learn/circuits"]
+    "tasks": [
+      "Draw circuit layout",
+      "Identify component symbols",
+      "Label connections correctly",
+      "Use design software for schematics"
+    ],
+    "resources": [
+      "https://learn.sparkfun.com/tutorials/how-to-read-a-schematic",
+      "https://www.tinkercad.com/learn/circuits",
+      "Breadboard to schematic guide: https://www.digikey.com/en/resources/breadboard-to-schematic"
+    ]
   },
   {
     "id": "16",
     "text": "Measure \n\n\ncurrent with a  \n\n\nmultimeter  ",
     "icon": "icon9.svg",
     "description": "Learn to use a multimeter to accurately measure current in a circuit.",
-    "tasks": ["Set multimeter to current mode", "Break circuit to insert multimeter", "Measure AC and DC currents"],
+    "tasks": ["Set multimeter to current mode", "Break circuit to insert multimeter", "Measure AC and DC currents", "Verify the current with different multimeter settings"],
     "resources": ["https://learn.sparkfun.com/tutorials/how-to-use-a-multimeter", "https://www.youtube.com/watch?v=TdUK6RPdIrA"]
   },
   {
@@ -132,7 +177,7 @@
     "text": "Make a voltage \n\n\ndivider to lower  \n\n\nthe voltage  \n\n\nfor a project  ",
     "icon": "icon17.svg",
     "description": "Use resistors to create a voltage divider for adjusting voltage levels.",
-    "tasks": ["Calculate resistor values", "Assemble the circuit", "Verify output voltage"],
+    "tasks": ["Calculate resistor values", "Assemble the circuit", "Verify output voltage", "Test with different resistor combinations"],
     "resources": ["https://learn.sparkfun.com/tutorials/voltage-dividers", "https://www.electronics-tutorials.ws/resistor/res_3.html"]
   },
   {
@@ -140,7 +185,7 @@
     "text": "Turn \n\n\nsomething  \n\n\non using  \n\n\na sensor  ",
     "icon": "icon18.svg",
     "description": "Use a sensor to trigger an action, such as turning on an LED or motor.",
-    "tasks": ["Connect a sensor", "Set threshold levels", "Test with various inputs"],
+    "tasks": ["Connect a sensor", "Set threshold levels", "Test with various inputs", "Explore using a sensor to control a fan"],
     "resources": ["https://learn.adafruit.com/using-different-sensors", "https://www.arduino.cc/en/Tutorial/DigitalReadSerial"]
   },
   {
@@ -148,15 +193,15 @@
     "text": "Use a diode \n\n\nprotect your  \n\n\ncircuit from  \n\n\nreverse voltages  ",
     "icon": "icon19.svg",
     "description": "Prevent damage to circuits from reverse polarity by adding a protection diode.",
-    "tasks": ["Select an appropriate diode", "Place diode in series with load", "Test protection circuit"],
-    "resources": ["https://learn.sparkfun.com/tutorials/diodes", "https://www.electronics-tutorials.ws/diode/diode_5.html"]
+    "tasks": ["Select an appropriate diode", "Place diode in series with load", "Test protection circuit", "Understand how diodes prevent circuit damage"],
+    "resources": ["https://learn.sparkfun.com/tutorials/diodes", "https://www.electronics-tutorials.ws/diode/diode_5.html", "Diode Basics: https://www.electronics-tutorials.ws/diode/diode_1.html"]
   },
   {
     "id": "20",
     "text": "Make an \n\n\noscillator that\n\n\nmakes noise",
     "icon": "icon14.svg",
     "description": "Design a simple oscillator circuit to produce sound with a speaker.",
-    "tasks": ["Set up basic oscillator circuit", "Tune frequency for sound", "Experiment with different components"],
+    "tasks": ["Set up basic oscillator circuit", "Tune frequency for sound", "Experiment with different components", "Learn about frequency modulation"],
     "resources": ["https://learn.adafruit.com/oscillators", "https://www.electronics-tutorials.ws/oscillator/oscillators.html"]
   },
   {
@@ -164,7 +209,7 @@
     "text": "Use a relay \n\n\nto switch\n\n\nsomething on at\n\n\na higher voltage",
     "icon": "icon21.svg",
     "description": "Learn to control high voltage circuits with a relay.",
-    "tasks": ["Identify the relay terminals", "Connect relay to a low voltage trigger", "Test the relay with a high voltage load"],
+    "tasks": ["Identify the relay terminals", "Connect relay to a low voltage trigger", "Test the relay with a high voltage load", "Use a relay to control motors"],
     "resources": ["https://www.electronics-tutorials.ws/blog/how-to-use-a-relay.html", "https://www.sparkfun.com/pages/relays"]
   },
   {
@@ -172,7 +217,7 @@
     "text": "Make a \n\n\n capacitor rocket\n\n\n (too much voltage)",
     "icon": "icon22.svg",
     "description": "Understand the effects of over-voltage on capacitors and safety.",
-    "tasks": ["Select an appropriate capacitor", "Charge the capacitor safely", "Observe and document the effects of over-voltage"],
+    "tasks": ["Select an appropriate capacitor", "Charge the capacitor safely", "Observe and document the effects of over-voltage", "Learn about capacitor failure modes"],
     "resources": ["https://www.electronics-notes.com/articles/electronic_components/capacitor/what-is-capacitor.php", "https://www.circuitbasics.com/what-is-a-capacitor/"]
   },
   {
@@ -180,7 +225,7 @@
     "text": "Learn to \n\n\n solder surfcace\n\n\n mount parts",
     "icon": "icon23.svg",
     "description": "Practice surface mount soldering techniques for compact circuits.",
-    "tasks": ["Gather surface mount components", "Use solder paste with a stencil", "Heat with a hot air gun"],
+    "tasks": ["Gather surface mount components", "Use solder paste with a stencil", "Heat with a hot air gun", "Practice soldering with different component sizes"],
     "resources": ["https://learn.adafruit.com/adafruit-guide-excellent-soldering/surface-mount-soldering", "https://www.youtube.com/watch?v=6z3oqRI3pZ4"]
   },
   {
@@ -188,7 +233,7 @@
     "text": "Use a \n\n\n  555 timer\n\n\n in a circuit",
     "icon": "icon24.svg",
     "description": "Understand how to use a 555 timer for timing and oscillation.",
-    "tasks": ["Identify 555 timer pinout", "Set up a basic timing circuit", "Experiment with timing intervals"],
+    "tasks": ["Identify 555 timer pinout", "Set up a basic timing circuit", "Experiment with timing intervals", "Understand astable vs. monostable configurations"],
     "resources": ["https://www.electronics-tutorials.ws/waveforms/555_timer.html", "https://www.allaboutcircuits.com/tools/555-timer-astable-circuit/"]
   },
   {
@@ -196,7 +241,7 @@
     "text": "Make a sound \n\n\n louder with an\n\n\namplifier",
     "icon": "icon14.svg",
     "description": "Learn how to amplify audio signals with a basic amplifier circuit.",
-    "tasks": ["Gather amplifier components", "Connect audio input and output", "Test amplification level"],
+    "tasks": ["Gather amplifier components", "Connect audio input and output", "Test amplification level", "Explore different types of amplifiers"],
     "resources": ["https://www.electronics-tutorials.ws/amplifier/audio-amplifiers.html", "https://learn.sparkfun.com/tutorials/audio-amplifiers/all"]
   },
   {
@@ -204,40 +249,58 @@
     "text": "Use  \n\n\naddressable \n\n\n RGB LEDs in a \n\n\nproject",
     "icon": "icon12.svg",
     "description": "Learn to control individual LEDs in an addressable RGB LED strip.",
-    "tasks": ["Set up an LED controller", "Write code to control LEDs", "Experiment with colors and patterns"],
-    "resources": ["https://learn.adafruit.com/adafruit-neopixel-uberguide", "https://www.arduino.cc/en/guide/neopixels"]
+    "tasks": ["Set up an LED controller", "Write code to control LEDs", "Experiment with colors and patterns", "Design a lighting effect sequence"],
+    "resources": [
+      "https://learn.adafruit.com/adafruit-neopixel-uberguide", 
+      "https://www.arduino.cc/en/guide/neopixels",
+      "Adafruit NeoPixel guide: https://learn.adafruit.com/adafruit-neopixel-uberguide"
+    ]
   },
   {
     "id": "27",
     "text": "Make a  \n\n\nproject \n\n\n with a  \n\n\nRaspberry Pi",
     "icon": "icon27.svg",
     "description": "Explore possibilities of Raspberry Pi in electronics projects.",
-    "tasks": ["Set up Raspberry Pi OS", "Connect sensors or modules", "Write code to control components"],
-    "resources": ["https://projects.raspberrypi.org/en", "https://www.raspberrypi.org/documentation/"]
+    "tasks": ["Set up Raspberry Pi OS", "Connect sensors or modules", "Write code to control components", "Explore GPIO pin functions"],
+    "resources": [
+      "https://projects.raspberrypi.org/en", 
+      "https://www.raspberrypi.org/documentation/",
+      "Raspberry Pi official projects: https://projects.raspberrypi.org/en"
+    ]
   },
   {
     "id": "28",
     "text": "Let the \n\n\nsmoke out \n\n\n accidentally  ",
     "icon": "icon28.svg",
     "description": "Experience accidental component burnout and learn from it.",
-    "tasks": ["Identify why the component burnt out", "Research preventative measures", "Document and learn for future projects"],
-    "resources": ["https://www.electronics-tutorials.ws/blog/what-is-magic-smoke.html", "https://www.reddit.com/r/Electronics/comments/7qpt9i/letting_the_magic_smoke_out/"]
+    "tasks": ["Identify why the component burnt out", "Research preventative measures", "Document and learn for future projects", "Review component datasheets for safety"],
+    "resources": [
+      "https://www.electronics-tutorials.ws/blog/what-is-magic-smoke.html", 
+      "https://www.reddit.com/r/Electronics/comments/7qpt9i/letting_the_magic_smoke_out/"
+    ]
   },
   {
     "id": "29",
     "text": "Use fritzing \n\n\nor TinkerCAD \n\n\n to create a  \n\n\n circuit diagram  ",
     "icon": "icon29.svg",
     "description": "Learn to use software tools to visualize circuit designs.",
-    "tasks": ["Familiarize with Fritzing or TinkerCAD interface", "Place components and create connections", "Export the circuit diagram"],
-    "resources": ["https://www.fritzing.org/learning/", "https://www.tinkercad.com/learn/circuits"]
+    "tasks": ["Familiarize with Fritzing or TinkerCAD interface", "Place components and create connections", "Export the circuit diagram", "Simulate the circuit in TinkerCAD"],
+    "resources": [
+      "https://www.fritzing.org/learning/", 
+      "https://www.tinkercad.com/learn/circuits",
+      "Fritzing circuit designs: https://www.fritzing.org/learning/"
+    ]
   },
   {
     "id": "30",
     "text": "Make \n\n\nsomething \n\n\n with Arduino  ",
     "icon": "icon30.svg",
     "description": "Use Arduino to control and automate electronic components.",
-    "tasks": ["Set up an Arduino with IDE", "Write a simple control sketch", "Test the Arduino project"],
-    "resources": ["https://www.arduino.cc/en/Guide/Introduction", "https://create.arduino.cc/projecthub"]
+    "tasks": ["Set up an Arduino with IDE", "Write a simple control sketch", "Test the Arduino project", "Use sensors to interact with the project"],
+    "resources": [
+      "https://www.arduino.cc/en/Guide/Introduction", 
+      "https://create.arduino.cc/projecthub"
+    ]
   },
   {
     "id": "31",
@@ -251,7 +314,8 @@
     ],
     "resources": [
       "https://www.arduino.cc/en/Tutorial/HomePage",
-      "https://learn.sparkfun.com/tutorials/what-is-a-shorted-circuit"
+      "https://learn.sparkfun.com/tutorials/what-is-a-shorted-circuit",
+      "Arduino tutorials: https://www.arduino.cc/en/Tutorial/HomePage"
     ]
   },
   {
@@ -262,7 +326,8 @@
     "tasks": [
       "Understand multimeter frequency settings",
       "Measure frequency of a signal generator",
-      "Analyze and interpret results accurately"
+      "Analyze and interpret results accurately",
+      "Calibrate the multimeter for accurate measurements"
     ],
     "resources": [
       "https://www.fluke.com/en/learn/blog/electrical/what-is-frequency",
@@ -277,7 +342,8 @@
     "tasks": [
       "Set up a basic Op-Amp circuit",
       "Experiment with different input voltages",
-      "Analyze the amplified output"
+      "Analyze the amplified output",
+      "Adjust feedback for desired amplification"
     ],
     "resources": [
       "https://www.electronics-tutorials.ws/opamp/opamp_1.html",
@@ -292,7 +358,8 @@
     "tasks": [
       "Study crowbar circuit components",
       "Set up a simple crowbar circuit",
-      "Test its response to high-voltage conditions"
+      "Test its response to high-voltage conditions",
+      "Test with various overvoltage scenarios"
     ],
     "resources": [
       "https://www.electronics-tutorials.ws/power/crowbar-circuit.html",
@@ -307,7 +374,8 @@
     "tasks": [
       "Learn about surge diodes and their placement",
       "Integrate a surge diode into a basic circuit",
-      "Test the circuit under simulated surge conditions"
+      "Test the circuit under simulated surge conditions",
+      "Understand the effect of surges on components"
     ],
     "resources": [
       "https://www.electronics-notes.com/articles/electronic_components/diode/surge-diode-protection.php",
@@ -322,7 +390,8 @@
     "tasks": [
       "Choose a simple project idea",
       "Plan and gather necessary components",
-      "Assemble and test the project"
+      "Assemble and test the project",
+      "Add custom features for personalization"
     ],
     "resources": [
       "https://www.instructables.com/electronics-projects/",
@@ -337,11 +406,13 @@
     "tasks": [
       "Understand H-Bridge circuit basics",
       "Assemble an H-Bridge for motor control",
-      "Test motor control in forward and reverse directions"
+      "Test motor control in forward and reverse directions",
+      "Ensure proper cooling for the H-Bridge circuit"
     ],
     "resources": [
       "https://www.robotshop.com/community/tutorials/show/using-a-h-bridge-to-control-motors",
-      "https://www.electronics-tutorials.ws/blog/h-bridge-circuit.html"
+      "https://www.electronics-tutorials.ws/blog/h-bridge-circuit.html",
+      "H-Bridge control basics: https://www.youtube.com/watch?v=dVjVpZyzZXg"
     ]
   },
   {
@@ -352,11 +423,13 @@
     "tasks": [
       "Design a basic counter circuit",
       "Implement with logic gates",
-      "Test the counting sequence and reset function"
+      "Test the counting sequence and reset function",
+      "Explore the use of flip-flops in counters"
     ],
     "resources": [
       "https://www.electronics-tutorials.ws/sequential/seq_2.html",
-      "https://www.allaboutcircuits.com/textbook/digital/chpt-11/binary-counter/"
+      "https://www.allaboutcircuits.com/textbook/digital/chpt-11/binary-counter/",
+      "Logic gates explained: https://www.khanacademy.org/science/electrical-engineering/ee-circuit-analysis/ee-logic-gates/a/logic-gates"
     ]
   },
   {
@@ -367,11 +440,13 @@
     "tasks": [
       "Position the stencil on a PCB",
       "Apply solder paste through the stencil",
-      "Inspect for even coverage"
+      "Inspect for even coverage",
+      "Clean the PCB after soldering"
     ],
     "resources": [
       "https://www.pcbway.com/blog/Assembly/How_to_Apply_Solder_Paste_with_a_Stencil.html",
-      "https://learn.adafruit.com/adafruit-guide-excellent-soldering/applying-solder-paste"
+      "https://learn.adafruit.com/adafruit-guide-excellent-soldering/applying-solder-paste",
+      "Soldering tutorial: https://www.youtube.com/watch?v=rwqu9Oe0i7w"
     ]
   },
   {
@@ -382,11 +457,13 @@
     "tasks": [
       "Choose a simple electronics skill to teach",
       "Prepare an instructional guide",
-      "Assist your friend with hands-on learning"
+      "Assist your friend with hands-on learning",
+      "Create a project to demonstrate the skill"
     ],
     "resources": [
       "https://www.makerspaces.com/electronics-projects-for-beginners/",
-      "https://learn.sparkfun.com/tutorials/what-is-electricity"
+      "https://learn.sparkfun.com/tutorials/what-is-electricity",
+      "Electronics teaching resources: https://www.technologystudent.com/elec1.htm"
     ]
   },
   {
@@ -397,11 +474,13 @@
     "tasks": [
       "Connect the 7-segment display to a microcontroller",
       "Write code to display numbers",
-      "Troubleshoot common display issues"
+      "Troubleshoot common display issues",
+      "Explore multiplexing techniques for multiple displays"
     ],
     "resources": [
       "https://example.com/7-segment-display-tutorial",
-      "https://example.com/7-segment-display-circuit"
+      "https://example.com/7-segment-display-circuit",
+      "7-segment basics: https://www.youtube.com/watch?v=dq5lxSYJa64"
     ]
   },
   {
@@ -412,11 +491,13 @@
     "tasks": [
       "Set up the oscilloscope for voltage measurement",
       "Connect probes to the circuit",
-      "Analyze the waveform readings"
+      "Analyze the waveform readings",
+      "Use the oscilloscope to troubleshoot circuit problems"
     ],
     "resources": [
       "https://example.com/oscilloscope-basics",
-      "https://example.com/oscilloscope-voltage-measurement"
+      "https://example.com/oscilloscope-voltage-measurement",
+      "Oscilloscope guide: https://www.electronics-tutorials.ws/test/oscilloscope.html"
     ]
   },
   {
@@ -427,11 +508,13 @@
     "tasks": [
       "Set up the ESR meter",
       "Measure capacitor ESR values",
-      "Interpret the ESR readings"
+      "Interpret the ESR readings",
+      "Understand the impact of ESR on circuit performance"
     ],
     "resources": [
       "https://example.com/esr-meter-tutorial",
-      "https://example.com/capacitor-esr-basics"
+      "https://example.com/capacitor-esr-basics",
+      "ESR measurement tips: https://www.youtube.com/watch?v=USzv-iFYx9A"
     ]
   },
   {
@@ -442,11 +525,13 @@
     "tasks": [
       "Set up a microcontroller with Wi-Fi",
       "Develop code to send and receive data",
-      "Test the IoT connectivity"
+      "Test the IoT connectivity",
+      "Secure the IoT communication"
     ],
     "resources": [
       "https://example.com/iot-projects",
-      "https://example.com/iot-tutorial"
+      "https://example.com/iot-tutorial",
+      "IoT overview: https://www.ibm.com/blog/iot-basics/"
     ]
   },
   {
@@ -457,11 +542,13 @@
     "tasks": [
       "Choose suitable solar panels",
       "Connect panels to a battery or device",
-      "Optimize for maximum power output"
+      "Optimize for maximum power output",
+      "Design a solar-powered system"
     ],
     "resources": [
       "https://example.com/solar-panel-projects",
-      "https://example.com/solar-panel-basics"
+      "https://example.com/solar-panel-basics",
+      "Solar power tutorial: https://www.youtube.com/watch?v=IQ5D2ybe8RE"
     ]
   },
   {
@@ -472,11 +559,13 @@
     "tasks": [
       "Connect audio input to the oscilloscope",
       "Adjust settings for audio signal clarity",
-      "Interpret the waveform characteristics"
+      "Interpret the waveform characteristics",
+      "Analyze different types of audio signals"
     ],
     "resources": [
       "https://example.com/audio-oscilloscope",
-      "https://example.com/audio-signal-basics"
+      "https://example.com/audio-signal-basics",
+      "Audio oscilloscope demo: https://www.youtube.com/watch?v=suJYgMk4-kY"
     ]
   },
   {
@@ -487,11 +576,13 @@
     "tasks": [
       "Choose voltage regulation components",
       "Assemble the circuit",
-      "Test and adjust output voltage"
+      "Test and adjust output voltage",
+      "Ensure the power supply is protected from overcurrent"
     ],
     "resources": [
       "https://example.com/power-supply-guide",
-      "https://example.com/regulator-circuits"
+      "https://example.com/regulator-circuits",
+      "Power supply basics: https://www.electronics-tutorials.ws/power/power-supply.html"
     ]
   },
   {
@@ -502,11 +593,13 @@
     "tasks": [
       "Select a suitable MOSFET",
       "Connect MOSFET for switching",
-      "Control MOSFET with microcontroller"
+      "Control MOSFET with microcontroller",
+      "Test switching behavior with different loads"
     ],
     "resources": [
       "https://example.com/mosfet-switching",
-      "https://example.com/mosfet-basics"
+      "https://example.com/mosfet-basics",
+      "MOSFET tutorial: https://www.electronics-tutorials.ws/transistor/mosfet.html"
     ]
   },
   {
@@ -517,11 +610,13 @@
     "tasks": [
       "Gather required USB components",
       "Solder connections carefully",
-      "Test the custom cable for data and power"
+      "Test the custom cable for data and power",
+      "Verify compatibility with devices"
     ],
     "resources": [
       "https://example.com/usb-cable-making",
-      "https://example.com/usb-wiring-guide"
+      "https://example.com/usb-wiring-guide",
+      "USB cable making guide: https://learn.adafruit.com/how-to-make-a-usb-cable"
     ]
   },
   {
@@ -532,11 +627,13 @@
     "tasks": [
       "Connect the LED matrix to a microcontroller",
       "Write code to control individual LEDs",
-      "Create animations or patterns"
+      "Create animations or patterns",
+      "Optimize code for faster performance"
     ],
     "resources": [
       "https://example.com/led-matrix-tutorial",
-      "https://example.com/led-matrix-animations"
+      "https://example.com/led-matrix-animations",
+      "LED matrix tutorial: https://www.instructables.com/LED-Matrix-Tutorial/"
     ]
   },
   {
@@ -551,7 +648,8 @@
     ],
     "resources": [
       "https://www.electronics-tutorials.ws/filter/filter_1.html",
-      "https://www.allaboutcircuits.com/textbook/alternating-current/chpt-8/filter-circuits/"
+      "https://www.allaboutcircuits.com/textbook/alternating-current/chpt-8/filter-circuits/",
+      "Signal noise filtering: https://www.circuitdigest.com/tutorial/noise-filtering-in-circuits"
     ]
   },
   {
@@ -562,11 +660,13 @@
     "tasks": [
       "Set up the frequency analyzer with your circuit",
       "Adjust settings to capture the signal",
-      "Interpret the frequency spectrum output"
+      "Interpret the frequency spectrum output",
+      "Record data for analysis"
     ],
     "resources": [
       "https://www.electronics-tutorials.ws/accircuits/ac_10.html",
-      "https://www.circuitspecialists.com/blog/frequency-analyzer-basics/"
+      "https://www.circuitspecialists.com/blog/frequency-analyzer-basics/",
+      "Frequency analyzer basics: https://www.elprocus.com/frequency-analyzer-working-and-types/"
     ]
   },
   {
@@ -577,11 +677,13 @@
     "tasks": [
       "Create a PCB design using software",
       "Check for design errors or optimizations",
-      "Order the PCB from a manufacturer"
+      "Order the PCB from a manufacturer",
+      "Track the production and delivery process"
     ],
     "resources": [
       "https://www.pcbway.com/blog/PCB_Design_Tutorial.html",
-      "https://www.jlcpcb.com/help/pcb-design-for-manufacturability/"
+      "https://www.jlcpcb.com/help/pcb-design-for-manufacturability/",
+      "PCB ordering guide: https://www.4pcb.com/pcb-manufacturing-guide.html"
     ]
   },
   {
@@ -596,7 +698,8 @@
     ],
     "resources": [
       "https://www.circuitstoday.com/pcb-repair-tips",
-      "https://www.ifixit.com/Guide/How+to+Repair+Broken+PCB+Trace/16481"
+      "https://www.ifixit.com/Guide/How+to+Repair+Broken+PCB+Trace/16481",
+      "PCB repair tutorial: https://www.electronics-tutorials.ws/io/pcb-repair.html"
     ]
   },
   {
@@ -611,7 +714,8 @@
     ],
     "resources": [
       "https://www.allaboutcircuits.com/technical-articles/automatic-gain-control-agc-in-electronics/",
-      "https://www.electronics-tutorials.ws/amplitude/automatic-gain-control.html"
+      "https://www.electronics-tutorials.ws/amplitude/automatic-gain-control.html",
+      "AGC overview: https://www.soundonsound.com/techniques/automatic-gain-control-agc"
     ]
   },
   {
@@ -622,11 +726,13 @@
     "tasks": [
       "Design the PID circuit layout",
       "Select the right Op-Amps and resistors",
-      "Test the circuit and make adjustments"
+      "Test the circuit and make adjustments",
+      "Analyze the PID response under different conditions"
     ],
     "resources": [
       "https://www.allaboutcircuits.com/textbook/control-systems/chpt-8/pid-controllers/",
-      "https://www.analog.com/en/technical-articles/pid-control-circuits.html"
+      "https://www.analog.com/en/technical-articles/pid-control-circuits.html",
+      "PID controller theory: https://www.rapidtables.com/electronics/pid-controller.html"
     ]
   },
   {
@@ -641,7 +747,8 @@
     ],
     "resources": [
       "https://www.electronicsforu.com/lesson-1",
-      "https://www.teachengineering.org/lessons/view/cub_electricity_lesson01"
+      "https://www.teachengineering.org/lessons/view/cub_electricity_lesson01",
+      "Electronics teaching resources: https://www.teachengineering.org/lessons/view/cub_electricity_lesson01"
     ]
   },
   {
@@ -656,7 +763,8 @@
     ],
     "resources": [
       "https://www.pcbway.com/blog/PCB_Design_Tutorial.html",
-      "https://www.autodesk.com/products/eagle/overview"
+      "https://www.autodesk.com/products/eagle/overview",
+      "PCB design software comparison: https://www.sparck.co.uk/articles/pcb-design-software-comparison"
     ]
   },
   {
@@ -667,11 +775,13 @@
     "tasks": [
       "Set up the e-paper display module",
       "Write code to display images or text",
-      "Experiment with updating display content"
+      "Experiment with updating display content",
+      "Learn about different e-paper display technologies"
     ],
     "resources": [
       "https://learn.adafruit.com/using-e-ink-displays",
-      "https://www.waveshare.com/wiki/Main_Page"
+      "https://www.waveshare.com/wiki/Main_Page",
+      "E-paper display basics: https://www.adafruit.com/category/163"
     ]
   },
   {
@@ -682,11 +792,13 @@
     "tasks": [
       "Choose an RF module suitable for your project",
       "Design the circuit to work with RF signals",
-      "Test and troubleshoot RF transmission issues"
+      "Test and troubleshoot RF transmission issues",
+      "Learn about RF communication protocols"
     ],
     "resources": [
       "https://www.rfcafe.com/",
-      "https://www.allaboutcircuits.com/technical-articles/intro-to-rf-design-basic-concepts-and-techniques/"
+      "https://www.allaboutcircuits.com/technical-articles/intro-to-rf-design-basic-concepts-and-techniques/",
+      "RF basics: https://learn.sparkfun.com/tutorials/radio-frequency-rf-basics"
     ]
   },
   {
@@ -697,11 +809,13 @@
     "tasks": [
       "Define project goals and scope",
       "Set up a public repository",
-      "Engage with the community for feedback and contributions"
+      "Engage with the community for feedback and contributions",
+      "Publish your project on GitHub"
     ],
     "resources": [
       "https://opensource.guide/",
-      "https://github.com/"
+      "https://github.com/",
+      "How to contribute to open source: https://www.firsttimersonly.com/"
     ]
   },
   {
@@ -712,11 +826,13 @@
     "tasks": [
       "Design capacitive touch layout",
       "Integrate touch sensor IC",
-      "Test and calibrate the touch response"
+      "Test and calibrate the touch response",
+      "Learn about different capacitive touch sensing techniques"
     ],
     "resources": [
       "https://www.analog.com/en/capacitive-touch-sensors.html",
-      "https://learn.sparkfun.com/tutorials/capacitive-touch-sensors"
+      "https://learn.sparkfun.com/tutorials/capacitive-touch-sensors",
+      "Capacitive touch sensing explained: https://www.electronics-tutorials.ws/io/capacitive-touch.html"
     ]
   },
   {
@@ -727,11 +843,13 @@
     "tasks": [
       "Plan an artistic PCB layout",
       "Use unique shapes and traces",
-      "Add design elements like silkscreen patterns"
+      "Add design elements like silkscreen patterns",
+      "Incorporate color to enhance the design"
     ],
     "resources": [
       "https://www.pcbway.com/project/",
-      "https://www.instructables.com/PCB-Art/"
+      "https://www.instructables.com/PCB-Art/",
+      "PCB Art inspiration: https://hackaday.com/tag/pcb-art/"
     ]
   },
   {
@@ -742,11 +860,13 @@
     "tasks": [
       "Design the sculpture layout",
       "Assemble components artistically",
-      "Add interactive or light-up elements"
+      "Add interactive or light-up elements",
+      "Explore how to integrate microcontrollers"
     ],
     "resources": [
       "https://www.electronicsweekly.com/art-electronics/",
-      "https://www.makezine.com/category/electronic-art/"
+      "https://www.makezine.com/category/electronic-art/",
+      "Electronic sculptures: https://www.adafruit.com/category/264"
     ]
   },
   {
@@ -757,11 +877,13 @@
     "tasks": [
       "Choose power requirements and topology",
       "Design and simulate the circuit",
-      "Test and refine the power output"
+      "Test and refine the power output",
+      "Learn about efficiency improvements"
     ],
     "resources": [
       "https://www.ti.com/switching-regulators/",
-      "https://www.electronics-tutorials.ws/power/switch-mode-power-supply.html"
+      "https://www.electronics-tutorials.ws/power/switch-mode-power-supply.html",
+      "Switch-mode power supply principles: https://www.electronic tutorials.com/smps/"
     ]
   },
   {
@@ -772,11 +894,13 @@
     "tasks": [
       "Document the project steps",
       "Record and edit a video or write a guide",
-      "Publish the tutorial on a platform"
+      "Publish the tutorial on a platform",
+      "Promote your tutorial for wider reach"
     ],
     "resources": [
       "https://instructables.com/",
-      "https://www.youtube.com/"
+      "https://www.youtube.com/",
+      "Tutorial publishing tips: https://www.writing-tips.com/tutorial-guide/"
     ]
   },
   {
@@ -787,11 +911,13 @@
     "tasks": [
       "Choose an FPGA development board",
       "Program the logic circuit",
-      "Test and debug the FPGA design"
+      "Test and debug the FPGA design",
+      "Optimize the FPGA design for performance"
     ],
     "resources": [
       "https://www.intel.com/fpga/",
-      "https://www.xilinx.com/products/fpga.html"
+      "https://www.xilinx.com/products/fpga.html",
+      "FPGA basics: https://www.mentor.com/products/fpga/"
     ]
   },
   {
@@ -802,11 +928,13 @@
     "tasks": [
       "Understand the sensor's datasheet",
       "Write the library functions",
-      "Test the library with the sensor"
+      "Test the library with the sensor",
+      "Learn about data handling in C++"
     ],
     "resources": [
       "https://www.cplusplus.com/",
-      "https://learn.adafruit.com/how-to-write-a-library-for-arduino"
+      "https://learn.adafruit.com/how-to-write-a-library-for-arduino",
+      "C++ data handling techniques: https://www.geeksforgeeks.org/data-handling-in-cplusplus/"
     ]
   }
 ]

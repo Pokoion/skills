@@ -31,7 +31,7 @@
             min-height: 100%;
             margin-bottom: 20px;
             background-color: rgb(255, 255, 255);
-            margin: 20px auto; /* Esto asegura un margen en la parte superior e inferior */
+            margin: 20px auto;
             padding: 20px;
             box-shadow: 0 0 5px rgb(158, 143, 143);
         }
@@ -69,14 +69,19 @@
             border-radius: 5px;
         }
 
+        #evidence {
+            max-width: 600px;
+        }
+
     </style>
 </head>
 
 <body>
+    <!-- Skill informazioentzako orria -->
     <div class="skillsPage">
         <h1>Skill: <%= text %></h1>
 
-        <!-- Contenedor Flex para SVG y texto -->
+        <!-- Skill hexagonoa -->
         <div style="display: flex; gap: 30px;">
             <div class="svg-wrapper" data-id="<%= id %>" data-custom="false">
                 <svg width="100" height="100" viewBox="0 0 100 100">
@@ -90,15 +95,17 @@
                 </svg>
             </div>
 
-            <!-- Bloque de información de la habilidad -->
+            <!-- Skill bakoitzaren informazio div-a -->
             <div class="skillsInfo">
                 <h2>Skill Score: 1 point</h2>
+                <!-- Skill-aren deskripzioa -->
                 <div class="skillDescription">
                     <h2>Description</h2>
                     <p>
                         <%= description %>
                     </p>
                 </div>
+                <!-- Skill-aren zereginak -->
                 <div class="skillTasks">
                     <h2>Tasks to complete</h2>
                         <% tasks.forEach(function(task, index) { %>
@@ -108,14 +115,18 @@
                             </div>
                         <% }); %>
                 </div>
+                <!-- Skill-a osatua ebidentzia -->
                 <div class="skillEvidence">
                     <h2>Provide Evidence</h2>
-                    <form action="/evidence" method="POST">
+                    <form method="POST">
                         <input type="hidden" name="skillId" value="<%= id %>">
                         <textarea name="evidence" id="evidence" cols="83" rows="4"
                          placeholder="Enter a URL or explanation as evidence for completing this skill"></textarea>
-                        <div class="sendButton"><button type="submit">Submit Evidence</button></div>
+                        <div class="sendButton">
+                            <button id="submitButton" type="button">Submit Evidence</button>
+                        </div>
                 </div>
+                <!-- Skill-ean erabilitako baliabideak -->
                 <div class="skillResources">
                     <h2>Resources</h2>
                     <ul>
@@ -130,6 +141,7 @@
         </div>
     </div>
     <script src="/js/tasks.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </body>
 
 </html>
