@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Range Explanations</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        table {
+            margin: auto; 
+            border-collapse: collapse; 
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid black; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Range Explanations</h1>
+    <table>
+        <thead>
+            <tr>
+                <th style="text-align: left;"><b>Range</b></th>
+                <th style="text-align: left;"><b>Badge</b></th>
+                <th style="text-align: left;"><b>Required Bitpoints</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% badges.forEach(function(badge) { %>
+                <tr>
+                    <td><%= badge.rango %></td>
+                    <td>
+                        <img src="/badges/<%= badge.png %>" width="8%">
+                    </td padding="left">
+                    <td><%= badge.bitpoints_min %> - <%= badge.bitpoints_max %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
