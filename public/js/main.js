@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargatzean funtzioa exekutatu
     const svgContainer = document.querySelector('.svg-container'); // svg-container elementua lortu
+    const leaderboardButton = document.querySelector('#leaderboard');
+    const footer = document.querySelector('.description'); // footer elementua lortu
 
     async function loadSkills() {
         const skillsArray = await fetch('/skills.json').then(response => response.json()) // lehen sortutako JSON fitxategia lortu
 
-        const footer = document.querySelector('.description'); // footer elementua lortu
+        leaderboardButton.addEventListener('click', () => {
+            window.location.href = '/leaderboard';
+        });
 
         skillsArray.forEach(skill => {
             // svg-wrapper elementua sortu
@@ -57,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
 
                 // Arkatz emoji-a sortu
                 const pencilEmoji = document.createElement('div');
-                pencilEmoji.className = 'emoji pencil';
+                pencilEmoji.className = 'emoji';
                 pencilEmoji.textContent = '✏️';
                 pencilEmoji.style.position = 'absolute';
                 pencilEmoji.style.bottom = '10px';
@@ -70,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
 
                 // Liburu emoji-a sortu
                 const bookEmoji = document.createElement('div');
-                bookEmoji.className = 'emoji book';
+                bookEmoji.className = 'emoji';
                 bookEmoji.textContent = '📖';
                 bookEmoji.style.position = 'absolute';
                 bookEmoji.style.bottom = '10px';
@@ -88,17 +92,33 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
 
                 svgWrapper.addEventListener('mouseover', () => {
                     svgWrapper.style.transform = 'scale(1.2)';
+                    svgWrapper.classList.add('skill-hover');
                     pencilEmoji.style.display = 'block';
                     bookEmoji.style.display = 'block';
+                    pencilEmoji.classList.remove('hide');
+                    bookEmoji.classList.remove('hide');
+                    pencilEmoji.classList.add('show');
+                    bookEmoji.classList.add('show');
                     footer.innerText = skill.description;
                     footer.style.visibility = 'visible';
                 });
 
                 svgWrapper.addEventListener('mouseout', () => {
                     svgWrapper.style.transform = 'scale(1)';
-                    pencilEmoji.style.display = 'none';
-                    bookEmoji.style.display = 'none';
+                    svgWrapper.classList.remove('skill-hover');
+                    pencilEmoji.classList.remove('show');
+                    bookEmoji.classList.remove('show');
+                    pencilEmoji.classList.add('hide');
+                    bookEmoji.classList.add('hide');
                     footer.style.visibility = 'hidden';
+                    setTimeout(() => {
+                        if (!svgWrapper.matches(':hover')) { // Arratoia skill gainean ez badago
+                            pencilEmoji.style.display = 'none';
+                            bookEmoji.style.display = 'none';
+                            pencilEmoji.classList.remove('hide');
+                            bookEmoji.classList.remove('hide');
+                        }
+                    }, 200); // Tiempo de la animación
                 });
 
         });
