@@ -7,12 +7,32 @@
     <link rel="stylesheet" href="/css/style.css">
     <style>
         table {
-            margin: auto; 
-            border-collapse: collapse; 
+            margin: auto;
+            border-collapse: collapse;
+            width: auto; /* Cambiado de 80% a auto */
+            max-width: 600px; /* Añadido un ancho máximo */
         }
         th, td {
             padding: 10px;
-            border: 1px solid black; 
+            border: 1px solid black;
+            white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+        }
+        td:first-child {
+            width: 150px; /* Ancho fijo para la columna Range */
+        }
+        td:nth-child(2) {
+            width: 100px; /* Ancho fijo para la columna Badge */
+            text-align: center;
+        }
+        td:last-child {
+            width: 100px; /* Ancho fijo para la columna Required Bitpoints */
+            text-align: center;
+        }
+        td img {
+            width: 32px;
+            height: auto;
+            vertical-align: middle;
+            display: inline-block; /* Asegura que la imagen no cause espacio extra */
         }
     </style>
 </head>
@@ -31,8 +51,8 @@
                 <tr>
                     <td><%= badge.rango %></td>
                     <td>
-                        <img src="/badges/<%= badge.png %>" width="8%">
-                    </td padding="left">
+                        <img src="/badges/<%= badge.png %>"">
+                    </td>
                     <td><%= badge.bitpoints_min %> - <%= badge.bitpoints_max %></td>
                 </tr>
             <% }); %>
