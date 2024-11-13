@@ -1,14 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargatzean funtzioa exekutatu
     const svgContainer = document.querySelector('.svg-container'); // svg-container elementua lortu
-    const leaderboardButton = document.querySelector('#leaderboard');
     const footer = document.querySelector('.description'); // footer elementua lortu
 
     async function loadSkills() {
         const skillsArray = await fetch('/skills.json').then(response => response.json()) // lehen sortutako JSON fitxategia lortu
-
-        leaderboardButton.addEventListener('click', () => {
-            window.location.href = '/leaderboard';
-        });
 
         skillsArray.forEach(skill => {
             // svg-wrapper elementua sortu
