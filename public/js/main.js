@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
     const leaderboardButton = document.querySelector('#leaderboard');
     const footer = document.querySelector('.description'); // footer elementua lortu
 
+
     async function loadSkills() {
         const skillsArray = await fetch('/skills.json').then(response => response.json()) // lehen sortutako JSON fitxategia lortu
 
@@ -30,6 +31,27 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             polygon.setAttribute('points', '50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5');
             polygon.classList.add('hexagon');
             svg.appendChild(polygon);
+
+            // borobil gorria sortu, hasieran ezkutatuta
+            const redDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            redDot.setAttribute('cx', '15');
+            redDot.setAttribute('cy', '10');
+            redDot.setAttribute('r', '8');
+            redDot.setAttribute('fill', '#ce363c');
+            redDot.style.pointerEvents = 'none';
+            redDot.style.zIndex = '2';
+            redDot.classList.add('skill-indicator');
+            svg.appendChild(redDot);
+
+             // Create the number 1 inside the red dot
+            const numberText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            numberText.setAttribute('x', '50%');
+            numberText.setAttribute('y', '55%');
+            numberText.setAttribute('text-anchor', 'middle');
+            numberText.setAttribute('fill', 'white');
+            numberText.setAttribute('font-size', '12');
+            numberText.textContent = '1';
+            redDot.appendChild(numberText);
 
             // text elementua sortu
             const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -66,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                 pencilEmoji.style.position = 'absolute';
                 pencilEmoji.style.bottom = '10px';
                 pencilEmoji.style.left = '10px';
-                pencilEmoji.style.display = 'none';
+                pencilEmoji.style.display = 'block';
 
                 pencilEmoji.addEventListener('click', () => {
                     console.log('Pencil emoji clicked');
@@ -121,8 +143,15 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                     }, 200); // Tiempo de la animación
                 });
 
+                
+
         });
 
     }
+    function  activateRedDot(skillid) {
+        const skillWrapper = document.querySelector(`[data-id="${skillid}"]`);
+        const redDot = skillWrapper.querySelector('.skill-indicator');
+        redDot.style.display = 'block' ;// Borobil gorria erakutsi
+    }  
     loadSkills();
 });
