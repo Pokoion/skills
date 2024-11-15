@@ -21,9 +21,13 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             svg.setAttribute('viewBox', '0 0 100 100');
             svgWrapper.appendChild(svg);
 
+            completed = isSkillCompleted(skill.id)
+            console.log(completed)
+
             // polygon elementua sortu
             const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
             polygon.setAttribute('points', '50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5');
+            polygon.style.fill = completed ? '#0ea13f' : 'white';
             polygon.classList.add('hexagon');
             svg.appendChild(polygon);
 
@@ -143,6 +147,10 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
 
     const getSkillCompleted = (id) => {
         return Math.floor(Math.random() * 6);
+    }
+
+    const isSkillCompleted = (id) => {
+        return Math.floor(Math.random() * 4) == 0? true : false;
     }
     
     loadSkills();
