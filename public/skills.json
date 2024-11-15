@@ -3,82 +3,149 @@
     "id": "1",
     "text": "Light up an\n\n\nLED for the first \n\n\ntime",
     "icon": "icon1.svg",
-    "description": "Learn the basics of lighting up an LED, an essential first step in electronics.",
-    "tasks": ["Identify the LED and resistor", "Connect the LED to a power source", "Verify that it lights up", "Experiment with LED brightness using different resistors"],
-    "resources": ["https://www.electronics-tutorials.ws", "https://www.instructables.com", "LED basics guide: https://www.adafruit.com"]
+    "description": "Get familiar with basic LED circuits by lighting up an LED.",
+    "tasks": [
+        "Connect an LED to a power source",
+        "Observe polarity when connecting the LED",
+        "Test different resistor values to control brightness"
+    ],
+    "resources": [
+        "LED basics: https://www.electronics-tutorials.ws/diode/diode_8.html",
+        "LED polarity guide: https://learn.adafruit.com/all-about-leds/polarity"
+    ]
+  },
+  {
+    "id": "2",
+    "text": "Learn to\n\n\nuse wire strippers ",
+    "icon": "icon2.svg",
+    "description": "Understand how to strip insulation from wires without damaging them.",
+    "tasks": [
+        "Select the correct gauge for the wire",
+        "Practice stripping wire without cutting strands",
+        "Learn proper hand positioning for safe operation"
+    ],
+    "resources": [
+        "How to use wire strippers: https://www.instructables.com/How-to-Use-Wire-Strippers/",
+        "Different types of wire strippers: https://www.electronicshub.org/types-of-wire-strippers/"
+    ]
   },
   {
     "id": "3",
     "text": "Complete\n\n\nan electronics kit  ",
     "icon": "icon3.svg",
-    "description": "Build an electronics kit to understand component assembly and basic circuits.",
-    "tasks": ["Gather required tools", "Follow the instructions step-by-step", "Test the assembled circuit", "Understand and check component polarity"],
-    "resources": ["https://www.sparkfun.com", "https://www.makerspaces.com", "Beginner kits guide: https://www.jameco.com"]
+    "description": "Assemble a basic electronics kit to learn components and circuit building.",
+    "tasks": [
+        "Identify all components included in the kit",
+        "Follow the step-by-step guide",
+        "Test the assembled circuit for functionality"
+    ],
+    "resources": [
+        "Beginner electronics kits: https://www.sparkfun.com/categories/66",
+        "Kit assembly tips: https://www.adafruit.com/category/188"
+    ]
+  },
+  {
+    "id": "4",
+    "text": "Learn to Solder",
+    "icon": "icon4.svg",
+    "description": "Gain soldering skills essential for electronics assembly.",
+    "tasks": [
+        "Set up a soldering station with safety precautions",
+        "Practice soldering on a PCB",
+        "Understand proper soldering techniques and heat control"
+    ],
+    "resources": [
+        "Soldering basics: https://learn.sparkfun.com/tutorials/how-to-solder",
+        "Safety tips for soldering: https://www.adafruit.com/learn/categories/soldering"
+    ]
   },
   {
     "id": "5",
     "text": "Learn to use\n\n\na breadboard",
     "icon": "icon5.svg",
-    "description": "Understand how to use a breadboard for building and testing circuits.",
-    "tasks": ["Identify breadboard sections", "Place components on the board", "Connect wires to complete the circuit", "Experiment with parallel and series connections"],
-    "resources": ["https://www.electronics-tutorials.ws", "https://www.allaboutcircuits.com", "Breadboarding basics: https://learn.sparkfun.com"]
+    "description": "Learn how to build circuits on a breadboard without soldering.",
+    "tasks": [
+        "Understand the rows and columns of a breadboard",
+        "Build a simple circuit using a breadboard",
+        "Test connections and troubleshoot"
+    ],
+    "resources": [
+        "Breadboard basics: https://www.electronics-tutorials.ws/blog/breadboard-basics.html",
+        "Using a breadboard: https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard"
+    ]
+  },
+  {
+    "id": "6",
+    "text": "Get a circuit\n\n\nwrong and try\n\n\nagain",
+    "icon": "icon6.svg",
+    "description": "Learn from mistakes by troubleshooting and fixing circuit issues.",
+    "tasks": [
+        "Analyze the circuit for possible issues",
+        "Identify and correct connection mistakes",
+        "Test the corrected circuit to confirm functionality"
+    ],
+    "resources": [
+        "Troubleshooting circuits: https://www.build-electronic-circuits.com/how-to-troubleshoot-circuits/",
+        "Common circuit errors: https://learn.adafruit.com/guide-to-troubleshooting-and-correcting-circuit-errors"
+    ]
   },
   {
     "id": "7",
     "text": "Learn Ohm’s\n\n\nLaw",
     "icon": "icon7.svg",
-    "description": "Understand Ohm's Law, a fundamental principle in electronics that relates voltage, current, and resistance.",
-    "tasks": ["Review Ohm’s Law formula", "Apply it in a simple circuit", "Calculate unknown values", "Test the law with different resistors"],
-    "resources": ["https://www.khanacademy.org", "https://www.circuitdigest.com", "Ohm’s Law explained: https://www.physicsclassroom.com"]
+    "description": "Understand the relationship between voltage, current, and resistance.",
+    "tasks": [
+        "Use Ohm's law to calculate circuit values",
+        "Apply formulas in practical circuit examples",
+        "Experiment with resistor values to observe changes"
+    ],
+    "resources": [
+        "Ohm's Law explained: https://www.electronics-tutorials.ws/dccircuits/dcp_2.html",
+        "Ohm’s Law calculator: https://www.rapidtables.com/calc/electric/ohms-law-calculator.html"
+    ]
   },
   {
     "id": "8",
-    "text": "Fix something\n\n\nsomething\n\n\nthat’s broken",
+    "text": "Fix something\n\n\nthat’s broken",
     "icon": "icon8.svg",
-    "description": "Develop troubleshooting skills by repairing a broken electronic device.",
     "tasks": [
-      "Diagnose the problem",
-      "Identify necessary repairs",
-      "Test after fixing",
-      "Document the repair process"
+        "Identify the issue with the broken item",
+        "Gather necessary tools and replacement parts",
+        "Repair and test to ensure functionality"
     ],
     "resources": [
-      "https://www.ifixit.com",
-      "https://www.instructables.com",
-      "How to troubleshoot: https://www.youtube.com/watch?v=example1"
+        "Guide to fixing electronics: https://www.ifixit.com/",
+        "Basic troubleshooting techniques: https://learn.adafruit.com/basic-troubleshooting-techniques"
     ]
   },
   {
     "id": "9",
     "text": "Measure \n\n\nvoltage with \n\n\na multimeter",
     "icon": "icon9.svg",
-    "description": "Learn to use a multimeter to measure voltage, an essential skill for diagnosing circuits.",
+    "description": "Learn to measure voltage in circuits using a multimeter.",
     "tasks": [
-      "Set multimeter to voltage mode",
-      "Place probes on test points",
-      "Record the voltage reading",
-      "Verify the circuit's power source"
+        "Set the multimeter to measure voltage",
+        "Connect probes to the correct circuit points",
+        "Record and interpret voltage readings"
     ],
     "resources": [
-      "https://www.fluke.com",
-      "https://www.electronics-tutorials.ws",
-      "Multimeter basics: https://www.electronics-tutorials.ws/category/multimeter"
+        "Using a multimeter: https://learn.sparkfun.com/tutorials/how-to-use-a-multimeter",
+        "Understanding voltage measurements: https://www.electronics-tutorials.ws/dccircuits/dcp_1.html"
     ]
   },
   {
     "id": "10",
     "text": "Learn to\n\n\nread a schematic",
     "icon": "icon10.svg",
-    "description": "Develop the ability to read and understand electronic schematics.",
+    "description": "Understand how to interpret electronic schematics.",
     "tasks": [
-      "Identify symbols for components",
-      "Trace circuit pathways",
-      "Interpret schematic notations"
+        "Familiarize with common schematic symbols",
+        "Trace the flow of a simple circuit on paper",
+        "Practice reading more complex schematics"
     ],
     "resources": [
-      "https://www.electronics-tutorials.ws",
-      "https://www.allaboutcircuits.com",
-      "Understanding schematics: https://www.electronics-tutorials.ws/category/schematics"
+        "Intro to schematics: https://learn.sparkfun.com/tutorials/how-to-read-a-schematic",
+        "Guide to electronic symbols: https://www.electronics-tutorials.ws/schematic/schematic.html"
     ]
   },
   {
@@ -169,89 +236,175 @@
     "text": "Measure \n\n\ncurrent with a  \n\n\nmultimeter  ",
     "icon": "icon9.svg",
     "description": "Learn to use a multimeter to accurately measure current in a circuit.",
-    "tasks": ["Set multimeter to current mode", "Break circuit to insert multimeter", "Measure AC and DC currents", "Verify the current with different multimeter settings"],
-    "resources": ["https://learn.sparkfun.com/tutorials/how-to-use-a-multimeter", "https://www.youtube.com/watch?v=TdUK6RPdIrA"]
+    "tasks": [
+      "Set multimeter to current mode",
+      "Break circuit to insert multimeter",
+      "Measure AC and DC currents",
+      "Verify the current with different multimeter settings"
+    ],
+    "resources": [
+      "https://learn.sparkfun.com/tutorials/how-to-use-a-multimeter",
+      "https://www.youtube.com/watch?v=TdUK6RPdIrA"
+    ]
   },
   {
     "id": "17",
     "text": "Make a voltage \n\n\ndivider to lower  \n\n\nthe voltage  \n\n\nfor a project  ",
     "icon": "icon17.svg",
     "description": "Use resistors to create a voltage divider for adjusting voltage levels.",
-    "tasks": ["Calculate resistor values", "Assemble the circuit", "Verify output voltage", "Test with different resistor combinations"],
-    "resources": ["https://learn.sparkfun.com/tutorials/voltage-dividers", "https://www.electronics-tutorials.ws/resistor/res_3.html"]
+    "tasks": [
+      "Calculate resistor values",
+      "Assemble the circuit",
+      "Verify output voltage",
+      "Test with different resistor combinations"
+    ],
+    "resources": [
+      "https://learn.sparkfun.com/tutorials/voltage-dividers",
+      "https://www.electronics-tutorials.ws/resistor/res_3.html"
+    ]
   },
   {
     "id": "18",
     "text": "Turn \n\n\nsomething  \n\n\non using  \n\n\na sensor  ",
     "icon": "icon18.svg",
     "description": "Use a sensor to trigger an action, such as turning on an LED or motor.",
-    "tasks": ["Connect a sensor", "Set threshold levels", "Test with various inputs", "Explore using a sensor to control a fan"],
-    "resources": ["https://learn.adafruit.com/using-different-sensors", "https://www.arduino.cc/en/Tutorial/DigitalReadSerial"]
+    "tasks": [
+      "Connect a sensor",
+      "Set threshold levels",
+      "Test with various inputs",
+      "Explore using a sensor to control a fan"
+    ],
+    "resources": [
+      "https://learn.adafruit.com/using-different-sensors",
+      "https://www.arduino.cc/en/Tutorial/DigitalReadSerial"
+    ]
   },
   {
     "id": "19",
     "text": "Use a diode \n\n\nprotect your  \n\n\ncircuit from  \n\n\nreverse voltages  ",
     "icon": "icon19.svg",
     "description": "Prevent damage to circuits from reverse polarity by adding a protection diode.",
-    "tasks": ["Select an appropriate diode", "Place diode in series with load", "Test protection circuit", "Understand how diodes prevent circuit damage"],
-    "resources": ["https://learn.sparkfun.com/tutorials/diodes", "https://www.electronics-tutorials.ws/diode/diode_5.html", "Diode Basics: https://www.electronics-tutorials.ws/diode/diode_1.html"]
+    "tasks": [
+      "Select an appropriate diode",
+      "Place diode in series with load",
+      "Test protection circuit",
+      "Understand how diodes prevent circuit damage"
+    ],
+    "resources": [
+      "https://learn.sparkfun.com/tutorials/diodes",
+      "https://www.electronics-tutorials.ws/diode/diode_5.html",
+      "Diode Basics: https://www.electronics-tutorials.ws/diode/diode_1.html"
+    ]
   },
   {
     "id": "20",
     "text": "Make an \n\n\noscillator that\n\n\nmakes noise",
     "icon": "icon14.svg",
     "description": "Design a simple oscillator circuit to produce sound with a speaker.",
-    "tasks": ["Set up basic oscillator circuit", "Tune frequency for sound", "Experiment with different components", "Learn about frequency modulation"],
-    "resources": ["https://learn.adafruit.com/oscillators", "https://www.electronics-tutorials.ws/oscillator/oscillators.html"]
+    "tasks": [
+      "Set up basic oscillator circuit",
+      "Tune frequency for sound",
+      "Experiment with different components",
+      "Learn about frequency modulation"
+    ],
+    "resources": [
+      "https://learn.adafruit.com/oscillators",
+      "https://www.electronics-tutorials.ws/oscillator/oscillators.html"
+    ]
   },
   {
     "id": "21",
     "text": "Use a relay \n\n\nto switch\n\n\nsomething on at\n\n\na higher voltage",
     "icon": "icon21.svg",
     "description": "Learn to control high voltage circuits with a relay.",
-    "tasks": ["Identify the relay terminals", "Connect relay to a low voltage trigger", "Test the relay with a high voltage load", "Use a relay to control motors"],
-    "resources": ["https://www.electronics-tutorials.ws/blog/how-to-use-a-relay.html", "https://www.sparkfun.com/pages/relays"]
+    "tasks": [
+      "Identify the relay terminals",
+      "Connect relay to a low voltage trigger",
+      "Test the relay with a high voltage load",
+      "Use a relay to control motors"
+    ],
+    "resources": [
+      "https://www.electronics-tutorials.ws/blog/how-to-use-a-relay.html",
+      "https://www.sparkfun.com/pages/relays"
+    ]
   },
   {
     "id": "22",
     "text": "Make a \n\n\n capacitor rocket\n\n\n (too much voltage)",
     "icon": "icon22.svg",
     "description": "Understand the effects of over-voltage on capacitors and safety.",
-    "tasks": ["Select an appropriate capacitor", "Charge the capacitor safely", "Observe and document the effects of over-voltage", "Learn about capacitor failure modes"],
-    "resources": ["https://www.electronics-notes.com/articles/electronic_components/capacitor/what-is-capacitor.php", "https://www.circuitbasics.com/what-is-a-capacitor/"]
+    "tasks": [
+      "Select an appropriate capacitor",
+      "Charge the capacitor safely",
+      "Observe and document the effects of over-voltage",
+      "Learn about capacitor failure modes"
+    ],
+    "resources": [
+      "https://www.electronics-notes.com/articles/electronic_components/capacitor/what-is-capacitor.php",
+      "https://www.circuitbasics.com/what-is-a-capacitor/"
+    ]
   },
   {
     "id": "23",
     "text": "Learn to \n\n\n solder surfcace\n\n\n mount parts",
     "icon": "icon23.svg",
     "description": "Practice surface mount soldering techniques for compact circuits.",
-    "tasks": ["Gather surface mount components", "Use solder paste with a stencil", "Heat with a hot air gun", "Practice soldering with different component sizes"],
-    "resources": ["https://learn.adafruit.com/adafruit-guide-excellent-soldering/surface-mount-soldering", "https://www.youtube.com/watch?v=6z3oqRI3pZ4"]
+    "tasks": [
+      "Gather surface mount components",
+      "Use solder paste with a stencil",
+      "Heat with a hot air gun",
+      "Practice soldering with different component sizes"
+    ],
+    "resources": [
+      "https://learn.adafruit.com/adafruit-guide-excellent-soldering/surface-mount-soldering",
+      "https://www.youtube.com/watch?v=6z3oqRI3pZ4"
+    ]
   },
   {
     "id": "24",
     "text": "Use a \n\n\n  555 timer\n\n\n in a circuit",
     "icon": "icon24.svg",
     "description": "Understand how to use a 555 timer for timing and oscillation.",
-    "tasks": ["Identify 555 timer pinout", "Set up a basic timing circuit", "Experiment with timing intervals", "Understand astable vs. monostable configurations"],
-    "resources": ["https://www.electronics-tutorials.ws/waveforms/555_timer.html", "https://www.allaboutcircuits.com/tools/555-timer-astable-circuit/"]
+    "tasks": [
+      "Identify 555 timer pinout",
+      "Set up a basic timing circuit",
+      "Experiment with timing intervals",
+      "Understand astable vs. monostable configurations"
+    ],
+    "resources": [
+      "https://www.electronics-tutorials.ws/waveforms/555_timer.html",
+      "https://www.allaboutcircuits.com/tools/555-timer-astable-circuit/"
+    ]
   },
   {
     "id": "25",
     "text": "Make a sound \n\n\n louder with an\n\n\namplifier",
     "icon": "icon14.svg",
     "description": "Learn how to amplify audio signals with a basic amplifier circuit.",
-    "tasks": ["Gather amplifier components", "Connect audio input and output", "Test amplification level", "Explore different types of amplifiers"],
-    "resources": ["https://www.electronics-tutorials.ws/amplifier/audio-amplifiers.html", "https://learn.sparkfun.com/tutorials/audio-amplifiers/all"]
+    "tasks": [
+      "Gather amplifier components",
+      "Connect audio input and output",
+      "Test amplification level",
+      "Explore different types of amplifiers"
+    ],
+    "resources": [
+      "https://www.electronics-tutorials.ws/amplifier/audio-amplifiers.html",
+      "https://learn.sparkfun.com/tutorials/audio-amplifiers/all"
+    ]
   },
   {
     "id": "26",
     "text": "Use  \n\n\naddressable \n\n\n RGB LEDs in a \n\n\nproject",
     "icon": "icon12.svg",
     "description": "Learn to control individual LEDs in an addressable RGB LED strip.",
-    "tasks": ["Set up an LED controller", "Write code to control LEDs", "Experiment with colors and patterns", "Design a lighting effect sequence"],
+    "tasks": [
+      "Set up an LED controller",
+      "Write code to control LEDs",
+      "Experiment with colors and patterns",
+      "Design a lighting effect sequence"
+    ],
     "resources": [
-      "https://learn.adafruit.com/adafruit-neopixel-uberguide", 
+      "https://learn.adafruit.com/adafruit-neopixel-uberguide",
       "https://www.arduino.cc/en/guide/neopixels",
       "Adafruit NeoPixel guide: https://learn.adafruit.com/adafruit-neopixel-uberguide"
     ]
@@ -261,9 +414,14 @@
     "text": "Make a  \n\n\nproject \n\n\n with a  \n\n\nRaspberry Pi",
     "icon": "icon27.svg",
     "description": "Explore possibilities of Raspberry Pi in electronics projects.",
-    "tasks": ["Set up Raspberry Pi OS", "Connect sensors or modules", "Write code to control components", "Explore GPIO pin functions"],
+    "tasks": [
+      "Set up Raspberry Pi OS",
+      "Connect sensors or modules",
+      "Write code to control components",
+      "Explore GPIO pin functions"
+    ],
     "resources": [
-      "https://projects.raspberrypi.org/en", 
+      "https://projects.raspberrypi.org/en",
       "https://www.raspberrypi.org/documentation/",
       "Raspberry Pi official projects: https://projects.raspberrypi.org/en"
     ]
@@ -273,9 +431,14 @@
     "text": "Let the \n\n\nsmoke out \n\n\n accidentally  ",
     "icon": "icon28.svg",
     "description": "Experience accidental component burnout and learn from it.",
-    "tasks": ["Identify why the component burnt out", "Research preventative measures", "Document and learn for future projects", "Review component datasheets for safety"],
+    "tasks": [
+      "Identify why the component burnt out",
+      "Research preventative measures",
+      "Document and learn for future projects",
+      "Review component datasheets for safety"
+    ],
     "resources": [
-      "https://www.electronics-tutorials.ws/blog/what-is-magic-smoke.html", 
+      "https://www.electronics-tutorials.ws/blog/what-is-magic-smoke.html",
       "https://www.reddit.com/r/Electronics/comments/7qpt9i/letting_the_magic_smoke_out/"
     ]
   },
@@ -284,9 +447,14 @@
     "text": "Use fritzing \n\n\nor TinkerCAD \n\n\n to create a  \n\n\n circuit diagram  ",
     "icon": "icon29.svg",
     "description": "Learn to use software tools to visualize circuit designs.",
-    "tasks": ["Familiarize with Fritzing or TinkerCAD interface", "Place components and create connections", "Export the circuit diagram", "Simulate the circuit in TinkerCAD"],
+    "tasks": [
+      "Familiarize with Fritzing or TinkerCAD interface",
+      "Place components and create connections",
+      "Export the circuit diagram",
+      "Simulate the circuit in TinkerCAD"
+    ],
     "resources": [
-      "https://www.fritzing.org/learning/", 
+      "https://www.fritzing.org/learning/",
       "https://www.tinkercad.com/learn/circuits",
       "Fritzing circuit designs: https://www.fritzing.org/learning/"
     ]
@@ -296,9 +464,14 @@
     "text": "Make \n\n\nsomething \n\n\n with Arduino  ",
     "icon": "icon30.svg",
     "description": "Use Arduino to control and automate electronic components.",
-    "tasks": ["Set up an Arduino with IDE", "Write a simple control sketch", "Test the Arduino project", "Use sensors to interact with the project"],
+    "tasks": [
+      "Set up an Arduino with IDE",
+      "Write a simple control sketch",
+      "Test the Arduino project",
+      "Use sensors to interact with the project"
+    ],
     "resources": [
-      "https://www.arduino.cc/en/Guide/Introduction", 
+      "https://www.arduino.cc/en/Guide/Introduction",
       "https://create.arduino.cc/projecthub"
     ]
   },

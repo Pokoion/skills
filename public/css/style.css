@@ -161,13 +161,20 @@ footer {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-#leaderboard{
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: white;
+.electronics-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    background-color: #F0DD95;
+    padding-right: 15px;
     border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    font-size: 16px;
+}
+
+.electronics-nav a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
 }
