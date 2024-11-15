@@ -157,7 +157,7 @@ footer {
 }
   
 .skill-hover {
-    border-radius: 40px; /* Bordes redondeados */
+    border-radius: 40px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -177,4 +177,69 @@ footer {
     color: #007bff;
     text-decoration: none;
     font-weight: bold;
+}
+
+.evidence-count {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.6em;
+    color: white;
+    z-index: 1;
+}
+
+.Evidenceemoji {
+  position: absolute;
+  top: 0;
+}
+
+.red-dot {
+  left: 0;
+}
+
+.completed {
+  right: 0;
+}
+
+.pencil-emoji {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: block;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-start;
+    margin: 0;
+    padding-left: 0;
+}
+
+.actions button {
+    margin: 0;
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+
+td .actions {
+    display: inline-flex;
+    width: auto;
+}
+
+td .actions {
+    min-width: 150px;
+    padding-left: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
 }

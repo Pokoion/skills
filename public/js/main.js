@@ -27,27 +27,6 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             polygon.classList.add('hexagon');
             svg.appendChild(polygon);
 
-            // borobil gorria sortu, hasieran ezkutatuta
-            const redDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            redDot.setAttribute('cx', '15');
-            redDot.setAttribute('cy', '10');
-            redDot.setAttribute('r', '8');
-            redDot.setAttribute('fill', '#ce363c');
-            redDot.style.pointerEvents = 'none';
-            redDot.style.zIndex = '2';
-            redDot.classList.add('skill-indicator');
-            svg.appendChild(redDot);
-
-             // Create the number 1 inside the red dot
-            const numberText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            numberText.setAttribute('x', '50%');
-            numberText.setAttribute('y', '55%');
-            numberText.setAttribute('text-anchor', 'middle');
-            numberText.setAttribute('fill', 'white');
-            numberText.setAttribute('font-size', '12');
-            numberText.textContent = '1';
-            redDot.appendChild(numberText);
-
             // text elementua sortu
             const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
             text.setAttribute('x', '50%');
@@ -76,77 +55,95 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             image.setAttribute('href', `icons/${skill.icon}`);
             svg.appendChild(image);
 
-                // Arkatz emoji-a sortu
-                const pencilEmoji = document.createElement('div');
-                pencilEmoji.className = 'emoji';
-                pencilEmoji.textContent = '✏️';
-                pencilEmoji.style.position = 'absolute';
-                pencilEmoji.style.bottom = '10px';
-                pencilEmoji.style.left = '10px';
+            unverifiedEvidence = getSkillUnverifiedEvidence(skill.id)
+
+            // borobil gorria
+            const redDotEmoji = document.createElement('div');
+            redDotEmoji.className = 'Evidenceemoji red-dot';
+            redDotEmoji.innerHTML = `🔴<span class="evidence-count">${unverifiedEvidence}</span>`;
+            unverifiedEvidence > 0 ? redDotEmoji.style.display = 'block' : redDotEmoji.style.display = 'none';
+
+            completedSkill = getSkillCompleted(skill.id)
+
+            // borobil berdea
+            const greenDotEmoji = document.createElement('div');
+            greenDotEmoji.className = 'Evidenceemoji completed';
+            greenDotEmoji.innerHTML = `🟢<span class="evidence-count">${completedSkill}</span>`;
+            completedSkill > 0 ? greenDotEmoji.style.display = 'block' : greenDotEmoji.style.display = 'none';
+
+            // Arkatz emoji-a sortu
+            const pencilEmoji = document.createElement('div');
+            pencilEmoji.className = 'emoji pencil-emoji';
+            pencilEmoji.textContent = '✏️';
+
+            pencilEmoji.addEventListener('click', () => {
+                console.log('Pencil emoji clicked');
+            });
+
+            // Liburu emoji-a sortu
+            const bookEmoji = document.createElement('div');
+            bookEmoji.className = 'emoji';
+            bookEmoji.textContent = '📖';
+            bookEmoji.style.position = 'absolute';
+            bookEmoji.style.bottom = '10px';
+            bookEmoji.style.right = '10px';
+            bookEmoji.style.display = 'none';
+
+            // Liburu emoji-a klikatzean tasks iriki
+            bookEmoji.addEventListener('click', () => {
+                window.location.href = `/tasks?id=${skill.id}`;
+                console.log('Book emoji clicked');
+            });
+
+            svgWrapper.appendChild(redDotEmoji);
+            svgWrapper.appendChild(greenDotEmoji);
+            svgWrapper.appendChild(pencilEmoji);
+            svgWrapper.appendChild(bookEmoji);
+
+            svgWrapper.addEventListener('mouseover', () => {
+                svgWrapper.style.transform = 'scale(1.2)';
+                svgWrapper.classList.add('skill-hover');
                 pencilEmoji.style.display = 'block';
+                bookEmoji.style.display = 'block';
+                pencilEmoji.classList.remove('hide');
+                bookEmoji.classList.remove('hide');
+                pencilEmoji.classList.add('show');
+                bookEmoji.classList.add('show');
+                footer.innerText = skill.description;
+                footer.style.visibility = 'visible';
+            });
 
-                pencilEmoji.addEventListener('click', () => {
-                    console.log('Pencil emoji clicked');
-                });
+            svgWrapper.addEventListener('mouseout', () => {
+                svgWrapper.style.transform = 'scale(1)';
+                svgWrapper.classList.remove('skill-hover');
+                pencilEmoji.classList.remove('show');
+                bookEmoji.classList.remove('show');
+                pencilEmoji.classList.add('hide');
+                bookEmoji.classList.add('hide');
+                footer.style.visibility = 'hidden';
+                setTimeout(() => {
+                    if (!svgWrapper.matches(':hover')) { // Arratoia skill gainean ez badago
+                        pencilEmoji.style.display = 'none';
+                        bookEmoji.style.display = 'none';
+                        pencilEmoji.classList.remove('hide');
+                        bookEmoji.classList.remove('hide');
+                    }
+                }, 200);
+            });
 
-                // Liburu emoji-a sortu
-                const bookEmoji = document.createElement('div');
-                bookEmoji.className = 'emoji';
-                bookEmoji.textContent = '📖';
-                bookEmoji.style.position = 'absolute';
-                bookEmoji.style.bottom = '10px';
-                bookEmoji.style.right = '10px';
-                bookEmoji.style.display = 'none';
 
-                // Liburu emoji-a klikatzean tasks iriki
-                bookEmoji.addEventListener('click', () => {
-                    window.location.href = `/tasks?id=${skill.id}`;
-                    console.log('Book emoji clicked');
-                });
-
-                svgWrapper.appendChild(pencilEmoji);
-                svgWrapper.appendChild(bookEmoji);
-
-                svgWrapper.addEventListener('mouseover', () => {
-                    svgWrapper.style.transform = 'scale(1.2)';
-                    svgWrapper.classList.add('skill-hover');
-                    pencilEmoji.style.display = 'block';
-                    bookEmoji.style.display = 'block';
-                    pencilEmoji.classList.remove('hide');
-                    bookEmoji.classList.remove('hide');
-                    pencilEmoji.classList.add('show');
-                    bookEmoji.classList.add('show');
-                    footer.innerText = skill.description;
-                    footer.style.visibility = 'visible';
-                });
-
-                svgWrapper.addEventListener('mouseout', () => {
-                    svgWrapper.style.transform = 'scale(1)';
-                    svgWrapper.classList.remove('skill-hover');
-                    pencilEmoji.classList.remove('show');
-                    bookEmoji.classList.remove('show');
-                    pencilEmoji.classList.add('hide');
-                    bookEmoji.classList.add('hide');
-                    footer.style.visibility = 'hidden';
-                    setTimeout(() => {
-                        if (!svgWrapper.matches(':hover')) { // Arratoia skill gainean ez badago
-                            pencilEmoji.style.display = 'none';
-                            bookEmoji.style.display = 'none';
-                            pencilEmoji.classList.remove('hide');
-                            bookEmoji.classList.remove('hide');
-                        }
-                    }, 200); // Tiempo de la animación
-                });
-
-                
 
         });
-
     }
-    function  activateRedDot(skillid) {
-        const skillWrapper = document.querySelector(`[data-id="${skillid}"]`);
-        const redDot = skillWrapper.querySelector('.skill-indicator');
-        redDot.style.display = 'block' ;// Borobil gorria erakutsi
-    }  
+
+    // Skill baten berifikatu gabeko ebidentziak lortzeko funtzioa, oraingoz random
+    const getSkillUnverifiedEvidence = (id) => {
+        return Math.floor(Math.random() * 6);
+    }
+
+    const getSkillCompleted = (id) => {
+        return Math.floor(Math.random() * 6);
+    }
+    
     loadSkills();
 });
