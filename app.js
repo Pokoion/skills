@@ -10,6 +10,8 @@ var tasksRouter = require('./routes/tasks');
 var leaderboardRouter = require('./routes/leaderboard');
 var aboutRouter = require('./routes/about');
 var admindashboardRouter = require('./routes/admindashboard');
+var editTaskRouter = require('./routes/editTask');
+var adminRouter = require('./routes/admin');
 
 var app = express();
 
@@ -29,6 +31,8 @@ app.use('/tasks', tasksRouter);
 app.use('/leaderboard', leaderboardRouter);
 app.use('/about', aboutRouter);
 app.use('/admindashboard', admindashboardRouter);
+app.use('/edit', editTaskRouter);
+app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

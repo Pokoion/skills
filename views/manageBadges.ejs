@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Badges</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: auto;
+            max-width: 600px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #a8a1a1;
+            white-space: nowrap;
+        }
+        td:first-child {
+            width: 50%;
+        }
+        td:nth-child(2) {
+            width: 25%;
+            text-align: center;
+            background-color: white;
+        }
+        td:last-child {
+            width: 25%;
+            text-align: center;
+        }
+        td img {
+            width: 32px;
+            height: auto;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        thead th{
+            background-color: rgb(148, 143, 143);
+            text-decoration: bold;
+        }
+        h1 {
+            margin-top: 40px;
+        }
+        button {
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 4px;
+            padding: 12px 15px;
+        }
+
+        #approve-btn {
+            background-color: #3970e7;
+        }
+        #delete-btn {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="electronics-nav">
+        <ul>
+        Welcome, admin! |
+        <a href="/">Home</a> |
+        <a href="/leaderboard">Leaderboard</a> |
+        <a href="/about">About</a> |
+        <a href="#">Logout</a> |
+        <a href="/admindashboard">Admin Dashboard</a>
+        </ul>
+      </nav>
+
+    <h1>Manage Badges</h1>
+    <table>
+        <thead>
+            <tr>
+                <th style="text-align: center;"><b>Range</b></th>
+                <th style="text-align: center;"><b>Badge</b></th>
+                <th style="text-align: center;"><b>Required Bitpoints</b></th>
+                <th style="text-align: center;"><b>Actions</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% badges.forEach(function(badge) { %>
+                <tr>
+                    <td><%= badge.rango %></td>
+                    <td>
+                        <img src="/badges/<%= badge.png %>"">
+                    </td>
+                    <td><%= badge.bitpoints_min %> - <%= badge.bitpoints_max %></td>
+                    <td>
+                        <button id="approve-btn">Edit</button>
+                        <button id="delete-btn">Delete</button>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
