@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             image.setAttribute('y', '60%');
             image.setAttribute('width', '30');
             image.setAttribute('height', '30');
-            image.setAttribute('href', `icons/${skill.icon}`);
+            image.setAttribute('href', `/icons/${skill.icon}`);
             svg.appendChild(image);
 
             unverifiedEvidence = getSkillUnverifiedEvidence(skill.id)
@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             pencilEmoji.textContent = '✏️';
 
             pencilEmoji.addEventListener('click', () => {
+                window.location.href = `/skills/electronics/edit/${skill.id}`;
                 console.log('Pencil emoji clicked');
             });
 
@@ -95,7 +96,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
 
             // Liburu emoji-a klikatzean tasks iriki
             bookEmoji.addEventListener('click', () => {
-                window.location.href = `/tasks?id=${skill.id}`;
+                window.location.href = `/skills/electronics/view/${skill.id}`;
                 console.log('Book emoji clicked');
             });
 
