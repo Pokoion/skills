@@ -3,7 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 const session = require('express-session');
+const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
+const User = require('./models/user');
 var logger = require('morgan');
 
 const adminRouter = require('./routes/admin');
@@ -13,8 +15,7 @@ const usersRouter = require('./routes/users');
 var app = express();
 
 // MongoDB connection
-/*
-mongoose.connect('mongodb://localhost/auth_demo', {
+mongoose.connect('mongodb://localhost/skills', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
@@ -29,11 +30,10 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({
-      mongoUrl: 'mongodb://localhost/auth_demo',
+      mongoUrl: 'mongodb://localhost/skills',
       ttl: 24 * 60 * 60 // 1 day
   })
 }));
-*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
