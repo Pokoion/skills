@@ -13,6 +13,7 @@ const usersRouter = require('./routes/users');
 var app = express();
 
 // MongoDB connection
+/*
 mongoose.connect('mongodb://localhost/auth_demo', {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -32,6 +33,7 @@ app.use(session({
       ttl: 24 * 60 * 60 // 1 day
   })
 }));
+*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -3,12 +3,12 @@ var router = express.Router();
 
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
-const User = require('./models/user');
+//const User = require('./models/user');
 
 const badges = require('../public/badges.json');
 
 router.get('/register', (req, res) => res.render('register'));
-
+/*
 router.post('/register', async (req, res) => {
   try {
       const { username, password } = req.body;
@@ -40,7 +40,7 @@ router.post('/register', async (req, res) => {
       res.status(500).send('Error registering user');
   }
 });
-
+*/
 router.get('/login', (req, res) => res.render('login'));
 router.post('/login', (req, res) => res.send('User Logged In'));
 router.get('/logout', (req, res) => res.send('User Logged Out'));
