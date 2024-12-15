@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 const User = require('./models/user');
 var logger = require('morgan');
+const authMiddleware = require('./middleware/auth');
 
 const adminRouter = require('./routes/admin');
 const skillsRouter = require('./routes/skills');
@@ -44,6 +45,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Middleware to pass the session to the views
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
+});
+
+app.get('/', authMiddleware.isAuthenticated, async (req, res, next) => {
+  res.redirect('/skills');
+});
 
 app.use('/admin', adminRouter);
 app.use('/skills', skillsRouter);

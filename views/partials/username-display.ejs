@@ -1,0 +1,39 @@
+<style>
+    nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        justify-content: flex-end;
+        width: auto;
+        background-color: #F0DD95;
+        padding-right: 15px;
+        border-radius: 5px;
+    }
+
+    nav a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+</style>
+<header>
+    <nav class="electronics-nav">
+        <ul>
+            <% if (session && session.user) { %>
+                Welcome, <%= session.user.username %>! |
+                <a href="/users/leaderboard">Leaderboard</a> |
+                <a href="/skills">Electronics (68) STATIC TODO</a> |
+                <a href="/about">About</a> |
+                <a href="/users/logout">Logout</a> |
+                <% if (session.user.isAdmin) { %>
+                    <a href="/admindashboard">Admin Dashboard</a>
+                <% } %>
+            <% } else { %>
+                <a href="/users/login">Login</a> |
+                <a href="/users/register">Register</a> |
+                <a href="/about">About</a>
+            <% } %>
+        </ul>
+    </nav>
+</header>

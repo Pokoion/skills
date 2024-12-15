@@ -70,18 +70,7 @@
     </style>
 </head>
 <body>
-
-    <nav class="electronics-nav">
-        <ul>
-        Welcome, admin! |
-        <a href="/">Home</a> |
-        <a href="/leaderboard">Leaderboard</a> |
-        <a href="/about">About</a> |
-        <a href="#">Logout</a> |
-        <a href="/admindashboard">Admin Dashboard</a>
-        </ul>
-      </nav>
-
+    <%- include('partials/username-display') %>
       <h1>Leaderboard</h1>
       <% badges.forEach(function(badge) { %>
         <div class="leaderboard-section">
