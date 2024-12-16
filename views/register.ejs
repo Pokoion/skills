@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 </head>
+
 <body>
     <style>
         div {
@@ -14,46 +16,50 @@
             height: 100vh;
         }
 
-        input, button {
+        input,
+        button {
             margin: 10px;
             padding: 5px;
             width: 200px;
         }
+
         label {
             text-align: left;
         }
+
         #error-message {
-        color: red;
-        margin-top: 10px;
+            color: red;
+            margin-top: 10px;
         }
     </style>
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-12 col">
-            <form id="register-form" onsubmit="event.preventDefault(); createUser();">
-                <h1>Register</h1>
-                <label>Username:</label>
-                <input id="username" type="text" name="username" required>
-                <br>
-                <label style="padding-top: 30%;">Password:</label>
-                <input id="password" type="password" name="password" required >
-                <br>
-                <label>Confirm password:</label>
-                <input id="confirmPassword" type="password" name="confirmPassword" required>
-                <br>
-                <button type="submit" value="Register"> Register</button>
-                <p id="error-message"></p>
-            </form>
+    <%- include('partials/username-display') %>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 col">
+                    <form id="register-form" onsubmit="event.preventDefault(); createUser();">
+                        <h1>Register</h1>
+                        <label>Username:</label>
+                        <input id="username" type="text" name="username" required>
+                        <br>
+                        <label style="padding-top: 30%;">Password:</label>
+                        <input id="password" type="password" name="password" required>
+                        <br>
+                        <label>Confirm password:</label>
+                        <input id="password2" type="password" name="password2" required>
+                        <br>
+                        <button type="submit" value="Register"> Register</button>
+                        <p id="error-message"></p>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     async function createUser() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
+        const password2 = document.getElementById('password2').value;
 
         try {
             const response = await fetch('/users/register', {
@@ -61,7 +67,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username, password, confirmPassword })
+                body: JSON.stringify({ username, password, password2 })
             });
 
             if (!response.ok) {
@@ -70,6 +76,7 @@
             } else {
                 document.getElementById('error-message').textContent = '';
                 alert('Registration successful!');
+                window.location.href = '/users/login';
             }
         } catch (error) {
             console.error('Error:', error);
@@ -77,4 +84,5 @@
         }
     }
 </script>
+
 </html>

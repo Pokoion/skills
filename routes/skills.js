@@ -1,53 +1,42 @@
 const express = require('express');
 const router = express.Router();
 
+const skillController = require('../controllers/skill.controller');
 const skills = require('../public/skills.json');
+const authMiddleware = require('../middleware/auth');
 
-router.get('/:skillTree/edit/:skillID', (req, res) => {
-    const skillId = req.params.skillID;
-    const skill = skills.find(s => s.id === skillId);
+router.get('/', authMiddleware.isAuthenticated, (req, res) => res.redirect('/skills/electronics'));
 
-    if (skill) {
-        res.render('editTask', skill);
-    } else {
-        res.status(404);
-        res.render('error', {
-            message: 'Skill not found',
-            error: {
-                status: 404,
-                stack: 'The requested skill could not be found in the database.'
-            }
-        });
-    }
-});
+router.get('/:skillTreeName', authMiddleware.isAuthenticated, (req, res) => res.render('index'));
 
-router.get('/:skillTree/add', (req, res) => {
+router.get('/:skillTree/add', authMiddleware.isAdmin, (req, res) => {
     res.render('addTask');
 });
 
-router.get('/:skillTreeName/view/:skillID', (req, res) => {
+router.post('/:skillTreeName/add', authMiddleware.isAdminPost, (req, res) => res.send(`Skill added to ${req.params.skillTreeName}`));
+
+router.get('/:skillTreeName/view/:skillID', authMiddleware.isAuthenticated, (req, res) => {
     const skillId = req.params.skillID;
-    const skill = skills.find(s => s.id === skillId);
+    const skill = skillController.findSkillById(skillId, res);
 
     if (skill) {
-        res.render('tasks', skill);
-    } else {
-        res.status(404);
-        res.render('error', {
-            message: 'Skill not found',
-            error: {
-                status: 404,
-                stack: 'The requested skill could not be found in the database.'
-            }
-        });
+      res.render('editBadge', badge);
     }
 });
 
-router.get('/', (req, res) => res.redirect('/skills/electronics'));
-router.get('/:skillTreeName', (req, res) => res.render('index'));
-router.post('/:skillTreeName/add', (req, res) => res.send(`Skill added to ${req.params.skillTreeName}`));
-router.post('/:skillTreeName/:skillID/verify', (req, res) => res.send(`Skill ${req.params.skillID} verified`));
-router.post('/:skillTreeName/submit-evidence', (req, res) => res.send('Evidence Submitted'));
-router.post('/:skillTreeName/delete/:skillID', (req, res) => res.send(`Skill ${req.params.skillID} deleted`));
+router.post('/:skillTreeName/:skillID/verify', authMiddleware.isAuthenticated, (req, res) => res.send(`Skill ${req.params.skillID} verified`));
+
+router.get('/:skillTree/edit/:skillID', authMiddleware.isAdmin, (req, res) => {
+    const skillId = req.params.skillID;
+    const skill = skillController.findSkillById(skillId, res);
+
+    if (skill) {
+      res.render('editTask', skill);
+    }
+});
+
+router.post('/:skillTreeName/submit-evidence', authMiddleware.isAuthenticated, (req, res) => res.send('Evidence Submitted'));
+
+router.post('/:skillTreeName/delete/:skillID', authMiddleware.isAdminPost, (req, res) => res.send(`Skill ${req.params.skillID} deleted`));
 
 module.exports = router;
