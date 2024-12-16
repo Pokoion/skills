@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        p{
+            margin-left:35% ;
+            font-size: 18px;
+            
+        }
+        h1 {
+            
+            margin: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .legend {
+            /* Center the legend */
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 550px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .legend-item span {
+            margin-left: 10px;
+        }
+
+        .dot-green {
+            width: 15px;
+            height: 15px;
+            background-color: green;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            width: 15px;
+            height: 15px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .icon {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>About</h1>
+    <p>Welcome to the About page! This is a guide for the website symbols.</p>
+    <div class="legend">
+        <h2>Legend</h2>
+        <div class="legend-item">
+            <div class="dot-green"></div>
+            <span>-Skill completed (number of verifications)</span>
+        </div>
+        <div class="legend-item">
+            <div class="dot-red"></div>
+            <span>-Skill has unverified evidence (number of submissions waiting)</span>
+        </div>
+        <div class="legend-item">
+            <div class="icon">✏️</div>
+            <span>-Edit skill</span>
+        </div>
+        <div class="legend-item">
+            <div class="icon">📒</div>
+            <span>-View skill</span>
+        </div>
+    </div>
+</body>
+
+</html>
