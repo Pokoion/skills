@@ -1,28 +1,25 @@
 const Badge = require('../models/badge');
 
-exports.findBadgeById = async (id, res) => {
-    try {
-      const badge = await Badge.findById({ id });
-      if (badge) {
-        return badge;
-      } else {
-        res.status(404).render('error', {
-          message: 'Badge not found',
-          error: {
-            status: 404,
-            stack: 'The requested badge could not be found in the database.'
-          }
-        });
-        return null;
-      }
-    } catch (error) {
-      res.status(500).render('error', {
-        message: 'An error occurred while retrieving the badge',
-        error: {
-          status: 500,
-          stack: error.stack
-        }
-      });
-      return null;
+exports.findBadgeById = async (id) => {
+  try {
+    const badge = await Badge.findById(id);
+    if (!badge) {
+      throw { status: 404, message: 'Badge not found' };
     }
-  };
+    return badge;
+  } catch (error) {
+    throw error.status
+      ? error
+      : { status: 500, message: 'An error occurred while retrieving the badge', stack: error.stack };
+  }
+};
+
+exports.getAllBadges = async () => {
+  try {
+    return await Badge.find();
+  } catch (error) {
+    throw error.status
+      ? error
+      : { status: 500, message: 'An error occurred while retrieving the badges', stack: error.stack };
+  }
+};

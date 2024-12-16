@@ -24,15 +24,15 @@
                 Welcome, <%= session.user.username %>! |
                 <a href="/users/leaderboard">Leaderboard</a> |
                 <a href="/skills">Electronics (68) STATIC TODO</a> |
-                <a href="/about">About</a> |
-                <a href="/users/logout">Logout</a> |
-                <% if (session.user.isAdmin) { %>
-                    <a href="/admindashboard">Admin Dashboard</a>
+                <a href="/users/about">About</a> |
+                <% if (session.user.admin) { %>
+                    <a href="/admin/dashboard">Admin Dashboard</a> |
                 <% } %>
+                <a href="/users/logout">Logout</a>
             <% } else { %>
                 <a href="/users/login">Login</a> |
                 <a href="/users/register">Register</a> |
-                <a href="/about">About</a>
+                <a href="/users/about">About</a>
             <% } %>
         </ul>
     </nav>

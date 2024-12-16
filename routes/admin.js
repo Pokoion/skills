@@ -1,23 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const badges = require('../public/badges.json');
 
 const badgeController = require('../controllers/badge.controller');
 const authMiddleware = require('../middleware/auth');
 
 router.get('/dashboard', authMiddleware.isAdmin, (req, res) => res.render('dashboard'));
 
-router.get('/badges', authMiddleware.isAdmin, (req, res) => {
+router.get('/badges', authMiddleware.isAdmin, async (req, res) => {
+    const badges = await badgeController.getAllBadges();
     res.render('admin-badges', { badges });
 });
 
-router.get('/badges/edit/:id', authMiddleware.isAdmin, (req, res) => {
-    const badgeId = req.params.id;
-    const badge = badgeController.findBadgeById(badgeId, res);
+router.get('/badges/edit/:id', authMiddleware.isAdmin, async (req, res) => {
+  try {
+    const badgeId = req.params.badgeId;
+    const badge = await badgeController.findBadgeById(badgeId);
 
-    if (badge) {
-      res.render('editBadge', badge);
-    }
+    res.render('editBadge', badge);
+  } catch (error) {
+    res.status(error.status || 500).render('error', {
+      message: error.message,
+      error: {
+        status: error.status || 500,
+        stack: error.stack || 'No stack available'
+      }
+    });
+  }
 });
 
 router.post('/badges/edit/:id', authMiddleware.isAdminPost, (req, res) => res.send(`Badge ${req.params.id} updated`));

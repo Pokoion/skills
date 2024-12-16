@@ -18,7 +18,7 @@ let lortu = async () => {
             return skills.map(skill => {
                 let id = skill.getAttribute('data-id'); //svg-wrapper-en data-id atributua lortu
                 let skill_texts = Array.from(skill.querySelectorAll('text > tspan')); // svg-wrapper-en textuak lortu
-                let full_text = skill_texts.map(tspan => tspan.textContent).join('\n\n\n'); // text barruko textuak array batean elkartu, gero '\n\n\n'-rekin elkartu string batean
+                let full_text = skill_texts.map(tspan => tspan.textContent).join('\n'); // text barruko textuak array batean elkartu, gero '\n\n\n'-rekin elkartu string batean
                 let img = skill.querySelector('image').getAttribute('href').split('/').pop(); // argazkiaren izena lortu
 
                 // tasks eta resources chatGPT bidez sartu ditugu eskuz skills.json fitxategian, beraz berriz exekutatzen bada tasks eta resources galdu egingo dira

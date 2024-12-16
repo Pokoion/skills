@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Tasks</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .page-title {
+            margin: 20px 0;
+            font-size: 2rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .trees {
+            margin: 20px 0;
+            font-size: 2rem;
+            color: #333;
+            text-align: left;
+        }
+
+        .skillsPage {
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        textarea,
+        button {
+            width: 100%;
+            max-width: 600px;
+            margin: 10px auto;
+            display: block;
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 10px;
+        }
+
+        #approve-btn {
+            background-color: #28a745;
+        }
+        #reject-btn {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/username-display') %>
+    <h2 class="trees">ELECTRONICS (68 skills)</h2>
+    <!-- Skill informazioentzako orria -->
+    <div class="skillsPage">
+    <form>
+        <h3>Skill Text:</h3>
+        <textarea name="evidence" id="evidence" rows="2"></textarea>
+
+        <h3>Description:</h3>
+        <textarea name="description" id="description" rows="2"></textarea>
+
+        <h3>Tasks To Complete (one per line):</h3>
+        <textarea name="tasks" id="tasks" rows="2"></textarea>
+
+        <h3>Resources (one per line):</h3>
+        <textarea name="resources" id="resources" rows="2"></textarea>
+
+        <h3>Skill Score:</h3>
+        <textarea name="score" id="score" rows="2" placeholder="1"></textarea>
+
+        <h3>Upload Icon (30x30 png):</h3>
+        <input type="file" id="myFile" name="filename">
+
+        <button id="approve-btn">Save</button>
+        <button type="button" onclick="location.href='/skills/electronics'" id="reject-btn">Cancel</button>
+    </form>
+    </div>
+</body>
+
+</html>

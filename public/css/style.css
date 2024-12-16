@@ -243,3 +243,15 @@ td {
     text-align: left;
     vertical-align: middle;
 }
+
+#newSkillButton{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}

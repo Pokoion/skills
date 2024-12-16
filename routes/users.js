@@ -23,4 +23,6 @@ router.get('/leaderboard', authMiddleware.isAuthenticated, (req, res) => {
     res.render('leaderboard', { badges });
 });   
 
+router.get('/about', (req, res) => res.render('about'));
+
 module.exports = router;

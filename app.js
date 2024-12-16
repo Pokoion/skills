@@ -56,6 +56,14 @@ app.get('/', authMiddleware.isAuthenticated, async (req, res, next) => {
   res.redirect('/skills');
 });
 
+app.get('/api/user', (req, res) => {
+  const user = req.session.user;
+  res.json({
+      username: user?.username || null,
+      admin: user?.admin || false
+  })
+});
+
 app.use('/admin', adminRouter);
 app.use('/skills', skillsRouter);
 app.use('/users', usersRouter);

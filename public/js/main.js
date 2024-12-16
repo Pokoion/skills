@@ -2,9 +2,10 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
     const svgContainer = document.querySelector('.svg-container'); // svg-container elementua lortu
     const footer = document.querySelector('.description'); // footer elementua lortu
 
-
     async function loadSkills() {
-        const skillsArray = await fetch('/skills.json').then(response => response.json()) // lehen sortutako JSON fitxategia lortu
+        const isAdmin = await fetch('/api/user').then(response => response.json()).then(data => data.admin);
+        //const skillsArray = await fetch('/skills.json').then(response => response.json()) // lehen sortutako JSON fitxategia lortu
+        const skillsArray = await fetch('/skills/electronics/skills').then(response => response.json()) // orain datu basean dauden skill-ak lortu
 
         skillsArray.forEach(skill => {
             // svg-wrapper elementua sortu
@@ -22,7 +23,6 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             svgWrapper.appendChild(svg);
 
             completed = isSkillCompleted(skill.id)
-            console.log(completed)
 
             // polygon elementua sortu
             const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             text.setAttribute('font-size', '9');
             svg.appendChild(text);
 
-            skill.text.split('\n\n\n').forEach(line => {
+            skill.text.split('\n').forEach(line => {
                 // lerro bakoitzeko tspan elementua sortu
                 const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
                 tspan.setAttribute('x', '50%');
@@ -108,11 +108,13 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             svgWrapper.addEventListener('mouseover', () => {
                 svgWrapper.style.transform = 'scale(1.2)';
                 svgWrapper.classList.add('skill-hover');
+                if (isAdmin) {
                 pencilEmoji.style.display = 'block';
-                bookEmoji.style.display = 'block';
                 pencilEmoji.classList.remove('hide');
-                bookEmoji.classList.remove('hide');
                 pencilEmoji.classList.add('show');
+                }
+                bookEmoji.style.display = 'block';
+                bookEmoji.classList.remove('hide');
                 bookEmoji.classList.add('show');
                 footer.innerText = skill.description;
                 footer.style.visibility = 'visible';
@@ -121,9 +123,11 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             svgWrapper.addEventListener('mouseout', () => {
                 svgWrapper.style.transform = 'scale(1)';
                 svgWrapper.classList.remove('skill-hover');
+                if (isAdmin) {
                 pencilEmoji.classList.remove('show');
-                bookEmoji.classList.remove('show');
                 pencilEmoji.classList.add('hide');
+                }
+                bookEmoji.classList.remove('show');
                 bookEmoji.classList.add('hide');
                 footer.style.visibility = 'hidden';
                 setTimeout(() => {

@@ -12,11 +12,14 @@
 
 <body>
   <%- include('partials/username-display') %>
-  <h1>ELECTRONICS</h1>
-  <div class="svg-container">
-    <!-- Existing SVGs -->
-  </div>
-  <footer class="description">
-  </footer>
+    <h1>ELECTRONICS</h1>
+    <% if (session && session.user.admin) { %>
+    <button id="newSkillButton" onclick="location.href='/skills/electronics/add'"> Add New Skill</button>
+    <% } %>
+    <div class="svg-container">
+      <!-- Existing SVGs -->
+    </div>
+    <footer class="description">
+    </footer>
 </body>
 </html>
