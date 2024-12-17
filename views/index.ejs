@@ -12,6 +12,7 @@
 
 <body>
   <%- include('partials/username-display') %>
+  <%- include('partials/messages') %>
     <h1>ELECTRONICS</h1>
     <% if (session && session.user.admin) { %>
     <button id="newSkillButton" onclick="location.href='/skills/electronics/add'"> Add New Skill</button>

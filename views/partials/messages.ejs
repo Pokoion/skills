@@ -1,0 +1,44 @@
+<style>
+.message {
+    display: block;
+    width: 70%;
+    max-width: 400px;
+    min-height: 40px;
+    margin: 10px auto;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.message.success {
+    background-color: #28a745;
+}
+
+.message.error {
+    background-color: #dc3545;
+}
+
+.message.system-error {
+    background-color: #9e2a2b;
+}
+</style>
+<% if (messages && messages.success_msg) { %>
+    <div class="message success">
+        <p><strong>Success: </strong> <%= messages.success_msg %></p>
+    </div>
+<% } %>
+
+<% if (messages && messages.error_msg) { %>
+    <div class="message error">
+        <p><strong>Error: </strong> <%= messages.error_msg %></p>
+    </div>
+<% } %>
+
+<% if (messages && messages.error) { %>
+    <div class="message system-error">
+        <p><strong>System Error: </strong> <%= messages.error %></p>
+    </div>
+<% } %>

@@ -6,14 +6,23 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 const userController = require('../controllers/user.controller');
 const authMiddleware = require('../middleware/auth');
+const messageHandler = require('../utils/messageHandler');
 
 const badges = require('../public/badges.json');
 
-router.get('/register', authMiddleware.isAlreadyAuthenticated, (req, res) => res.render('register'));
+router.get('/register', authMiddleware.isAlreadyAuthenticated, (req, res) => {
+    const messages = messageHandler.handleMessages(req);
+    console.log(messages);
+    res.render('register', { messages });
+});
 
 router.post('/register', userController.registerUser);
 
-router.get('/login', authMiddleware.isAlreadyAuthenticated, (req, res) => res.render('login'));
+router.get('/login', authMiddleware.isAlreadyAuthenticated, (req, res) =>{
+    const messages = messageHandler.handleMessages(req);
+    console.log(messages);
+    res.render('login', { messages });
+});
 
 router.post('/login', userController.loginUser);
 

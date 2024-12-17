@@ -3,10 +3,15 @@ const router = express.Router();
 
 const skillController = require('../controllers/skill.controller');
 const authMiddleware = require('../middleware/auth');
+const messageHandler = require('../utils/messageHandler');
 
 router.get('/', authMiddleware.isAuthenticated, (req, res) => res.redirect('/skills/electronics'));
 
-router.get('/:skillTreeName', authMiddleware.isAuthenticated, (req, res) => res.render('index'));
+router.get('/:skillTreeName', authMiddleware.isAuthenticated, (req, res) => {
+  const messages = messageHandler.handleMessages(req);
+  console.log(messages);
+  res.render('index', { messages });
+});
 
 router.get('/:skillTree/add', authMiddleware.isAdmin, (req, res) => {
     res.render('addSkill', { skillTreeName: req.params.skillTree });
