@@ -5,10 +5,9 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const userController = require('../controllers/user.controller');
+const badgeController = require('../controllers/badge.controller');
 const authMiddleware = require('../middleware/auth');
 const messageHandler = require('../utils/messageHandler');
-
-const badges = require('../public/badges.json');
 
 router.get('/register', authMiddleware.isAlreadyAuthenticated, (req, res) => {
     const messages = messageHandler.handleMessages(req);
@@ -28,9 +27,7 @@ router.post('/login', userController.loginUser);
 
 router.get('/logout', authMiddleware.isAuthenticated, userController.logoutUser);
 
-router.get('/leaderboard', authMiddleware.isAuthenticated, (req, res) => {
-    res.render('leaderboard', { badges });
-});   
+router.get('/leaderboard', authMiddleware.isAuthenticated, badgeController.getAllBadgesUsers);
 
 router.get('/about', (req, res) => res.render('about'));
 

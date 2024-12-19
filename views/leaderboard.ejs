@@ -74,7 +74,7 @@
       <h1>Leaderboard</h1>
       <% badges.forEach(function(badge) { %>
         <div class="leaderboard-section">
-          <h3><%= badge.rango %></h3>
+          <h3><%= badge.name %></h3>
           <table>
             <thead>
               <tr>
@@ -107,9 +107,9 @@
         <tbody>
             <% badges.forEach(function(badge) { %>
                 <tr>
-                    <td><%= badge.rango %></td>
+                    <td><%= badge.name %></td>
                     <td>
-                        <img src="/badges/<%= badge.png %>"">
+                        <img src="/badges/<%= badge.image_url %>"">
                     </td>
                     <td><%= badge.bitpoints_min %> - <%= badge.bitpoints_max %></td>
                 </tr>

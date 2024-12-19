@@ -75,8 +75,10 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             greenDotEmoji.innerHTML = `🟢<span class="evidence-count">${completedSkill}</span>`;
             completedSkill > 0 ? greenDotEmoji.style.display = 'block' : greenDotEmoji.style.display = 'none';
 
+            let pencilEmoji;
             // Arkatz emoji-a sortu
-            const pencilEmoji = document.createElement('div');
+            if (isAdmin) {
+            pencilEmoji = document.createElement('div');
             pencilEmoji.className = 'emoji pencil-emoji';
             pencilEmoji.textContent = '✏️';
 
@@ -84,6 +86,8 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                 window.location.href = `/skills/electronics/edit/${skill.id}`;
                 console.log('Pencil emoji clicked');
             });
+            svgWrapper.appendChild(pencilEmoji);
+            }
 
             // Liburu emoji-a sortu
             const bookEmoji = document.createElement('div');
@@ -102,7 +106,6 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
 
             svgWrapper.appendChild(redDotEmoji);
             svgWrapper.appendChild(greenDotEmoji);
-            svgWrapper.appendChild(pencilEmoji);
             svgWrapper.appendChild(bookEmoji);
 
             svgWrapper.addEventListener('mouseover', () => {
@@ -132,9 +135,11 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                 footer.style.visibility = 'hidden';
                 setTimeout(() => {
                     if (!svgWrapper.matches(':hover')) { // Arratoia skill gainean ez badago
+                        if (isAdmin) {
                         pencilEmoji.style.display = 'none';
-                        bookEmoji.style.display = 'none';
                         pencilEmoji.classList.remove('hide');
+                        }
+                        bookEmoji.style.display = 'none';
                         bookEmoji.classList.remove('hide');
                     }
                 }, 200);

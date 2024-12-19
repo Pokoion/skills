@@ -61,6 +61,7 @@
 </head>
 <body>
     <%- include('partials/username-display') %>
+    <%- include('partials/messages') %>
     <h1>Manage Badges</h1>
     <table>
         <thead>
@@ -72,7 +73,7 @@
             </tr>
         </thead>
         <tbody>
-            <% badges.forEach(function(badge) { %>
+            <% badges.sort((a, b) => a.bitpoints_min - b.bitpoints_min).forEach(function(badge) { %>
                 <tr>
                     <td><%= badge.name %></td>
                     <td>
@@ -81,7 +82,9 @@
                     <td><%= badge.bitpoints_min %> - <%= badge.bitpoints_max %></td>
                     <td>
                         <button type="button" onclick="location.href='/admin/badges/edit/<%= badge._id %>'" id="approve-btn">Edit</button>
-                        <button id="delete-btn">Delete</button>
+                        <form action="/admin/badges/delete/<%= badge._id %>" method="POST" style="display: inline;">
+                            <button type="submit" id="delete-btn">Delete</button>
+                        </form>
                     </td>
                 </tr>
             <% }); %>

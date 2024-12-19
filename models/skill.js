@@ -7,7 +7,7 @@ const skillSchema = new mongoose.Schema({
     tasks: { type: [String], required: true },
     resources: { type: [String], required: true },
     description: { type: String, required: true },
-    score: { type: String, default: 1 },
+    score: { type: Number, default: 1 },
     icon: { type: String }
 });
 

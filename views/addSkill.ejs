@@ -82,24 +82,24 @@
     <h2 class="trees">ELECTRONICS (68 skills)</h2>
     <!-- Skill informazioentzako orria -->
     <div class="skillsPage">
-    <form>
+    <form id="add-skill-form" action="/skills/electronics/add" method="POST" enctype="multipart/form-data">
         <h3>Skill Text:</h3>
-        <textarea name="evidence" id="evidence" rows="2"></textarea>
+        <textarea name="text" id="text" rows="2" required="true"></textarea>
 
         <h3>Description:</h3>
-        <textarea name="description" id="description" rows="2"></textarea>
+        <textarea name="description" id="description" rows="2" required="true"></textarea>
 
         <h3>Tasks To Complete (one per line):</h3>
-        <textarea name="tasks" id="tasks" rows="2"></textarea>
+        <textarea name="tasks" id="tasks" rows="2" required="true"></textarea>
 
         <h3>Resources (one per line):</h3>
-        <textarea name="resources" id="resources" rows="2"></textarea>
+        <textarea name="resources" id="resources" rows="2" required="true"></textarea>
 
         <h3>Skill Score:</h3>
         <textarea name="score" id="score" rows="2" placeholder="1"></textarea>
 
         <h3>Upload Icon (30x30 png):</h3>
-        <input type="file" id="myFile" name="filename">
+        <input type="file" id="icon" name="icon" accept="image/svg" required="true">
 
         <button id="approve-btn">Save</button>
         <button type="button" onclick="location.href='/skills/electronics'" id="reject-btn">Cancel</button>

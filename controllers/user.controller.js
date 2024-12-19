@@ -1,14 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
-
-const createUser = async (username, password) => {
-    const user = new User({ username, password });
-    return await user.save();
-};
-
-const findUserByUsername = async (username) => {
-    return await User.findOne({ username });
-};
+const messageHandler = require('../utils/messageHandler');
+const userService = require('../services/user.service');
 
 exports.registerUser = async (req, res) => {
     try {
@@ -32,7 +25,7 @@ exports.registerUser = async (req, res) => {
             return res.status(400).redirect('/users/register');
         }
 
-        const existingUser = await findUserByUsername(username);
+        const existingUser = await userService.findUserByUsername(username);
         if (existingUser) {
             console.log('Username already exists:', username);
             req.session.error_msg = 'Username already exists';
@@ -40,7 +33,7 @@ exports.registerUser = async (req, res) => {
         }
 
         try {
-            await createUser(username, password);
+            await userService.createUser(username, password);
             console.log('User registered successfully:', username);
             req.session.success_msg = 'Register successful';
             res.redirect('/users/login');
@@ -66,7 +59,7 @@ exports.loginUser = async (req, res) => {
             return res.status(400).redirect('/users/login');
         }
 
-        const user = await findUserByUsername(username);
+        const user = await userService.findUserByUsername(username);
         if (!user) {
             console.log('Invalid username');
             req.session.error_msg = 'Invalid username';
@@ -105,25 +98,34 @@ exports.logoutUser = (req, res) => {
     }
 };
 
-exports.getAllUsers = async () => {
+exports.getAllUsers = async (req, res) => {
     try {
-        return await User.find();
+        const users = await userService.findAllUsers();
+        const messages = messageHandler.handleMessages(req);
+        res.render('manageUsers', { users, messages });
     } catch (error) {
-        console.error('Error getting users:', error);
-        throw new Error('Database query failed');
+        req.session.error = 'Error getting users';
+        res.status(500).redirect('/admin/dashboard');
     }
 };
 
-exports.changePassword = async (userId, newPassword) => {
+// Admin can put a password with less than 6 characters
+exports.changePassword = async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(newPassword, 10);
-        const user = await User.findByIdAndUpdate(userId, { password: hashedPassword }, { new: true });
-        if (!user) {
-            throw new Error('User not found');
+        const { userId, newPassword } = req.body;
+        if (!userId || !newPassword) {
+            req.session.error_msg = 'User ID and new password are required';
+            return res.status(400).redirect('/admin/users');
         }
-        return user;
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        const user = await userService.updateUserPassword(userId, hashedPassword);
+        if (!user) {
+            req.session.error_msg = 'User not found';
+            return res.status(404).redirect('/admin/users');
+        }
+        res.status(200).json(user);
     }catch (error) {
-        console.error('Error changing password:', error);
-        throw new Error('Database query failed');
+        req.session.error = 'Error changing password';
+        res.status(500).redirect('/admin/users');
     }
 };
