@@ -13,6 +13,7 @@ router.get('/badges', authMiddleware.isAdmin, badgeController.getAllBadgesAdmin)
 router.get('/badges/edit/:id', authMiddleware.isAdmin, badgeController.getBadgeById);
 
 router.post('/badges/edit/:id', authMiddleware.isAdminPost, (req, res) => res.send(`Badge ${req.params.id} updated`));
+
 router.post('/badges/delete/:id', authMiddleware.isAdminPost, badgeController.deleteBadgeById);
 
 router.get('/users', authMiddleware.isAdmin, userController.getAllUsers);

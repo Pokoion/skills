@@ -101,8 +101,7 @@ exports.logoutUser = (req, res) => {
 exports.getAllUsers = async (req, res) => {
     try {
         const users = await userService.findAllUsers();
-        const messages = messageHandler.handleMessages(req);
-        res.render('manageUsers', { users, messages });
+        res.render('manageUsers', { users });
     } catch (error) {
         req.session.error = 'Error getting users';
         res.status(500).redirect('/admin/dashboard');

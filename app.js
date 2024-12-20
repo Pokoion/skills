@@ -5,13 +5,15 @@ var cookieParser = require('cookie-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
-const User = require('./models/user');
 var logger = require('morgan');
-const authMiddleware = require('./middleware/auth');
+const bodyParser = require('body-parser');
 
+const authMiddleware = require('./middleware/auth');
 const adminRouter = require('./routes/admin');
 const skillsRouter = require('./routes/skills');
 const usersRouter = require('./routes/users');
+const getSkillNumbers = require('./middleware/skillsNumber');
+const messageMiddleware = require('./middleware/Messages');
 
 var app = express();
 
@@ -45,12 +47,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware to pass the session to the views
 app.use((req, res, next) => {
   res.locals.session = req.session;
   next();
 });
+
+// Middleware to get the number of skills in a tree
+app.use(getSkillNumbers);
+
+// Middleware to handle messages
+app.use(messageMiddleware);
 
 app.get('/', authMiddleware.isAuthenticated, async (req, res, next) => {
   res.redirect('/skills');

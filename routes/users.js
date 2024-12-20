@@ -9,19 +9,11 @@ const badgeController = require('../controllers/badge.controller');
 const authMiddleware = require('../middleware/auth');
 const messageHandler = require('../utils/messageHandler');
 
-router.get('/register', authMiddleware.isAlreadyAuthenticated, (req, res) => {
-    const messages = messageHandler.handleMessages(req);
-    console.log(messages);
-    res.render('register', { messages });
-});
+router.get('/register', authMiddleware.isAlreadyAuthenticated, (req, res) => res.render('register'));
 
 router.post('/register', userController.registerUser);
 
-router.get('/login', authMiddleware.isAlreadyAuthenticated, (req, res) =>{
-    const messages = messageHandler.handleMessages(req);
-    console.log(messages);
-    res.render('login', { messages });
-});
+router.get('/login', authMiddleware.isAlreadyAuthenticated, (req, res) => res.render('login'));
 
 router.post('/login', userController.loginUser);
 

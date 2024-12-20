@@ -79,10 +79,11 @@
 
 <body>
     <%- include('partials/username-display') %>
-    <h2 class="trees">ELECTRONICS (68 skills)</h2>
+    <%- include('partials/messages') %>
+    <h2 class="trees"><%= skillTreeName.toUpperCase() %> (<%= skillNum[skillTreeName] || 0 %> skills)</h2>
     <!-- Skill informazioentzako orria -->
     <div class="skillsPage">
-    <form id="add-skill-form" action="/skills/electronics/add" method="POST" enctype="multipart/form-data">
+    <form id="add-skill-form" action="/skills/<%= skillTreeName%>/add" method="POST" enctype="multipart/form-data">
         <h3>Skill Text:</h3>
         <textarea name="text" id="text" rows="2" required="true"></textarea>
 

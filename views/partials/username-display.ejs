@@ -23,11 +23,19 @@
             <% if (session && session.user) { %>
                 Welcome, <%= session.user.username %>! |
                 <a href="/users/leaderboard">Leaderboard</a> |
-                <a href="/skills">Electronics (68) STATIC TODO</a> |
+
+                <% 
+                const orderedKeys = Object.keys(skillNum).sort(); // Obtén y ordena las claves
+                %>
+                <% for (let set of orderedKeys) { %>
+                  <a href="/skills/<%= set %>"> <%= set.charAt(0).toUpperCase() + set.slice(1) %> (<%= skillNum[set] %>)</a> |
+                <% } %>
+
                 <a href="/users/about">About</a> |
                 <% if (session.user.admin) { %>
                     <a href="/admin/dashboard">Admin Dashboard</a> |
                 <% } %>
+
                 <a href="/users/logout">Logout</a>
             <% } else { %>
                 <a href="/users/login">Login</a> |

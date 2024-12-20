@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
     async function loadSkills() {
         const isAdmin = await fetch('/api/user').then(response => response.json()).then(data => data.admin);
         //const skillsArray = await fetch('/skills.json').then(response => response.json()) // lehen sortutako JSON fitxategia lortu
-        const skillsArray = await fetch('/skills/electronics/skills').then(response => response.json()) // orain datu basean dauden skill-ak lortu
+        const skillTreeName = window.location.pathname.split('/')[2]; // URLa lortu eta skillTreeName lortu
+        const skillsArray = await fetch(`/skills/${skillTreeName}/skills`).then(response => response.json()) // orain datu basean dauden skill-ak lortu
 
         skillsArray.forEach(skill => {
             // svg-wrapper elementua sortu
@@ -83,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             pencilEmoji.textContent = '✏️';
 
             pencilEmoji.addEventListener('click', () => {
-                window.location.href = `/skills/electronics/edit/${skill.id}`;
+                window.location.href = `/skills/${skillTreeName}/edit/${skill.id}`;
                 console.log('Pencil emoji clicked');
             });
             svgWrapper.appendChild(pencilEmoji);
@@ -100,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
 
             // Liburu emoji-a klikatzean tasks iriki
             bookEmoji.addEventListener('click', () => {
-                window.location.href = `/skills/electronics/view/${skill.id}`;
+                window.location.href = `/skills/${skillTreeName}/view/${skill.id}`;
                 console.log('Book emoji clicked');
             });
 

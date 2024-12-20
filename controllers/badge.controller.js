@@ -21,8 +21,7 @@ exports.getBadgeById = async (req, res) => {
 exports.getAllBadgesAdmin = async (req, res) => {
   try {
     badges = await badgeService.findAllBadges();
-    const messages = messageHandler.handleMessages(req);
-    res.status(200).render('admin-badges', { badges, messages });
+    res.status(200).render('admin-badges', { badges});
   } catch (error) {
     req.session.error = 'Error getting badges';
     res.status(500).redirect('/admin/dashboard');

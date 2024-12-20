@@ -13,9 +13,9 @@
 <body>
   <%- include('partials/username-display') %>
   <%- include('partials/messages') %>
-    <h1>ELECTRONICS</h1>
+    <h1><%= skillTreeName.toUpperCase() %></h1>
     <% if (session && session.user.admin) { %>
-    <button id="newSkillButton" onclick="location.href='/skills/electronics/add'"> Add New Skill</button>
+    <button id="newSkillButton" onclick="location.href=`/skills/<%= skillTreeName %>/add`"> Add New Skill</button>
     <% } %>
     <div class="svg-container">
       <!-- Existing SVGs -->
