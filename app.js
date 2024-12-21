@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const authMiddleware = require('./middleware/auth');
 const adminRouter = require('./routes/admin');
@@ -14,6 +16,13 @@ const skillsRouter = require('./routes/skills');
 const usersRouter = require('./routes/users');
 const getSkillNumbers = require('./middleware/skillsNumber');
 const messageMiddleware = require('./middleware/Messages');
+const userService = require('./services/user.service');
+
+const googleCredentials = require('./googleCredentials.json');
+const { randomBytes } = require('crypto');
+const googleClientID = googleCredentials.web.client_id;
+const googleClientSecret = googleCredentials.web.client_secret;
+const googleRedirectURI = googleCredentials.web.redirect_uris[0];
 
 var app = express();
 
@@ -37,6 +46,51 @@ app.use(session({
       ttl: 24 * 60 * 60 // 1 day
   })
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new GoogleStrategy({
+  clientID: googleClientID,
+  clientSecret: googleClientSecret,
+  callbackURL: googleRedirectURI,
+  passReqToCallback: true
+}, async (req, accessToken, refreshToken, profile, done) => {
+  try {
+    const username = profile.displayName;
+    let user = await userService.findUserByUsername(username);
+
+    if (!user) {
+      user = await userService.createUser(username, randomBytes(16).toString('hex'));
+    }
+    req.session.user = user;
+    return done(null, user);
+  } catch (err) {
+    done(err);
+  }
+}));
+
+passport.serializeUser((user, done) => {
+  done(null, user.username);
+});
+
+passport.deserializeUser(async (username, done) => {
+  try {
+    const user = await userService.findUserByUsername(username);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
+
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/users/login' }),
+  (req, res) => {
+    req.session.success_msg = 'You are now logged in with Google';
+    req.session.user = req.user;
+    res.redirect('/skills'); 
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
