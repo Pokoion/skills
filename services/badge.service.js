@@ -12,6 +12,6 @@ exports.deleteBadgeById = async (id) => {
     return await Badge.findByIdAndDelete(id);
 };
 
-exports.updateBadgeById = async (id, updateData) => {
-    return await User.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
+exports.editBadgeById = async (id, updateData) => {
+    return await Badge.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
 };

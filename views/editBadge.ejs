@@ -59,9 +59,9 @@
 <body>
     <%- include('partials/username-display') %>
     <h1>Edit Badge</h1>
-    <form>
+    <form action="/admin/badges/edit/<%= badge._id %>" method="POST">
         <label for="badge-name">Badge Name:</label>
-        <input type="text" id="badge-name" name="badge-name" placeholder="<%= badge.name %>" >
+        <input type="text" id="badge-name" name="name" placeholder="<%= badge.name %>" >
 
         <label for="min-bitpoints">Minimum Bitpoints:</label>
         <input type="number" id="min-bitpoints" name="bitpoints_min" placeholder="<%= badge.bitpoints_min %>" >
@@ -76,7 +76,7 @@
 
         <div class="buttons">
             <button type="submit" class="update-btn">Update Badge</button>
-            <button type="button" class="cancel-btn">Cancel</button>
+            <button onclick="location.href='/admin/badges'" type="button" class="cancel-btn">Cancel</button>
         </div>
 
     </form>

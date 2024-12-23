@@ -18,13 +18,13 @@ router.post('/:skillTreeName/add', authMiddleware.isAdminPost, iconUpload.single
 
 router.get('/:skillTreeName/view/:skillID', authMiddleware.isAuthenticated, skillController.viewSkillById);
 
-router.post('/:skillTreeName/:skillID/verify', authMiddleware.isAuthenticated, (req, res) => res.send(`Skill ${req.params.skillID} verified`));
+router.post('/:skillTreeName/:skillID/verify', authMiddleware.isAuthenticated, (req, res) => res.send(`Skill ${req.params.skillID} verified`)); //TODO
 
 router.get('/:skillTreeName/edit/:skillID', authMiddleware.isAdmin, skillController.loadEditSkillById);
 
 router.post('/:skillTreeName/edit/:skillID', authMiddleware.isAdmin, iconUpload.single('icon'), skillController.editSkillById);
 
-router.post('/:skillTreeName/submit-evidence', authMiddleware.isAuthenticated, (req, res) => res.send('Evidence Submitted'));
+router.post('/:skillTreeName/submit-evidence', authMiddleware.isAuthenticated, (req, res) => res.send('Evidence Submitted')); //TODO
 
 router.post('/:skillTreeName/delete/:skillID', authMiddleware.isAdminPost, skillController.deleteSkill);
 

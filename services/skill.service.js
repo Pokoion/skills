@@ -38,9 +38,9 @@ exports.getSkillsNumberByTree = async (skillTreeName) => {
 
 exports.generateSkillUniqueId = async () => {
   const maxSkill = await Skill.aggregate([
-    { $project: { id: { $toInt: "$id" } } },  // Convierte id a un número
-    { $sort: { id: -1 } },  // Ordena numéricamente
-    { $limit: 1 }  // Solo toma el primer registro (el más alto)
+    { $project: { id: { $toInt: "$id" } } },
+    { $sort: { id: -1 } },
+    { $limit: 1 }
   ]);
 
   return maxSkill.length ? (maxSkill[0].id + 1).toString() : '1';

@@ -120,7 +120,7 @@
         <textarea name="resources" id="resources" rows="4" placeholder="<%= skill.resources? skill.resources.join('\n') : '' %>"></textarea>
 
         <h3>Skill Score:</h3>
-        <textarea name="score" id="score" rows="2" placeholder="1"></textarea>
+        <textarea type="number" name="score" id="score" rows="2" placeholder="<%= skill.score %>"></textarea>
 
         <h3>Upload Icon (30x30 png):</h3>
         <input type="file" id="icon" name="icon" accept="image/svg">

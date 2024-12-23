@@ -65,6 +65,10 @@ exports.loginUser = async (req, res) => {
             req.session.error_msg = 'Invalid username';
             return res.status(400).redirect('/users/login');
         }
+        if (!user.password) {
+            req.session.error_msg = 'You should log in with your social account';
+            return res.status(400).redirect('/users/login');
+        }
 
         const isMatch = await bcrypt.compare(password, user.password);
 
@@ -100,7 +104,7 @@ exports.logoutUser = (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
     try {
-        const users = await userService.findAllUsers();
+        const users = await userService.findAllUsersWithPassword();
         res.render('manageUsers', { users });
     } catch (error) {
         req.session.error = 'Error getting users';

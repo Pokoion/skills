@@ -1,3 +1,5 @@
+const InputUtil = require('../utils/input.util');
+
 const validateSkillInput = (req, res, next) => {
     console.log(req.body);
     if (!req.body.text || !req.body.description || !req.body.tasks || !req.body.resources) {
@@ -5,21 +7,26 @@ const validateSkillInput = (req, res, next) => {
       return res.status(400).redirect(`/skills/${req.params.skillTreeName}/add`);
     }
   
-    if (req.body.text.trim() == '' || req.body.description.trim() == '') {
+    if (!InputUtil.hasContentString(req.body.text) || !InputUtil.hasContentString(req.body.description)) {
       req.session.error_msg = 'All fields are required';
       return res.status(400).redirect(`/skills/${req.params.skillTreeName}/add`);
     }
   
-    const resources = req.body.resources.split('\r\n').filter(resource => resource.trim() != '');
+    const resources = InputUtil.convertStringToArray(req.body.resources);
     if (resources.length < 1) {
       req.session.error_msg = 'At least one resource is required';
       return res.status(400).redirect(`/skills/${req.params.skillTreeName}/add`);
     }
   
-    const tasks = req.body.tasks.split('\r\n').filter(task => task.trim() != '');
+    const tasks = InputUtil.convertStringToArray(req.body.tasks);
     if (tasks.length < 1) {
       req.session.error_msg = 'At least one task is required';
       return res.status(400).redirect(`/skills/${req.params.skillTreeName}/add`);
+    }
+
+    if (isNaN(req.body.score.trim())) {
+        req.session.error_msg = 'Score must be a number';
+        return res.status(400).redirect(`/skills/${req.params.skillTreeName}/add`);
     }
     next();
   };

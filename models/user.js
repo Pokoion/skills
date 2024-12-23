@@ -4,7 +4,7 @@ const Skill = require('./skill');
 
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    password: { type: String },
     score: { type: Number, default: 0 },
     admin: { type: Boolean, default: false },
     completedSkills: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill', default: [] }]
@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre('save', async function(next) {
     try {
-        if (this.isModified('password')) {
+        if (this.password && this.isModified('password')) {
             console.log('Hashing password for user:', this.username);
             this.password = await bcrypt.hash(this.password, 10);
         }

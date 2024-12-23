@@ -1,6 +1,5 @@
 exports.isAuthenticated = (req, res, next) => {
   if (!req.session.user) {
-    req.session.error = 'You need to be logged in to access';
     console.log('User is not authenticated');
     return res.redirect('/users/login');
   }

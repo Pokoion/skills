@@ -9,6 +9,8 @@ var logger = require('morgan');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GitHubStrategy = require('passport-github2').Strategy;
+require('dotenv').config();
 
 const authMiddleware = require('./middleware/auth');
 const adminRouter = require('./routes/admin');
@@ -17,12 +19,6 @@ const usersRouter = require('./routes/users');
 const getSkillNumbers = require('./middleware/skillsNumber');
 const messageMiddleware = require('./middleware/Messages');
 const userService = require('./services/user.service');
-
-const googleCredentials = require('./googleCredentials.json');
-const { randomBytes } = require('crypto');
-const googleClientID = googleCredentials.web.client_id;
-const googleClientSecret = googleCredentials.web.client_secret;
-const googleRedirectURI = googleCredentials.web.redirect_uris[0];
 
 var app = express();
 
@@ -51,9 +47,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new GoogleStrategy({
-  clientID: googleClientID,
-  clientSecret: googleClientSecret,
-  callbackURL: googleRedirectURI,
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: "http://localhost:3000/auth/google/callback",
   passReqToCallback: true
 }, async (req, accessToken, refreshToken, profile, done) => {
   try {
@@ -61,10 +57,31 @@ passport.use(new GoogleStrategy({
     let user = await userService.findUserByUsername(username);
 
     if (!user) {
-      user = await userService.createUser(username, randomBytes(16).toString('hex'));
+      user = await userService.createUser(username);
     }
     req.session.user = user;
     return done(null, user);
+  } catch (err) {
+    done(err);
+  }
+}));
+
+passport.use(new GitHubStrategy({
+  clientID: process.env.GITHUB_CLIENT_ID,
+  clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  callbackURL: "http://localhost:3000/auth/github/callback",
+  passReqToCallback: true
+}, async (req, accessToken, refreshToken, profile, done) => {
+  try {
+    const username = profile.username || profile.displayName;
+    let user = await userService.findUserByUsername(username);
+
+    if (!user) {
+      user = await userService.createUser(username, null);
+    }
+
+    req.session.user = user;
+    done(null, user);
   } catch (err) {
     done(err);
   }
@@ -89,8 +106,18 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
   (req, res) => {
     req.session.success_msg = 'You are now logged in with Google';
     req.session.user = req.user;
-    res.redirect('/skills'); 
+    res.redirect('/skills/electronics'); 
 });
+
+app.get('/auth/github', passport.authenticate('github', { scope: ['user:email'] }));
+
+app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/users/login' }),
+  (req, res) => {
+    req.session.success_msg = 'You are now logged in with GitHub!';
+    req.session.user = req.user;
+    res.redirect('/skills/electronics');
+  }
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
