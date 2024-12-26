@@ -19,6 +19,7 @@ const usersRouter = require('./routes/users');
 const getSkillNumbers = require('./middleware/skillsNumber');
 const messageMiddleware = require('./middleware/Messages');
 const userService = require('./services/user.service');
+const userSkillService = require('../services/userSkill.service');
 
 var app = express();
 
@@ -152,6 +153,25 @@ app.get('/api/user', (req, res) => {
       username: user?.username || null,
       admin: user?.admin || false
   })
+});
+
+app.get('/user-skill/:skillId', async (req,res,next)=>{
+  try{
+  const skillId = req.params.skillId;
+  const userId= req.session.user._id;
+
+  const userSkill = userSkillService.getUserSkillBySkillAndUser(skillId,userId);
+
+  if(userSkill){
+    res.json(userSkill);
+  }
+  else{
+    res.status(404).send('UserSkill not found');
+  }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error al obtener el UserSkill' });
+  }
 });
 
 app.use('/admin', adminRouter);
