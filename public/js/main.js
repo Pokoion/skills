@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             svg.setAttribute('viewBox', '0 0 100 100');
             svgWrapper.appendChild(svg);
 
-            completed = isSkillCompleted(skill.id)
-
+            UserSkill!=null ? completed =UserSkill.completed : completed = false;
+ 
             // polygon elementua sortu
             const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
             polygon.setAttribute('points', '50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5');
@@ -60,31 +60,25 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             image.setAttribute('height', '30');
             image.setAttribute('href', `/icons/${skill.icon}`);
             svg.appendChild(image);
-
             
-             unverifiedEvidence = getSkillUnverifiedEvidence(UserSkill.verified);
-
+            UserSkill!=null ? unverifiedEvidence = getSkillUnverifiedEvidence(UserSkill.verifications) : unverifiedEvidence = 0;
+          
             // borobil gorria
             const redDotEmoji = document.createElement('div');
             redDotEmoji.className = 'Evidenceemoji red-dot';
             redDotEmoji.innerHTML = `🔴<span class="evidence-count">${unverifiedEvidence}</span>`;
-            if(UserSkill.completed) {
-                redDotEmoji.style.display = 'block';
-            }else{
-                redDotEmoji.style.display = 'none';
-            }
-            completedSkill = getSkillCompleted(skill.id)
+            UserSkill!=null ? redDotEmoji.style.display = 'block' : redDotEmoji.style.display = 'none';
+   
+
+            UserSkill!=null ? completedSkill = getSkillCompleted(UserSkill.verifications) : completedSkill = 0;
+
 
             // borobil berdea
             const greenDotEmoji = document.createElement('div');
             greenDotEmoji.className = 'Evidenceemoji completed';
             greenDotEmoji.innerHTML = `🟢<span class="evidence-count">${completedSkill}</span>`;
-            if(UserSkill.completed) {
-                greenDotEmoji.style.display = 'block';
-            }else{
-                greenDotEmoji.style.display = 'none';
-            }
-            
+            UserSkill!=null ? greenDotEmoji.style.display = 'block' : greenDotEmoji.style.display = 'none';
+ 
             let pencilEmoji;
             // Arkatz emoji-a sortu
             if (isAdmin) {
@@ -162,26 +156,48 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
 
     async function fetchUserSkills(skillId) {
           try {
-            return  await fetch(`/user-skill/${skillId}`).then(response => response.json());
+            const response =  await fetch(`/user-skill/${skillId}`);
+
+            if (!response.ok) {
+                console.error(`Failed to fetch userSkill. Status: ${response.status}`);
+                return null; 
+              }
+              return await response.json();
 
           } catch (error) {
             console.error('Errorea:', error);
+            return null;
           }
         }
       
 
     // Skill baten berifikatu gabeko ebidentziak lortzeko funtzioa, oraingoz random
-    const getSkillUnverifiedEvidence = (id) => {
-        return Math.floor(Math.random() * 6);
+    const getSkillUnverifiedEvidence = (verifications) => {
+        let count=0;
+        if (this.verifications.length === 0) {
+            return 0;
+        }
+        verifications.forEach(v=>{
+            if(!v.approved){
+                count++;
+            }
+        });
+        return count;
     }
 
-    const getSkillCompleted = (id) => {
-        return Math.floor(Math.random() * 6);
+    const getSkillCompleted = (verifications) => {
+        let count=0;
+        if (this.verifications.length === 0) {
+            return 0;
+        }
+        verifications.forEach(v=>{
+            if(v.approved){
+                count++;
+            }
+        });
+        return count;
     }
 
-    const isSkillCompleted = (id) => {
-        return Math.floor(Math.random() * 4) == 0? true : false;
-    }
-    
+   
     loadSkills();
 });

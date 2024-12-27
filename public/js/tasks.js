@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const checkboxes = document.querySelectorAll('input[type = "checkbox"]');
     const tablebody = document.querySelector("tbody")
     const unverifiedEvidence = document.querySelector('.unverifiedEvidence');
+    
 
     // Checbox guztiak klikatzean, evidence erakutsi, denak ez badaude ezkutatu
     checkboxes.forEach(checkbox => {
