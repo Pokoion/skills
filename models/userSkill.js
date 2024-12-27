@@ -14,7 +14,6 @@ const userSkillSchema = new mongoose.Schema({
           verifiedAt: { type: Date, required: true },
         }
       ],
-    verified: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('UserSkill', userSkillSchema);

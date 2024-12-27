@@ -160,7 +160,7 @@ app.get('/user-skill/:skillId', async (req,res,next)=>{
   const skillId = req.params.skillId;
   const userId= req.session.user._id;
 
-  const userSkill = userSkillService.getUserSkillBySkillAndUser(skillId,userId);
+  const userSkill = await userSkillService.getUserSkillBySkillAndUser(skillId,userId);
 
   if(userSkill){
     res.json(userSkill);
@@ -170,8 +170,7 @@ app.get('/user-skill/:skillId', async (req,res,next)=>{
   }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Error al obtener el UserSkill' });
-  }
+    res.status(500).send('Error getting userSkill');  }
 });
 
 app.use('/admin', adminRouter);

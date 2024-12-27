@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const evidenceText = document.querySelector('#evidence');
     const tablebody = document.querySelector("tbody")
     const unverifiedEvidence = document.querySelector('.unverifiedEvidence');
+    
 
     // Checbox guztiak klikatzean, evidence erakutsi, denak ez badaude ezkutatu
     checkboxes.forEach(checkbox => {
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         submitButton.disabled = true;
         submitButton.style.cursor = 'not-allowed';
+
         enterValue(evidenceText.value);
     });
 
