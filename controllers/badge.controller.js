@@ -94,7 +94,7 @@ const checkAndReturnEditInfo = (req, res) => {
   }
 
   if (req.body.bitpoints_min) {
-    if (isNaN(req.body.bitpoints_min.trim())) {
+    if (isNaN(req.body.bitpoints_min)) {
       return {
         error: true,
         status: 400,
@@ -102,7 +102,7 @@ const checkAndReturnEditInfo = (req, res) => {
         badgeData: null
       };
     }
-    if (parseInt(req.body.bitpoints_min.trim()) < 0) {
+    if (parseInt(req.body.bitpoints_min) < 0) {
       return {
         error: true,
         status: 400,
@@ -110,11 +110,11 @@ const checkAndReturnEditInfo = (req, res) => {
         badgeData: null
       };
     }
-    badgeData.bitpoints_min = req.body.bitpoints_min.trim();
+    badgeData.bitpoints_min = req.body.bitpoints_min;
   }
 
   if (req.body.bitpoints_max) {
-    if (isNaN(req.body.bitpoints_max.trim())) {
+    if (isNaN(req.body.bitpoints_max)) {
       return {
         error: true,
         status: 400,
@@ -122,7 +122,7 @@ const checkAndReturnEditInfo = (req, res) => {
         badgeData: null
       };
     }
-    if (parseInt(req.body.bitpoints_max.trim()) < 0) {
+    if (parseInt(req.body.bitpoints_max) < 0) {
       return {
         error: true,
         status: 400,
@@ -130,7 +130,7 @@ const checkAndReturnEditInfo = (req, res) => {
         badgeData: null
       };
     }
-      if (parseInt(req.body.bitpoints_max.trim()) < parseInt(req.body.bitpoints_min.trim())) {
+      if (parseInt(req.body.bitpoints_max) < parseInt(req.body.bitpoints_min)) {
         return {
           error: true,
           status: 400,
@@ -138,7 +138,7 @@ const checkAndReturnEditInfo = (req, res) => {
           badgeData: null
         };
       }
-      badgeData.bitpoints_max = req.body.bitpoints_max.trim();
+      badgeData.bitpoints_max = req.body.bitpoints_max;
     }
 
     if (req.body.image_url && InputUtil.hasContentString(req.body.image_url)) {

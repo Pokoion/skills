@@ -34,72 +34,54 @@ exports.registerUser = async (req, res) => {
 
         try {
             await userService.createUser(username, password);
-            console.log('User registered successfully:', username);
-            req.session.success_msg = 'Register successful';
-            res.redirect('/users/login');
-        } catch (saveError) {
-            console.error('Error saving user:', saveError);
-            req.session.error = 'Error saving user';
-            res.status(500).send('Error saving user');
+            res.status(201).redirect('/users/login');
+        } catch (error) {
+            console.error('Error creating user:', error);
+            req.session.error_msg = 'Error creating user';
+            res.status(500).redirect('/users/register');
         }
     } catch (error) {
-        console.error('Registration error:', error);
-        req.session.error = 'Error registering user';
-        res.status(500).send('Error registering user');
+        console.error('Error registering user:', error);
+        req.session.error_msg = 'Error registering user';
+        res.status(500).redirect('/users/register');
     }
 };
 
 exports.loginUser = async (req, res) => {
+    const { username, password } = req.body;
+
     try {
-        const { username, password } = req.body;
-
-        if (!username || !password) {
-            console.log('Missing username or password');
-            req.session.error_msg = 'Username and password are required';
-            return res.status(400).redirect('/users/login');
-        }
-
         const user = await userService.findUserByUsername(username);
         if (!user) {
-            console.log('Invalid username');
-            req.session.error_msg = 'Invalid username';
-            return res.status(400).redirect('/users/login');
-        }
-        if (!user.password) {
-            req.session.error_msg = 'You should log in with your social account';
+            req.session.error_msg = 'Invalid username or password';
             return res.status(400).redirect('/users/login');
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
-
         if (!isMatch) {
-            console.log('Invalid password');
-            req.session.error_msg = 'Invalid password';
+            req.session.error_msg = 'Invalid username or password';
             return res.status(400).redirect('/users/login');
         }
 
         req.session.user = user;
-        req.session.success_msg = 'Login successful';
-        res.redirect('/skills/electronics');
+        req.session.success_msg = 'Logged in successfully';
+        res.status(302).redirect('/skills/electronics');
     } catch (error) {
-        console.error('Login error:', error);
-        req.session.error = 'Error logging in';
+        console.error('Error logging in user:', error);
+        req.session.error_msg = 'Error logging in user';
         res.status(500).redirect('/users/login');
     }
 };
 
 exports.logoutUser = (req, res) => {
-    if (req.session) {
-        req.session.destroy((err) => {
-            if (err) {
-                console.error('Logout error:', err);
-                return res.status(500).send('Error logging out');
-            }
-            res.redirect('/users/login');
-        });
-    } else {
-        res.redirect('/users/login');
-    }
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error logging out user:', err);
+            req.session.error_msg = 'Error logging out user';
+            return res.status(500).redirect('/users/login');
+        }
+        res.status(302).redirect('/users/login');
+    });
 };
 
 exports.getAllUsers = async (req, res) => {
