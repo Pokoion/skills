@@ -62,15 +62,15 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             image.setAttribute('href', `/icons/${skill.icon}`);
             svg.appendChild(image);
 
-            let unverifiedEvidence = UserSkill? await getSkillUnverifiedEvidence(skill._id) : 0;
+            let unverifiedEvidence = await getSkillUnverifiedEvidence(skill._id);
 
             // borobil gorria
             const redDotEmoji = document.createElement('div');
             redDotEmoji.className = 'Evidenceemoji red-dot';
             redDotEmoji.innerHTML = `🔴<span class="evidence-count">${unverifiedEvidence}</span>`;
 
-            if (UserSkill){
-                UserSkill.completed && unverifiedEvidence > 0 ? redDotEmoji.style.display = 'block' : redDotEmoji.style.display = 'none';
+            if (isAdmin || UserSkill){
+                (isAdmin || UserSkill.completed) && unverifiedEvidence > 0 ? redDotEmoji.style.display = 'block' : redDotEmoji.style.display = 'none';
             }else{
                 redDotEmoji.style.display = 'none';
             };
