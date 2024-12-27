@@ -164,11 +164,22 @@ app.get('/user-skill/:skillId', async (req,res,next)=>{
   const userSkill = await userSkillService.getUserSkillBySkillAndUser(skillId,userId);
 
   if(userSkill){
-    res.json(userSkill);
+    res.status(200).json(userSkill);
   }
   else{
-    res.status(404).send('UserSkill not found');
+    res.status(204).end();
   }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error getting userSkill');  }
+});
+
+app.get('/user-skillCount/:skillId', async (req,res,next)=>{
+  try{
+  const skillId = req.params.skillId;
+  const userId= req.session.user._id;
+  const unverifiedEvidenceCount = await userSkillService.getUnverifiedUserSkillCount(skillId, userId);
+  res.status(200).json({ unverifiedEvidenceCount });
   } catch (error) {
     console.error(error);
     res.status(500).send('Error getting userSkill');  }

@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
         const skillTreeName = window.location.pathname.split('/')[2]; // URLa lortu eta skillTreeName lortu
         const skillsArray = await fetch(`/skills/${skillTreeName}/skills`).then(response => response.json()) // orain datu basean dauden skill-ak lortu
 
-        skillsArray.forEach(skill => {
-            const UserSkill = fetchUserSkills(skill._id);
+        await Promise.all(skillsArray.map(async (skill) => {
+            const UserSkill = await fetchUserSkills(skill._id);
+            console.log('UserSkill:', UserSkill);
             // svg-wrapper elementua sortu
             const svgWrapper = document.createElement('div');
             svgWrapper.className = 'svg-wrapper';
@@ -24,8 +25,8 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             svg.setAttribute('viewBox', '0 0 100 100');
             svgWrapper.appendChild(svg);
 
-            UserSkill!=null ? completed =UserSkill.completed : completed = false;
- 
+            let completed = UserSkill ? UserSkill.completed : false;
+
             // polygon elementua sortu
             const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
             polygon.setAttribute('points', '50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5');
@@ -60,37 +61,40 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             image.setAttribute('height', '30');
             image.setAttribute('href', `/icons/${skill.icon}`);
             svg.appendChild(image);
-            
-            UserSkill!=null ? unverifiedEvidence = getSkillUnverifiedEvidence(UserSkill.verifications) : unverifiedEvidence = 0;
-          
+
+            let unverifiedEvidence = UserSkill? await getSkillUnverifiedEvidence(skill._id) : 0;
+
             // borobil gorria
             const redDotEmoji = document.createElement('div');
             redDotEmoji.className = 'Evidenceemoji red-dot';
             redDotEmoji.innerHTML = `🔴<span class="evidence-count">${unverifiedEvidence}</span>`;
-            UserSkill!=null ? redDotEmoji.style.display = 'block' : redDotEmoji.style.display = 'none';
-   
 
-            UserSkill!=null ? completedSkill = getSkillCompleted(UserSkill.verifications) : completedSkill = 0;
+            if (UserSkill){
+                UserSkill.completed && unverifiedEvidence > 0 ? redDotEmoji.style.display = 'block' : redDotEmoji.style.display = 'none';
+            }else{
+                redDotEmoji.style.display = 'none';
+            };
 
+            let completedSkill = UserSkill? UserSkill.verifications.filter(v => v.approved).length : 0;
 
             // borobil berdea
             const greenDotEmoji = document.createElement('div');
             greenDotEmoji.className = 'Evidenceemoji completed';
             greenDotEmoji.innerHTML = `🟢<span class="evidence-count">${completedSkill}</span>`;
-            UserSkill!=null ? greenDotEmoji.style.display = 'block' : greenDotEmoji.style.display = 'none';
- 
+            UserSkill ? greenDotEmoji.style.display = 'block' : greenDotEmoji.style.display = 'none';
+
             let pencilEmoji;
             // Arkatz emoji-a sortu
             if (isAdmin) {
-            pencilEmoji = document.createElement('div');
-            pencilEmoji.className = 'emoji pencil-emoji';
-            pencilEmoji.textContent = '✏️';
+                pencilEmoji = document.createElement('div');
+                pencilEmoji.className = 'emoji pencil-emoji';
+                pencilEmoji.textContent = '✏️';
 
-            pencilEmoji.addEventListener('click', () => {
-                window.location.href = `/skills/${skillTreeName}/edit/${skill.id}`;
-                console.log('Pencil emoji clicked');
-            });
-            svgWrapper.appendChild(pencilEmoji);
+                pencilEmoji.addEventListener('click', () => {
+                    window.location.href = `/skills/${skillTreeName}/edit/${skill.id}`;
+                    console.log('Pencil emoji clicked');
+                });
+                svgWrapper.appendChild(pencilEmoji);
             }
 
             // Liburu emoji-a sortu
@@ -116,9 +120,9 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                 svgWrapper.style.transform = 'scale(1.2)';
                 svgWrapper.classList.add('skill-hover');
                 if (isAdmin) {
-                pencilEmoji.style.display = 'block';
-                pencilEmoji.classList.remove('hide');
-                pencilEmoji.classList.add('show');  
+                    pencilEmoji.style.display = 'block';
+                    pencilEmoji.classList.remove('hide');
+                    pencilEmoji.classList.add('show');
                 }
                 bookEmoji.style.display = 'block';
                 bookEmoji.classList.remove('hide');
@@ -131,8 +135,8 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                 svgWrapper.style.transform = 'scale(1)';
                 svgWrapper.classList.remove('skill-hover');
                 if (isAdmin) {
-                pencilEmoji.classList.remove('show');
-                pencilEmoji.classList.add('hide');
+                    pencilEmoji.classList.remove('show');
+                    pencilEmoji.classList.add('hide');
                 }
                 bookEmoji.classList.remove('show');
                 bookEmoji.classList.add('hide');
@@ -140,64 +144,38 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                 setTimeout(() => {
                     if (!svgWrapper.matches(':hover')) { // Arratoia skill gainean ez badago
                         if (isAdmin) {
-                        pencilEmoji.style.display = 'none';
-                        pencilEmoji.classList.remove('hide');
+                            pencilEmoji.style.display = 'none';
+                            pencilEmoji.classList.remove('hide');
                         }
                         bookEmoji.style.display = 'none';
                         bookEmoji.classList.remove('hide');
                     }
                 }, 200);
             });
-
-
-
-        });
+        }));
     }
 
     async function fetchUserSkills(skillId) {
-          try {
-            const response =  await fetch(`/user-skill/${skillId}`);
+        try {
+            let data = await fetch(`/user-skill/${skillId}`)
+            if (data.status === 204) {
+                return null;
+            }
+            data = await data.json();
+            console.log('UserSkill:', data);
+            return data;
 
-            if (!response.ok) {
-                console.error(`Failed to fetch userSkill. Status: ${response.status}`);
-                return null; 
-              }
-              return await response.json();
-
-          } catch (error) {
+        } catch (error) {
             console.error('Errorea:', error);
             return null;
-          }
         }
-      
+    }
 
     // Skill baten berifikatu gabeko ebidentziak lortzeko funtzioa, oraingoz random
-    const getSkillUnverifiedEvidence = (verifications) => {
-        let count=0;
-        if (this.verifications.length === 0) {
-            return 0;
-        }
-        verifications.forEach(v=>{
-            if(!v.approved){
-                count++;
-            }
-        });
-        return count;
+    const getSkillUnverifiedEvidence = async (skillId) => {
+        const unverifiedEvidence = await fetch(`/user-skillCount/${skillId}`).then(response => response.json()).then(data => data.unverifiedEvidenceCount);
+        return unverifiedEvidence;
     }
 
-    const getSkillCompleted = (verifications) => {
-        let count=0;
-        if (this.verifications.length === 0) {
-            return 0;
-        }
-        verifications.forEach(v=>{
-            if(v.approved){
-                count++;
-            }
-        });
-        return count;
-    }
-
-   
     loadSkills();
 });
