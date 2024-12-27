@@ -34,6 +34,7 @@ exports.registerUser = async (req, res) => {
 
         try {
             await userService.createUser(username, password);
+            req.session.success_msg = 'User created successfully';
             res.status(201).redirect('/users/login');
         } catch (error) {
             console.error('Error creating user:', error);
@@ -87,6 +88,12 @@ exports.logoutUser = (req, res) => {
 exports.getAllUsers = async (req, res) => {
     try {
         const users = await userService.findAllUsersWithPassword();
+        users = users.map(user => {
+            return {
+                username: user.username,
+                admin: user.admin
+            };
+        });
         res.render('manageUsers', { users });
     } catch (error) {
         req.session.error = 'Error getting users';

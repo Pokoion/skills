@@ -1,4 +1,5 @@
 const badgeService = require('../services/badge.service');
+const userService = require('../services/user.service');
 const InputUtil = require('../utils/input.util');
 
 exports.getBadgeById = async (req, res) => {
@@ -30,7 +31,8 @@ exports.getAllBadgesAdmin = async (req, res) => {
 exports.getAllBadgesUsers = async (req, res) => {
   try {
     badges = await badgeService.findAllBadges();
-    res.status(200).render('leaderboard', { badges });
+    users = await userService.findAllUsers();
+    res.status(200).render('leaderboard', { badges, users });
   } catch (error) {
     req.session.error = 'Error getting badges';
     res.status(500).redirect('/skills/electronics');

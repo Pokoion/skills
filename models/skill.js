@@ -8,7 +8,7 @@ const skillSchema = new mongoose.Schema({
     resources: { type: [String], required: true },
     description: { type: String, required: true },
     score: { type: Number, default: 1 },
-    icon: { type: String }
+    icon: { type: String, required: true },
 });
 
 module.exports = mongoose.model('Skill', skillSchema);

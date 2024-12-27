@@ -75,28 +75,42 @@
 
         table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        th,
-        td {
-            padding: 12px;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
             text-align: left;
-            border: 1px solid #000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        th:last-child,
-        td:last-child {
-            width: 200px;
-            min-width: 200px;
+        thead tr {
+            background-color: #f4f4f4;
+            border-bottom: 2px solid #ddd;
+        }
+
+        thead th {
+            padding: 12px 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody td {
+            padding: 12px 15px;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
         }
 
         .actions {
-            display: flex;
-            justify-content: flex-start;
-            width: 100%;
+            text-align: center;
         }
 
         .approve-btn {
@@ -122,91 +136,194 @@
 
 <body>
     <%- include('partials/username-display') %>
-    <!-- Skill informazioentzako orria -->
-    <div class="skillsPage">
-        <h1>Skill: <%= text %>
-        </h1>
+        <!-- Skill informazioentzako orria -->
+        <div class="skillsPage">
+            <h1>Skill: <%= skill.text %>
+            </h1>
 
-        <div style="display: flex; gap: 30px;">
-            <!-- Skill hexagonoa -->
-            <div class="svg-wrapper" data-id="<%= id %>" data-custom="false">
-                <svg width="100" height="100" viewBox="0 0 100 100">
-                    <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" class="hexagon" />
-                    <text x="50%" y="20%" text-anchor="middle" fill="black" font-size="9">
-                        <% text.split('\n').forEach(line=> { %>
-                            <tspan x="50%" dy="1.2em" font-weight="bold">
-                                <%= line %>
-                            </tspan>
-                            <% }); %>
-                    </text>
-                    <image x="35%" y="60%" width="30" height="30" href="/icons/<%= icon %>" />
-                </svg>
-            </div>
+            <div style="display: flex; gap: 30px;">
+                <!-- Skill hexagonoa -->
+                <div class="svg-wrapper" data-id="<%= skill.id %>" data-custom="false">
+                    <svg width="100" height="100" viewBox="0 0 100 100">
+                        <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" class="hexagon" />
+                        <text x="50%" y="20%" text-anchor="middle" fill="black" font-size="9">
+                            <% skill.text.split('\n').forEach(line=> { %>
+                                <tspan x="50%" dy="1.2em" font-weight="bold">
+                                    <%= line %>
+                                </tspan>
+                                <% }); %>
+                        </text>
+                        <image x="35%" y="60%" width="30" height="30" href="/icons/<%= skill.icon %>" />
+                    </svg>
+                </div>
 
-            <!-- Skill bakoitzaren informazio div-a -->
-            <div class="skillsInfo">
-                <h2>Skill Score: 1 point</h2>
-                <!-- Skill-aren deskripzioa -->
-                <div class="skillDescription">
-                    <h2>Description</h2>
-                    <p>
-                        <%= description %>
-                    </p>
-                </div>
-                <!-- Skill-aren zereginak -->
-                <div class="skillTasks">
-                    <h2>Tasks to complete</h2>
-                    <% tasks.forEach(function(task, index) { %>
-                        <div class="task-item">
-                            <input type="checkbox" id="task-<%= index %>">
-                            <label for="task-<%= index %>">
-                                <%= task %>
-                            </label>
-                        </div>
-                        <% }); %>
-                </div>
-                <!-- Skill-a osatua ebidentzia -->
-                <div class="skillEvidence">
-                    <h2>Provide Evidence</h2>
-                    <form method="POST">
-                        <input type="hidden" name="skillId" value="<%= id %>">
-                        <textarea name="evidence" id="evidence" cols="83" rows="4"
-                            placeholder="Enter a URL or explanation as evidence for completing this skill"></textarea>
-                        <div class="sendButton">
-                            <button id="submitButton" type="button">Submit Evidence</button>
-                        </div>
-                </div>
-                <!-- Skill-ean erabilitako baliabideak -->
-                <div class="skillResources">
-                    <h2>Resources</h2>
-                    <ul>
-                        <% resources.forEach(function(resource) { %>
-                            <li>
-                                <%= resource %>
-                            </li>
+                <!-- Skill bakoitzaren informazio div-a -->
+                <div class="skillsInfo">
+                    <h2>Skill Score: 1 point</h2>
+                    <!-- Skill-aren deskripzioa -->
+                    <div class="skillDescription">
+                        <h2>Description</h2>
+                        <p>
+                            <%= skill.description %>
+                        </p>
+                    </div>
+                    <!-- Skill-aren zereginak -->
+                    <div class="skillTasks">
+                        <h2>Tasks to complete</h2>
+                        <% skill.tasks.forEach(function(task, index) { %>
+                            <div class="task-item">
+                                <input type="checkbox" id="task-<%= skill.index %>">
+                                <label for="task-<%= skill.index %>">
+                                    <%= task %>
+                                </label>
+                            </div>
                             <% }); %>
-                    </ul>
+                    </div>
+                    <!-- Skill-a osatua ebidentzia -->
+                    <div class="skillEvidence">
+                        <h2>Provide Evidence</h2>
+                        <form id="provideEvidenceForm">
+                            <textarea name="evidence" id="evidence" cols="83" rows="4" required="true"
+                                placeholder="Enter a URL or explanation as evidence for completing this skill"></textarea>
+                            <div class="sendButton">
+                                <button id="submitButton" type="submit">Submit Evidence</button>
+                            </div>
+                        </form>
+                        <pre id="response"></pre>
+                    </div>
+
+                    <script>
+                        let persistentUserSkillId = "<%= userSkill ? userSkill._id : '' %>";
+                        const skillId = '<%= skill._id %>';
+
+                        document.getElementById('provideEvidenceForm').addEventListener('submit', function (event) {
+                            event.preventDefault();
+                            const evidence = document.getElementById('evidence').value;
+                            const skillId = '<%= skill._id %>';
+
+                            fetch('/skills/<%= skillTreeName %>/submit-evidence', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    evidence,
+                                    skillId,
+                                    userSkillId: persistentUserSkillId
+                                })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+                                    if (!persistentUserSkillId) {
+                                        persistentUserSkillId = data._id;
+                                        console.log(persistentUserSkillId);
+                                    }
+                                });
+                        });
+                    </script>
+
+                    <!-- Skill-ean erabilitako baliabideak -->
+                    <div class="skillResources">
+                        <h2>Resources</h2>
+                        <ul>
+                            <% skill.resources.forEach(function(resource) { %>
+                                <li>
+                                    <%= resource %>
+                                </li>
+                                <% }); %>
+                        </ul>
+                    </div>
+                    <% if (session.user.admin || (userSkill && userSkill.completed)) { %>
+                        <!-- Skill evidences -->
+                        <div class="unverifiedEvidence">
+                            <h2>Unverified Evidence Submissions</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Evidence</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% skillSubmissions.forEach(function(submission) { %>
+                                        <% 
+                                            const isAlreadyVerified = submission.verifications.some(verification => 
+                                                verification.user.toString() === session.user._id.toString()
+                                            );
+                                            if (submission.user.username != session.user.username && !isAlreadyVerified) {
+                                        %>
+                                            <tr>
+                                                <td>
+                                                    <%= submission.user.username %>
+                                                </td>
+                                                <td>
+                                                    <%= submission.evidence %>
+                                                </td>
+                                                <td class="actions">
+                                                    <button class="approve-btn"
+                                                        data-submission-id="<%= submission._id %>">Approve</button>
+                                                    <button class="reject-btn"
+                                                        data-submission-id="<%= submission._id %>">Reject</button>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                                <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <script>
+                            document.querySelectorAll('.approve-btn').forEach(button => {
+                                button.addEventListener('click', function () {
+                                    const submissionId = this.dataset.submissionId;
+                                    fetch('/skills/<%= skillTreeName %>/<%= skill.id %>/verify', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify({
+                                            userSkillId: submissionId,
+                                            approved: true
+                                        })
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            console.log(data);
+                                            // Aquí podrías remover la fila de la tabla si la verificación fue exitosa
+                                            this.closest('tr').remove();
+                                        });
+                                });
+                            });
+
+                            document.querySelectorAll('.reject-btn').forEach(button => {
+                                button.addEventListener('click', function () {
+                                    const submissionId = this.dataset.submissionId;
+                                    fetch('/skills/<%= skillTreeName %>/<%= skill._id %>/verify', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify({
+                                            userSkillId: submissionId,
+                                            approved: false
+                                        })
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            console.log(data);
+                                            // Aquí podrías remover la fila de la tabla si el rechazo fue exitoso
+                                            this.closest('tr').remove();
+                                        });
+                                });
+                            });
+                        </script>
+                        <% } %>
                 </div>
-                <!--Unverified evidence submission-->
-                <div class="unverifiedEvidence">
-                    <h2>Unverified Evidence Submissions</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>User</th>
-                                <th>Evidence</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-                </form>
             </div>
-        </div>
-        <script src="/js/tasks.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+            <script src="/js/tasks.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </body>
 
 </html>

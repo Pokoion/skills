@@ -86,9 +86,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td colspan="5" style="text-align: center;">No users in this range yet</td>
-              </tr>
+                <% 
+                const filteredUsers = users
+                  .filter(user => user.score >= badge.bitpoints_min && user.score <= badge.bitpoints_max)
+                  .sort((a, b) => b.score - a.score); 
+                %>
+                
+                <% if (filteredUsers.length === 0) { %>
+                  <tr>
+                    <td colspan="5">No users in this range yet.</td>
+                  </tr>
+                <% } else { %>
+                  <% filteredUsers.forEach((user, index) => { %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td><%= user.username %></td>
+                      <td><%= user.score %></td>
+                      <td style="background-color: white;"><img src="/badges/<%= badge.image_url %>" alt="Badge"></td>
+                      <td><%= badge.name %></td>
+                    </tr>
+                  <% }); %>
+                <% } %>
             </tbody>
           </table>
         </div>
@@ -109,7 +127,7 @@
                 <tr>
                     <td><%= badge.name %></td>
                     <td>
-                        <img src="/badges/<%= badge.image_url %>"">
+                        <img src="/badges/<%= badge.image_url %>">
                     </td>
                     <td><%= badge.bitpoints_min %> - <%= badge.bitpoints_max %></td>
                 </tr>

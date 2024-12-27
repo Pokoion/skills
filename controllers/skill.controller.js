@@ -1,4 +1,5 @@
 const skillService = require('../services/skill.service');
+const userSkillService = require('../services/userSkill.service');
 const InputUtil = require('../utils/input.util');
 
 exports.viewSkillById = async (req, res) => {
@@ -8,8 +9,15 @@ exports.viewSkillById = async (req, res) => {
       req.session.error_msg = 'Skill not found';
       return res.status(404).redirect(`/skills/${req.params.skillTreeName}`);
     }
-    res.status(200).render('tasks', skill);
+    const userSkill = await userSkillService.getUserSkillBySkillAndUser(skill._id, req.session.user._id);
+    const skillSubmissions = await userSkillService.getAllUncompletedUserSkillsBySkillId(skill._id);
+    console.log('submissions:');
+    console.log(skillSubmissions);
+    console.log('userSkill:');
+    console.log(userSkill);
+    res.status(200).render('tasks', {skill, userSkill, skillTreeName: req.params.skillTreeName, skillSubmissions});
   } catch (error) {
+    console.error(error);
     req.session.error = 'Error getting skill';
     res.status(500).redirect(`/skills/${req.params.skillTreeName}`);
   }

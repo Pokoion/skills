@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
         const skillsArray = await fetch(`/skills/${skillTreeName}/skills`).then(response => response.json()) // orain datu basean dauden skill-ak lortu
 
         skillsArray.forEach(skill => {
-            const UserSkill = fetchUserSkills(skill.id);
+            const UserSkill = fetchUserSkills(skill._id);
             // svg-wrapper elementua sortu
             const svgWrapper = document.createElement('div');
             svgWrapper.className = 'svg-wrapper';

@@ -19,7 +19,7 @@ const usersRouter = require('./routes/users');
 const getSkillNumbers = require('./middleware/skillsNumber');
 const messageMiddleware = require('./middleware/Messages');
 const userService = require('./services/user.service');
-const userSkillService = require('../services/userSkill.service');
+const userSkillService = require('./services/userSkill.service');
 
 var app = express();
 
@@ -150,6 +150,7 @@ app.get('/', authMiddleware.isAuthenticated, async (req, res, next) => {
 app.get('/api/user', (req, res) => {
   const user = req.session.user;
   res.json({
+      id: user?._id || null,
       username: user?.username || null,
       admin: user?.admin || false
   })
