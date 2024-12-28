@@ -247,6 +247,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <% if (skillSubmissions.length == 0) { %>
+                                        <tr>
+                                            <td colspan="3">No unverified submissions.</td>
+                                        </tr>
+                                    <% } else { %>
                                     <% skillSubmissions.forEach(function(submission) { %>
                                         <% 
                                             const isAlreadyVerified = submission.verifications.some(verification => 
@@ -270,6 +275,7 @@
                                             </tr>
                                             <% } %>
                                                 <% }); %>
+                                        <% } %>
                                 </tbody>
                             </table>
                         </div>

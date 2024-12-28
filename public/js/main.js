@@ -1,25 +1,24 @@
-document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargatzean funtzioa exekutatu
-    const svgContainer = document.querySelector('.svg-container'); // svg-container elementua lortu
-    const footer = document.querySelector('.description'); // footer elementua lortu
+document.addEventListener('DOMContentLoaded', async () => {
+    const svgContainer = document.querySelector('.svg-container');
+    const footer = document.querySelector('.description');
 
     async function loadSkills() {
         const isAdmin = await fetch('/api/user').then(response => response.json()).then(data => data.admin);
-        //const skillsArray = await fetch('/skills.json').then(response => response.json()) // lehen sortutako JSON fitxategia lortu
-        const skillTreeName = window.location.pathname.split('/')[2]; // URLa lortu eta skillTreeName lortu
-        const skillsArray = await fetch(`/skills/${skillTreeName}/skills`).then(response => response.json()) // orain datu basean dauden skill-ak lortu
+        const skillTreeName = window.location.pathname.split('/')[2];
+        const skillsArray = await fetch(`/skills/${skillTreeName}/skills`).then(response => response.json());
 
-        await Promise.all(skillsArray.map(async (skill) => {
-            const UserSkill = await fetchUserSkills(skill._id);
-            console.log('UserSkill:', UserSkill);
-            // svg-wrapper elementua sortu
+        const userSkills = await Promise.all(skillsArray.map(skill => fetchUserSkills(skill._id)));
+
+        skillsArray.forEach(async (skill, index) => {
+            const UserSkill = userSkills[index];
+
             const svgWrapper = document.createElement('div');
             svgWrapper.className = 'svg-wrapper';
             svgWrapper.setAttribute('data-id', skill.id);
             svgWrapper.setAttribute('data-custom', false);
             svgContainer.appendChild(svgWrapper);
 
-            // svg elementua sortu
-            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg') // CreateElement ordez createElementNS erabili behar da
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
             svg.setAttribute('width', '100');
             svg.setAttribute('height', '100');
             svg.setAttribute('viewBox', '0 0 100 100');
@@ -27,14 +26,12 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
 
             let completed = UserSkill ? UserSkill.completed : false;
 
-            // polygon elementua sortu
             const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
             polygon.setAttribute('points', '50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5');
             polygon.style.fill = completed ? '#0ea13f' : 'white';
             polygon.classList.add('hexagon');
             svg.appendChild(polygon);
 
-            // text elementua sortu
             const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
             text.setAttribute('x', '50%');
             text.setAttribute('y', '20%');
@@ -44,7 +41,6 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             svg.appendChild(text);
 
             skill.text.split('\n').forEach(line => {
-                // lerro bakoitzeko tspan elementua sortu
                 const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
                 tspan.setAttribute('x', '50%');
                 tspan.setAttribute('dy', '1.2em');
@@ -53,7 +49,6 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                 text.appendChild(tspan);
             });
 
-            // image elementua sortu
             const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
             image.setAttribute('x', '35%');
             image.setAttribute('y', '60%');
@@ -64,27 +59,25 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
 
             let unverifiedEvidence = await getSkillUnverifiedEvidence(skill._id);
 
-            // borobil gorria
             const redDotEmoji = document.createElement('div');
             redDotEmoji.className = 'Evidenceemoji red-dot';
             redDotEmoji.innerHTML = `🔴<span class="evidence-count">${unverifiedEvidence}</span>`;
 
+            // If the user is an admin or the user has completed the skill and unverified evidence is greater than 0, show the red dot emoji
             if (isAdmin || UserSkill){
                 (isAdmin || UserSkill.completed) && unverifiedEvidence > 0 ? redDotEmoji.style.display = 'block' : redDotEmoji.style.display = 'none';
             }else{
                 redDotEmoji.style.display = 'none';
             };
 
+            // If the user has completed the skill, show the green dot emoji
             let completedSkill = UserSkill? UserSkill.verifications.filter(v => v.approved).length : 0;
-
-            // borobil berdea
             const greenDotEmoji = document.createElement('div');
             greenDotEmoji.className = 'Evidenceemoji completed';
             greenDotEmoji.innerHTML = `🟢<span class="evidence-count">${completedSkill}</span>`;
             UserSkill ? greenDotEmoji.style.display = 'block' : greenDotEmoji.style.display = 'none';
 
             let pencilEmoji;
-            // Arkatz emoji-a sortu
             if (isAdmin) {
                 pencilEmoji = document.createElement('div');
                 pencilEmoji.className = 'emoji pencil-emoji';
@@ -97,7 +90,6 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                 svgWrapper.appendChild(pencilEmoji);
             }
 
-            // Liburu emoji-a sortu
             const bookEmoji = document.createElement('div');
             bookEmoji.className = 'emoji';
             bookEmoji.textContent = '📖';
@@ -106,7 +98,6 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
             bookEmoji.style.right = '10px';
             bookEmoji.style.display = 'none';
 
-            // Liburu emoji-a klikatzean tasks iriki
             bookEmoji.addEventListener('click', () => {
                 window.location.href = `/skills/${skillTreeName}/view/${skill.id}`;
                 console.log('Book emoji clicked');
@@ -142,7 +133,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                 bookEmoji.classList.add('hide');
                 footer.style.visibility = 'hidden';
                 setTimeout(() => {
-                    if (!svgWrapper.matches(':hover')) { // Arratoia skill gainean ez badago
+                    if (!svgWrapper.matches(':hover')) {
                         if (isAdmin) {
                             pencilEmoji.style.display = 'none';
                             pencilEmoji.classList.remove('hide');
@@ -152,9 +143,10 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
                     }
                 }, 200);
             });
-        }));
+        });
     }
 
+    // Fetch user skill data
     async function fetchUserSkills(skillId) {
         try {
             let data = await fetch(`/user-skill/${skillId}`)
@@ -171,7 +163,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Dokumentua kargat
         }
     }
 
-    // Skill baten berifikatu gabeko ebidentziak lortzeko funtzioa, oraingoz random
+    // Get the number of unverified evidence for a skill
     const getSkillUnverifiedEvidence = async (skillId) => {
         const unverifiedEvidence = await fetch(`/user-skillCount/${skillId}`).then(response => response.json()).then(data => data.unverifiedEvidenceCount);
         return unverifiedEvidence;

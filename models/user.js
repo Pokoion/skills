@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
     completedSkills: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skill', default: [] }]
 });
 
+// This is a pre-save hook to hash the password before saving it to the database
 userSchema.pre('save', async function(next) {
     try {
         if (this.password && this.isModified('password')) {
@@ -23,6 +24,7 @@ userSchema.pre('save', async function(next) {
     }
 });
 
+// This is a pre-save hook to set the first user as an admin
 userSchema.pre('save', async function(next) {
     try {
         const userCount = await mongoose.model('User').countDocuments();

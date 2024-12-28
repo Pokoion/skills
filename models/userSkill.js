@@ -19,49 +19,41 @@ const userSkillSchema = new mongoose.Schema({
 // Middleware pre-update
 userSkillSchema.pre('findOneAndUpdate', async function (next) {
   try {
-      // Obtener el update de la consulta
       const update = this.getUpdate();
       const userSkillId = this.getQuery()._id;
 
-      // Verificar si verifications está presente en $push
       if (update.$push && update.$push.verifications) {
-        // Asegurarnos de que verifications es un array
         let verificationsToAdd = update.$push.verifications;
         if (!Array.isArray(verificationsToAdd)) {
-            verificationsToAdd = [verificationsToAdd];  // Convertir en array si no lo es
+            verificationsToAdd = [verificationsToAdd];  // Convert to array if not already
         }
 
-        // Obtener el documento original
-        const existingUserSkill = await this.model.findById(userSkillId);
+        const existingUserSkill = await this.model.findById(userSkillId).populate('skill');
         if (!existingUserSkill) {
             throw new Error('UserSkill not found');
         }
 
-        // Combinar las verificaciones existentes con las nuevas
         const existingVerifications = existingUserSkill.verifications || [];
         const allVerifications = [...existingVerifications, ...verificationsToAdd];
 
-          // Filtrar las verificaciones aprobadas
           const verifiedUsers = allVerifications.filter(v => v.approved);
 
-          // Si no hay usuarios aprobados, se mantiene completed como false
           if (verifiedUsers.length === 0) {
               update.$set = update.$set || {};
               update.$set.completed = false;
               return next();
           }
 
-          // Verificar si algún administrador ha aprobado
+          // Verify if any of the approvers is an admin
           const adminApproval = await Promise.all(
               verifiedUsers.map(async v => {
                   const user = await User.findById(v.user);
-                  return user && user.admin;  // Verificar si el usuario es admin
+                  return user && user.admin;
               })
           );
 
           let skillCompleted = false;
 
-          // Si alguno de los aprobadores es admin, se marca como completado
           if (adminApproval.includes(true)) {
               skillCompleted = true;
               update.$set = update.$set || {};
@@ -69,7 +61,7 @@ userSkillSchema.pre('findOneAndUpdate', async function (next) {
               update.$set.completedAt = new Date();
           }
 
-          // Verificar si hay al menos 3 usuarios aprobados
+          // Verify if there are at least 3 non-admin approvals
           console.log('All verifications:', verifiedUsers);
           const uniqueApprovedUsers = new Set(verifiedUsers.map(v => v.user.toString()));
           console.log('Unique approved users:', uniqueApprovedUsers);
@@ -80,16 +72,16 @@ userSkillSchema.pre('findOneAndUpdate', async function (next) {
               update.$set.completedAt = new Date();
           }
 
-          // Si se marca como completado, actualizar el User y agregar el Skill a completedSkills
           if (skillCompleted) {
-              const skillId = existingUserSkill.skill; // ID del Skill relacionado
-              const userId = existingUserSkill.user;   // ID del User relacionado
+              const skillId = existingUserSkill.skill;
+              const userId = existingUserSkill.user;
           
-              // Actualizar el User y agregar el Skill a completedSkills
+              // Add the skill to the user's completed skills if not already there
               const user = await User.findById(userId);
               if (user && !user.completedSkills.includes(skillId)) {
+                  user.score += existingUserSkill.skill.score;
                   user.completedSkills.push(skillId);
-                  await user.save(); // Guardar los cambios en el User
+                  await user.save();
               }
           } else {
               update.$set = update.$set || {};

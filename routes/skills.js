@@ -19,7 +19,7 @@ router.post('/:skillTreeName/add', authMiddleware.isAdminPost, iconUpload.single
 
 router.get('/:skillTreeName/view/:skillID', authMiddleware.isAuthenticated, skillController.viewSkillById);
 
-router.post('/:skillTreeName/:skillID/verify', authMiddleware.isAuthenticated, userSkillController.verifySubmission); //TODO
+router.post('/:skillTreeName/:skillID/verify', authMiddleware.isAuthenticated, userSkillController.verifySubmission);
 
 router.get('/:skillTreeName/edit/:skillID', authMiddleware.isAdmin, skillController.loadEditSkillById);
 
