@@ -75,7 +75,7 @@
                             <%= user.admin %>
                         </td>
                         <td>
-                            <button class="select-btn" id="select-btn"
+                            <button class="select-btn"
                                 onclick="selectUser('<%= user._id %>', this)">Change
                                 Password</button>
                         </td>
@@ -87,7 +87,7 @@
         <h2> Change Password</h2>
         <form id="changePassForm">
             <b> New Password: </b> <input type="password" id="newPassword" name="newPassword" required>
-            <button class="changePassButton" id="changePassButton">Change Password</button>
+            <button type="submit" class="changePassButton" id="changePassButton">Change Password</button>
         </form>
         <div class="response-container">
             <pre id="response"></pre>
@@ -95,8 +95,8 @@
 </body>
 <script>
     let selectedUser = null;
-    function selectUser(username, button) {
-        selectedUser = username;
+    function selectUser(userId, button) {
+        selectedUser = userId;
         console.log('Selected user:', selectedUser);
 
         const buttons = document.querySelectorAll('.select-btn');
@@ -121,7 +121,7 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+                    document.getElementById('response').textContent = 'Password changed successfully for user: ' + data.username;
                 })
                 .catch(error => {
                     document.getElementById('response').textContent = error;

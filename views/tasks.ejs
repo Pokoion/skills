@@ -214,7 +214,7 @@
                             })
                                 .then(response => response.json())
                                 .then(data => {
-                                    document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+                                    document.getElementById('response').textContent = 'Evidence submitted successfully!';
                                     if (!persistentUserSkillId) {
                                         persistentUserSkillId = data._id;
                                         console.log(persistentUserSkillId);

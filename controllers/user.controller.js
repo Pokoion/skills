@@ -87,15 +87,17 @@ exports.logoutUser = (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
     try {
-        const users = await userService.findAllUsersWithPassword();
+        let users = await userService.findAllUsersWithPassword();
         users = users.map(user => {
             return {
+                _id: user._id,
                 username: user.username,
                 admin: user.admin
             };
         });
         res.render('manageUsers', { users });
     } catch (error) {
+        console.error('Error getting users:', error);
         req.session.error = 'Error getting users';
         res.status(500).redirect('/admin/dashboard');
     }
