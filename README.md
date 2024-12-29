@@ -8,11 +8,14 @@
 **Praktikaren URL publikoa**  
 [https://pokoion.eus](https://pokoion.eus)
 
+**Egindako hautazko atalak**  
+- OAuth kautoketa (GitHub eta Google)
+- Testak (Jest eta SuperTest)
+
 ---
 
 ### Oharrak
 
-Gure ustez, praktika hau Front-End eta ikusitako gaiak praktikatzeko (HTML, Node.js, Express, web scraping...) egokia izan da. Hala ere, Back-End atalarekin zerikusia duten gauzentzat azalpen falta zegoela uste dugu, adibidez borobil eta submission-entzat, ez zen zehazten hauek zeren arabera jarri. Baina, orokorrean, praktika ona iruditu zaigu.
-
-- Skills JSON-eko description, tasks eta resources LLM-a eskuz erabiliz bete ditugu, LLM-arentzat zegoen script-arekin "aluzinazioak" sortzen zituelako eta gauzak aldatzen zituelako.
-
+- OAuth kautoketa bidez sartutako erabiltzaileentzat identifikadore bezala izena erabili dugu, beraz adibidez Google-eko bi kontuk izen bera badute, bestearen kontura sartuko da (Badakigu hori gaizki dagoela eta berez Google/GitHub-eko kontuen id-a erabili beharko litzatekela, baina erabiltzaileen model-a ez dugu aldatu).
+- UserSkill model-etik "verified" kendu dugu, ez genuen eta ezertarako erabiltzen (UserSkill-a gaindituta dagoen jakiteko "completed")
+- Test-en atalean, mongo-rekin probak egiteko "MongoMemoryServer" erabili dugu.
