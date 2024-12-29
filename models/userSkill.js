@@ -30,7 +30,7 @@ userSkillSchema.pre('findOneAndUpdate', async function (next) {
 
         const existingUserSkill = await this.model.findById(userSkillId).populate('skill');
         if (!existingUserSkill) {
-            throw new Error('UserSkill not found');
+            return next();
         }
 
         const existingVerifications = existingUserSkill.verifications || [];
@@ -96,6 +96,5 @@ userSkillSchema.pre('findOneAndUpdate', async function (next) {
       next(error);
   }
 });
-
 
 module.exports = mongoose.model('UserSkill', userSkillSchema);

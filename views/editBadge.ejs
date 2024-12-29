@@ -59,7 +59,7 @@
 <body>
     <%- include('partials/username-display') %>
     <h1>Edit Badge</h1>
-    <form action="/admin/badges/edit/<%= badge._id %>" method="POST">
+    <form action="/admin/badges/edit/<%= badge._id %>" method="POST" enctype="multipart/form-data">
         <label for="badge-name">Badge Name:</label>
         <input type="text" id="badge-name" name="name" placeholder="<%= badge.name %>" >
 
@@ -69,8 +69,8 @@
         <label for="max-bitpoints">Maximum Bitpoints:</label>
         <input type="number" id="max-bitpoints" name="bitpoints_max" placeholder="<%= badge.bitpoints_max %>">
 
-        <label for="image-url">Image URL:</label>
-        <input type="text" id="image-url" name="image_url" placeholder="<%= badge.image_url %>">
+        <label for="image-url">Image (png):</label>
+        <input type="file" id="image-url" name="image_url" accept="image/png">
 
         <img src="/badges/<%= badge.image_url %>" alt="Badge Image" style="width: 100px; height: auto;">
 

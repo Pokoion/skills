@@ -86,7 +86,7 @@
 
 <body>
     <%- include('partials/username-display') %>
-    <h1 class="page-title">Skill: <%= skill.text %></h1>
+    <h1 style="margin-top: 40px;" class="page-title">Skill: <%= skill.text %></h1>
     <h2 class="trees"><%= skillTreeName.toUpperCase() %> (<%= skillNum[skillTreeName] %> skills)</h2>
     <!-- Skill informazioentzako orria -->
     <div class="skillsPage">
@@ -122,7 +122,7 @@
         <h3>Skill Score:</h3>
         <textarea type="number" name="score" id="score" rows="2" placeholder="<%= skill.score %>"></textarea>
 
-        <h3>Upload Icon (30x30 png):</h3>
+        <h3>Upload Icon (30x30 svg):</h3>
         <input type="file" id="icon" name="icon" accept="image/svg">
 
         <button id="approve-btn">Save</button>

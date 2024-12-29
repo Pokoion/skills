@@ -1,69 +1,44 @@
 const UserSkill = require('../models/userSkill');
 
 exports.submitSkillEvidence = async (skillId, userId, evidence) => {
-  try {
-    const userSkill = new UserSkill({ skill: skillId, user: userId, evidence });
-    return await userSkill.save();
-  } catch (error) {
-    console.error('Error submitting evidence:', error);
-    throw error;
-  }
+  const userSkill = new UserSkill({ skill: skillId, user: userId, evidence });
+  return await userSkill.save();
 };
 
-exports.updateUserSkillById = async (userSkillId) => {
-  try {
-    return await UserSkill.findByIdAndUpdate(userSkillId, { evidence }, { new: true });
-  } catch (error) {
-    console.error('Error updating UserSkill:', error);
-    throw error;
-  }
+exports.updateUserSkillById = async (userSkillId, evidence) => {
+      const result = await UserSkill.findByIdAndUpdate(
+          userSkillId,
+          { evidence },
+          { new: true }
+      );
+      return result;
 };
 
 exports.getAllUncompletedUserSkillsBySkillId = async (skillId) => {
-  try {
-    return await UserSkill.find({ skill: skillId, completed: false }).populate('user');
-  } catch (error) {
-    console.error('Error al obtener UserSkill:', error);
-    throw error;
-  }
+  return await UserSkill.find({ skill: skillId, completed: false }).populate('user');
 };
 
 exports.verifyUserSkillById = async (userSkillId, verification) => {
-  try {
-    return await UserSkill.findByIdAndUpdate(
-      userSkillId,
-      {
-        $push: { verifications: verification },
-      },
-      { new: true }
-    );
-  } catch (error) {
-    console.error('Error updating UserSkill:', error);
-    throw error;
-  }
+  return await UserSkill.findByIdAndUpdate(
+    userSkillId,
+    {
+      $push: { verifications: verification },
+    },
+    { new: true }
+  );
 };
 
 exports.getUserSkillBySkillAndUser = async (skillId, userId) => {
-  try {
-    return await UserSkill.findOne({ skill: skillId, user: userId }).populate('skill').populate('user');
-  } catch (error) {
-    console.error('Error al obtener UserSkill:', error);
-    throw error;
-  }
+  return await UserSkill.findOne({ skill: skillId, user: userId }).populate('skill').populate('user');
 };
 
 // Get the count of unverified user skills for a given skill, excluding the ones verified by the user
 exports.getUnverifiedUserSkillCount = async (skillId, userId) => {
-  try {
-    return await UserSkill.countDocuments({
-      skill: skillId,
-      completed: false,
-      'verifications.user': { $ne: userId }
-    });
-  } catch (error) {
-    console.error('Error getting unverified user skill count:', error);
-    throw error;
-  }
+  return await UserSkill.countDocuments({
+    skill: skillId,
+    completed: false,
+    'verifications.user': { $ne: userId }
+  });
 };
 
 exports.getAllUserSkills = async () => {
@@ -72,10 +47,6 @@ exports.getAllUserSkills = async () => {
 
 exports.addUserSkill = async (userSkillData) => {
   return await UserSkill.create(userSkillData);
-};
-
-exports.updateUserSkillById = async (userSkillId, userSkillData) => {
-  return await UserSkill.updateOne({ _id: userSkillId }, userSkillData);
 };
 
 exports.deleteUserSkillById = async (userSkillId) => {

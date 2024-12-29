@@ -147,6 +147,10 @@ const checkAndReturnEditInfo = (req, res) => {
       badgeData.image_url = req.body.image_url.trim();
     }
 
+    if(req.file) {
+      badgeData.image_url = req.file.filename;
+    }
+
     if (Object.keys(badgeData).length === 0) {
       return {
         error: true,

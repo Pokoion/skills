@@ -80,7 +80,7 @@
 <body>
     <%- include('partials/username-display') %>
     <%- include('partials/messages') %>
-    <h2 class="trees"><%= skillTreeName.toUpperCase() %> (<%= skillNum[skillTreeName] || 0 %> skills)</h2>
+    <h2 style="margin-top: 40px;" class="trees"><%= skillTreeName.toUpperCase() %> (<%= skillNum[skillTreeName] || 0 %> skills)</h2>
     <!-- Skill informazioentzako orria -->
     <div class="skillsPage">
     <form id="add-skill-form" action="/skills/<%= skillTreeName%>/add" method="POST" enctype="multipart/form-data">
@@ -99,7 +99,7 @@
         <h3>Skill Score:</h3>
         <textarea type="number" name="score" id="score" rows="2" placeholder="1"></textarea>
 
-        <h3>Upload Icon (30x30 png):</h3>
+        <h3>Upload Icon (30x30 svg):</h3>
         <input type="file" id="icon" name="icon" accept="image/svg" required="true">
 
         <button id="approve-btn">Save</button>

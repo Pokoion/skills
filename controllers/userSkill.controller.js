@@ -2,16 +2,19 @@ const userSkillService = require('../services/userSkill.service');
 
 exports.submitSkillEvidence = async (req, res) => {
     try {
+        console.log(req.body);
         const skillId = req.body.skillId;
         const userId = req.session.user._id;
         const evidence = req.body.evidence;
         if (!skillId || !userId || !evidence) {
             req.session.error_msg = 'Missing required fields';
-            return res.status(400);
+            return res.status(400).send('Missing required fields');
         }
         if (req.body.userSkillId) {
-            const userSkill = await userSkillService.updateUserSkillById(req.body.userSkillId, { evidence });
+            const userSkill = await userSkillService.updateUserSkillById(req.body.userSkillId, evidence);
             if (userSkill) {
+                console.log('updated userSkill:');
+                console.log(userSkill);
                 res.status(200).json(userSkill);
             } else {
                 res.status(404).send('UserSkill not found');
@@ -20,15 +23,15 @@ exports.submitSkillEvidence = async (req, res) => {
         }
         const userSkill = await userSkillService.submitSkillEvidence(skillId, userId, evidence);
         if (userSkill) {
-        res.status(200).json(userSkill);
+            res.status(200).json(userSkill);
         } else {
-        res.status(404).send('Error submitting evidence');
+            res.status(404).send('Error submitting evidence');
         }
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error submitting evidence' });
     }
-}
+};
 
 exports.verifySubmission = async (req, res) => {
     try {
@@ -47,4 +50,4 @@ exports.verifySubmission = async (req, res) => {
         console.error(error);
         res.status(500).json({ message: 'Error verifying submission' });
     }
-}
+};

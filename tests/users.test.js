@@ -153,6 +153,9 @@ describe('User Controller', () => {
                 .post('/admin/change-password')
                 .send(changePasswordData);
 
+            expect(response.status).toBe(200);
+            const isMatchJSON = await bcrypt.compare('newpassword', response.body.password);
+            expect(isMatchJSON).toBe(true);
             const updatedUser = await User.findById(user._id);
             const isMatch = await bcrypt.compare('newpassword', updatedUser.password);
             expect(isMatch).toBe(true);

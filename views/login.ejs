@@ -110,14 +110,13 @@
     <%- include('partials/username-display') %>
     <div class="container">
         <%- include('partials/messages') %>
-
+        <h1 style="text-align: center;">Login</h1>
         <div class="social-login">
             <a href="/auth/google"><button class="google">Login with Google</button></a>
             <a href="/auth/github"><button class="github">Login with GitHub</button></a>
         </div>
         <div class="separator">--- or ---</div>
         <form id="register-form" action="/users/login" method="POST">
-            <h1 style="text-align: center;">Login</h1>
             <label for="username">Username:</label>
             <input id="username" type="text" name="username" required>
             <label for="password">Password:</label>
