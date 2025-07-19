@@ -50,7 +50,7 @@ app.use(passport.session());
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "https://pokoion.eus/auth/google/callback",
+  callbackURL: "http://localhost:3000/auth/google/callback", // Cambiado para desarrollo local
   passReqToCallback: true
 }, async (req, accessToken, refreshToken, profile, done) => {
   try {
@@ -67,6 +67,8 @@ passport.use(new GoogleStrategy({
   }
 }));
 
+// Temporarily disabled GitHub OAuth - configure GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET in .env to enable
+/*
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
@@ -87,6 +89,7 @@ passport.use(new GitHubStrategy({
     done(err);
   }
 }));
+*/
 
 passport.serializeUser((user, done) => {
   done(null, user.username);
